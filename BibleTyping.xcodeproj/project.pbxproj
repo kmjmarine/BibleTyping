@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		E5652B342873CE09001B0B5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5652B332873CE09001B0B5F /* AppDelegate.swift */; };
 		E5652B362873CE09001B0B5F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5652B352873CE09001B0B5F /* SceneDelegate.swift */; };
-		E5652B382873CE09001B0B5F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5652B372873CE09001B0B5F /* ViewController.swift */; };
 		E5652B3D2873CE0A001B0B5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5652B3C2873CE0A001B0B5F /* Assets.xcassets */; };
 		E5652B402873CE0A001B0B5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5652B3E2873CE0A001B0B5F /* LaunchScreen.storyboard */; };
 		E5652B4B2873CE0A001B0B5F /* BibleTypingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5652B4A2873CE0A001B0B5F /* BibleTypingTests.swift */; };
@@ -17,6 +16,15 @@
 		E5652B572873CE0A001B0B5F /* BibleTypingUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5652B562873CE0A001B0B5F /* BibleTypingUITestsLaunchTests.swift */; };
 		E5652B652873D8FF001B0B5F /* RequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5652B642873D8FF001B0B5F /* RequestModel.swift */; };
 		E5652B672873D90A001B0B5F /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5652B662873D90A001B0B5F /* ResponseModel.swift */; };
+		E5652B6A2873DB50001B0B5F /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5652B692873DB50001B0B5F /* SearchManager.swift */; };
+		E5652B6D2873DB86001B0B5F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E5652B6C2873DB86001B0B5F /* Alamofire */; };
+		E5652B702873E6A5001B0B5F /* TypingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5652B6F2873E6A5001B0B5F /* TypingViewController.swift */; };
+		E5652B732873E6D9001B0B5F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E5652B722873E6D9001B0B5F /* SnapKit */; };
+		E5652B762873FD57001B0B5F /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = E5652B752873FD57001B0B5F /* SwiftSoup */; };
+		E5652B78287410A6001B0B5F /* TypingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5652B77287410A6001B0B5F /* TypingPresenter.swift */; };
+		E5652B7A2874143D001B0B5F /* TypingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5652B792874143D001B0B5F /* TypingTableViewCell.swift */; };
+		E5C72B0B2879644A0063E704 /* TypingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C72B0A2879644A0063E704 /* TypingListViewController.swift */; };
+		E5C72B0D287964870063E704 /* TypingListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C72B0C287964870063E704 /* TypingListPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +48,6 @@
 		E5652B302873CE09001B0B5F /* BibleTyping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BibleTyping.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5652B332873CE09001B0B5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5652B352873CE09001B0B5F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E5652B372873CE09001B0B5F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E5652B3C2873CE0A001B0B5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E5652B3F2873CE0A001B0B5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E5652B412873CE0A001B0B5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,6 +58,12 @@
 		E5652B562873CE0A001B0B5F /* BibleTypingUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibleTypingUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E5652B642873D8FF001B0B5F /* RequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestModel.swift; sourceTree = "<group>"; };
 		E5652B662873D90A001B0B5F /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
+		E5652B692873DB50001B0B5F /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
+		E5652B6F2873E6A5001B0B5F /* TypingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingViewController.swift; sourceTree = "<group>"; };
+		E5652B77287410A6001B0B5F /* TypingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingPresenter.swift; sourceTree = "<group>"; };
+		E5652B792874143D001B0B5F /* TypingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingTableViewCell.swift; sourceTree = "<group>"; };
+		E5C72B0A2879644A0063E704 /* TypingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingListViewController.swift; sourceTree = "<group>"; };
+		E5C72B0C287964870063E704 /* TypingListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingListPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +71,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5652B6D2873DB86001B0B5F /* Alamofire in Frameworks */,
+				E5652B732873E6D9001B0B5F /* SnapKit in Frameworks */,
+				E5652B762873FD57001B0B5F /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,10 +117,11 @@
 		E5652B322873CE09001B0B5F /* BibleTyping */ = {
 			isa = PBXGroup;
 			children = (
+				E5652B682873DAFE001B0B5F /* Manager */,
 				E5652B632873D8E1001B0B5F /* Models */,
+				E5C72B08287963230063E704 /* Scene */,
 				E5652B332873CE09001B0B5F /* AppDelegate.swift */,
 				E5652B352873CE09001B0B5F /* SceneDelegate.swift */,
-				E5652B372873CE09001B0B5F /* ViewController.swift */,
 				E5652B3C2873CE0A001B0B5F /* Assets.xcassets */,
 				E5652B3E2873CE0A001B0B5F /* LaunchScreen.storyboard */,
 				E5652B412873CE0A001B0B5F /* Info.plist */,
@@ -138,6 +155,42 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		E5652B682873DAFE001B0B5F /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				E5652B692873DB50001B0B5F /* SearchManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		E5652B6E2873E685001B0B5F /* TypingDetail */ = {
+			isa = PBXGroup;
+			children = (
+				E5652B6F2873E6A5001B0B5F /* TypingViewController.swift */,
+				E5652B792874143D001B0B5F /* TypingTableViewCell.swift */,
+				E5652B77287410A6001B0B5F /* TypingPresenter.swift */,
+			);
+			path = TypingDetail;
+			sourceTree = "<group>";
+		};
+		E5C72B08287963230063E704 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				E5C72B09287963FC0063E704 /* TypingList */,
+				E5652B6E2873E685001B0B5F /* TypingDetail */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		E5C72B09287963FC0063E704 /* TypingList */ = {
+			isa = PBXGroup;
+			children = (
+				E5C72B0A2879644A0063E704 /* TypingListViewController.swift */,
+				E5C72B0C287964870063E704 /* TypingListPresenter.swift */,
+			);
+			path = TypingList;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -154,6 +207,11 @@
 			dependencies = (
 			);
 			name = BibleTyping;
+			packageProductDependencies = (
+				E5652B6C2873DB86001B0B5F /* Alamofire */,
+				E5652B722873E6D9001B0B5F /* SnapKit */,
+				E5652B752873FD57001B0B5F /* SwiftSoup */,
+			);
 			productName = BibleTyping;
 			productReference = E5652B302873CE09001B0B5F /* BibleTyping.app */;
 			productType = "com.apple.product-type.application";
@@ -226,6 +284,11 @@
 				Base,
 			);
 			mainGroup = E5652B272873CE09001B0B5F;
+			packageReferences = (
+				E5652B6B2873DB86001B0B5F /* XCRemoteSwiftPackageReference "Alamofire" */,
+				E5652B712873E6D9001B0B5F /* XCRemoteSwiftPackageReference "SnapKit" */,
+				E5652B742873FD57001B0B5F /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+			);
 			productRefGroup = E5652B312873CE09001B0B5F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -268,9 +331,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5652B382873CE09001B0B5F /* ViewController.swift in Sources */,
+				E5652B78287410A6001B0B5F /* TypingPresenter.swift in Sources */,
+				E5C72B0B2879644A0063E704 /* TypingListViewController.swift in Sources */,
 				E5652B342873CE09001B0B5F /* AppDelegate.swift in Sources */,
+				E5652B7A2874143D001B0B5F /* TypingTableViewCell.swift in Sources */,
 				E5652B362873CE09001B0B5F /* SceneDelegate.swift in Sources */,
+				E5C72B0D287964870063E704 /* TypingListPresenter.swift in Sources */,
+				E5652B6A2873DB50001B0B5F /* SearchManager.swift in Sources */,
+				E5652B702873E6A5001B0B5F /* TypingViewController.swift in Sources */,
 				E5652B672873D90A001B0B5F /* ResponseModel.swift in Sources */,
 				E5652B652873D8FF001B0B5F /* RequestModel.swift in Sources */,
 			);
@@ -606,6 +674,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E5652B6B2873DB86001B0B5F /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		E5652B712873E6D9001B0B5F /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+		E5652B742873FD57001B0B5F /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E5652B6C2873DB86001B0B5F /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5652B6B2873DB86001B0B5F /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		E5652B722873E6D9001B0B5F /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5652B712873E6D9001B0B5F /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		E5652B752873FD57001B0B5F /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5652B742873FD57001B0B5F /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E5652B282873CE09001B0B5F /* Project object */;
 }

@@ -9,6 +9,6 @@ import Foundation
 
 struct RequestModel: Codable {
     let book: String
-    let chapter: String
-    let verse: String
+    let chapter: Int
+    let verse: Int
 }
