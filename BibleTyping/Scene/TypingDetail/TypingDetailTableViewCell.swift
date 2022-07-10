@@ -1,5 +1,5 @@
 //
-//  TypingTableViewCell.swift
+//  TypingDetailTableViewCell.swift
 //  BibleTyping
 //
 //  Created by kmjmarine on 2022/07/05.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class TypingTableViewCell: UITableViewCell {
+final class TypingDetailTableViewCell: UITableViewCell {
     static let identifier = "TypingTableViewCell"
     
     private lazy var quoteLabel: UILabel = {
@@ -35,7 +35,7 @@ final class TypingTableViewCell: UITableViewCell {
     }
 }
 
-private extension TypingTableViewCell {
+private extension TypingDetailTableViewCell {
     func setupLayout() {
         [quoteLabel, writeTextField]
             .forEach { addSubview($0) }

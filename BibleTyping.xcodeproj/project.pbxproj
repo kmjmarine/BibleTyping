@@ -18,13 +18,15 @@
 		E5652B672873D90A001B0B5F /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5652B662873D90A001B0B5F /* ResponseModel.swift */; };
 		E5652B6A2873DB50001B0B5F /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5652B692873DB50001B0B5F /* SearchManager.swift */; };
 		E5652B6D2873DB86001B0B5F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E5652B6C2873DB86001B0B5F /* Alamofire */; };
-		E5652B702873E6A5001B0B5F /* TypingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5652B6F2873E6A5001B0B5F /* TypingViewController.swift */; };
+		E5652B702873E6A5001B0B5F /* TypingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5652B6F2873E6A5001B0B5F /* TypingDetailViewController.swift */; };
 		E5652B732873E6D9001B0B5F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E5652B722873E6D9001B0B5F /* SnapKit */; };
 		E5652B762873FD57001B0B5F /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = E5652B752873FD57001B0B5F /* SwiftSoup */; };
-		E5652B78287410A6001B0B5F /* TypingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5652B77287410A6001B0B5F /* TypingPresenter.swift */; };
-		E5652B7A2874143D001B0B5F /* TypingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5652B792874143D001B0B5F /* TypingTableViewCell.swift */; };
+		E5652B78287410A6001B0B5F /* TypingDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5652B77287410A6001B0B5F /* TypingDetailPresenter.swift */; };
+		E5652B7A2874143D001B0B5F /* TypingDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5652B792874143D001B0B5F /* TypingDetailTableViewCell.swift */; };
 		E5C72B0B2879644A0063E704 /* TypingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C72B0A2879644A0063E704 /* TypingListViewController.swift */; };
 		E5C72B0D287964870063E704 /* TypingListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C72B0C287964870063E704 /* TypingListPresenter.swift */; };
+		E5C72B0F287967800063E704 /* TypingListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C72B0E287967800063E704 /* TypingListCollectionViewCell.swift */; };
+		E5EB751A287AB90B00E62A95 /* Bible.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EB7519287AB90B00E62A95 /* Bible.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,11 +61,13 @@
 		E5652B642873D8FF001B0B5F /* RequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestModel.swift; sourceTree = "<group>"; };
 		E5652B662873D90A001B0B5F /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 		E5652B692873DB50001B0B5F /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
-		E5652B6F2873E6A5001B0B5F /* TypingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingViewController.swift; sourceTree = "<group>"; };
-		E5652B77287410A6001B0B5F /* TypingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingPresenter.swift; sourceTree = "<group>"; };
-		E5652B792874143D001B0B5F /* TypingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingTableViewCell.swift; sourceTree = "<group>"; };
+		E5652B6F2873E6A5001B0B5F /* TypingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingDetailViewController.swift; sourceTree = "<group>"; };
+		E5652B77287410A6001B0B5F /* TypingDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingDetailPresenter.swift; sourceTree = "<group>"; };
+		E5652B792874143D001B0B5F /* TypingDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingDetailTableViewCell.swift; sourceTree = "<group>"; };
 		E5C72B0A2879644A0063E704 /* TypingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingListViewController.swift; sourceTree = "<group>"; };
 		E5C72B0C287964870063E704 /* TypingListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingListPresenter.swift; sourceTree = "<group>"; };
+		E5C72B0E287967800063E704 /* TypingListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingListCollectionViewCell.swift; sourceTree = "<group>"; };
+		E5EB7519287AB90B00E62A95 /* Bible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bible.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +155,7 @@
 			children = (
 				E5652B642873D8FF001B0B5F /* RequestModel.swift */,
 				E5652B662873D90A001B0B5F /* ResponseModel.swift */,
+				E5EB7519287AB90B00E62A95 /* Bible.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -166,9 +171,9 @@
 		E5652B6E2873E685001B0B5F /* TypingDetail */ = {
 			isa = PBXGroup;
 			children = (
-				E5652B6F2873E6A5001B0B5F /* TypingViewController.swift */,
-				E5652B792874143D001B0B5F /* TypingTableViewCell.swift */,
-				E5652B77287410A6001B0B5F /* TypingPresenter.swift */,
+				E5652B6F2873E6A5001B0B5F /* TypingDetailViewController.swift */,
+				E5652B792874143D001B0B5F /* TypingDetailTableViewCell.swift */,
+				E5652B77287410A6001B0B5F /* TypingDetailPresenter.swift */,
 			);
 			path = TypingDetail;
 			sourceTree = "<group>";
@@ -187,6 +192,7 @@
 			children = (
 				E5C72B0A2879644A0063E704 /* TypingListViewController.swift */,
 				E5C72B0C287964870063E704 /* TypingListPresenter.swift */,
+				E5C72B0E287967800063E704 /* TypingListCollectionViewCell.swift */,
 			);
 			path = TypingList;
 			sourceTree = "<group>";
@@ -331,14 +337,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5652B78287410A6001B0B5F /* TypingPresenter.swift in Sources */,
+				E5652B78287410A6001B0B5F /* TypingDetailPresenter.swift in Sources */,
 				E5C72B0B2879644A0063E704 /* TypingListViewController.swift in Sources */,
 				E5652B342873CE09001B0B5F /* AppDelegate.swift in Sources */,
-				E5652B7A2874143D001B0B5F /* TypingTableViewCell.swift in Sources */,
+				E5C72B0F287967800063E704 /* TypingListCollectionViewCell.swift in Sources */,
+				E5652B7A2874143D001B0B5F /* TypingDetailTableViewCell.swift in Sources */,
 				E5652B362873CE09001B0B5F /* SceneDelegate.swift in Sources */,
 				E5C72B0D287964870063E704 /* TypingListPresenter.swift in Sources */,
 				E5652B6A2873DB50001B0B5F /* SearchManager.swift in Sources */,
-				E5652B702873E6A5001B0B5F /* TypingViewController.swift in Sources */,
+				E5EB751A287AB90B00E62A95 /* Bible.swift in Sources */,
+				E5652B702873E6A5001B0B5F /* TypingDetailViewController.swift in Sources */,
 				E5652B672873D90A001B0B5F /* ResponseModel.swift in Sources */,
 				E5652B652873D8FF001B0B5F /* RequestModel.swift in Sources */,
 			);

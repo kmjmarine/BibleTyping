@@ -1,5 +1,5 @@
 //
-//  TypingPresenter.swift
+//  TypingDetailPresenter.swift
 //  BibleTyping
 //
 //  Created by kmjmarine on 2022/07/05.
@@ -7,19 +7,19 @@
 
 import UIKit
 
-protocol TypingProtocol: AnyObject {
+protocol TypingDetailProtocol: AnyObject {
     func setupViews()
     func didNotCorrect()
 }
 
-final class TypingPresenter: NSObject {
-    private weak var viewController: TypingProtocol?
+final class TypingDetailPresenter: NSObject {
+    private weak var viewController: TypingDetailProtocol?
     private let searchManager: SearchManagerProtocol
     
     private var bible: [Bible] = []
     
     init(
-        viewController: TypingProtocol,
+        viewController: TypingDetailProtocol,
         searchManager: SearchManagerProtocol = SearchManager()) {
         self.viewController = viewController
         self.searchManager = searchManager

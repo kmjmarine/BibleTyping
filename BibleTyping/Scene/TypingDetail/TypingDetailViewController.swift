@@ -1,5 +1,5 @@
 //
-//  TypingViewController.swift
+//  TypingDetailViewController.swift
 //  BibleTyping
 //
 //  Created by kmjmarine on 2022/07/05.
@@ -12,8 +12,8 @@ import SnapKit
 //    func didEnterText(_ sourceText: String)
 //}
 
-final class TypingViewController: UIViewController {
-    private lazy var presenter = TypingPresenter(viewController: self)
+final class TypingDetailViewController: UIViewController {
+    private lazy var presenter = TypingDetailPresenter(viewController: self)
     private let placeholderText = NSLocalizedString("여기에 입력해 주세요", comment: "입력")
     //private weak var delegate: TypingViewControllerDelegate?
     
@@ -95,7 +95,7 @@ final class TypingViewController: UIViewController {
     }
 }
 
-extension TypingViewController: UITextViewDelegate {
+extension TypingDetailViewController: UITextViewDelegate {
     //placeholder
     func textViewDidBeginEditing(_ textView: UITextView) {
         guard textView.textColor == .secondaryLabel else { return }
@@ -116,7 +116,7 @@ extension TypingViewController: UITextViewDelegate {
     }
 }
 
-extension TypingViewController: TypingProtocol {
+extension TypingDetailViewController: TypingDetailProtocol {
     func setupViews() {
         [sourceQuoteView, sourceQuoteLabel, buttonStackView, writeQuoteTextView]
             .forEach { view.addSubview($0) }
