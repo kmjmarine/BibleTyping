@@ -19,7 +19,27 @@ final class TypingListViewController: UIViewController {
         return label
     }()
     
-    private lazy var collectionView: UICollectionView = {
+    private lazy var oldBibleCollectionView: UICollectionView = {
+        let collectionViewLayout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
+        collectionView.backgroundColor = .systemBackground
+        collectionView.delegate = presenter
+        collectionView.dataSource = presenter
+        
+        collectionView.register(TypingListCollectionViewCell.self, forCellWithReuseIdentifier: TypingListCollectionViewCell.identifier)
+        
+        return collectionView
+    }()
+    
+    private lazy var newBibleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "신약성경"
+        label.font = .systemFont(ofSize: 16.0, weight: .semibold)
+        
+        return label
+    }()
+    
+    private lazy var newBibleCollectionView: UICollectionView = {
         let collectionViewLayout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.backgroundColor = .systemBackground
@@ -34,6 +54,9 @@ final class TypingListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        oldBibleCollectionView.tag = 1
+        newBibleCollectionView.tag = 2
+        
         presenter.viewDidLoad()
     }
     
@@ -46,7 +69,7 @@ final class TypingListViewController: UIViewController {
 
 extension TypingListViewController: TypingListProtocol {
     func setupView() {
-        [oldBibleLabel, collectionView]
+        [oldBibleLabel, oldBibleCollectionView, newBibleLabel, newBibleCollectionView]
             .forEach { view.addSubview($0) }
         
         let inset: CGFloat = 16.0
@@ -58,12 +81,25 @@ extension TypingListViewController: TypingListProtocol {
             $0.height.equalTo(32.0)
         }
         
-        collectionView.snp.makeConstraints {
+        oldBibleCollectionView.snp.makeConstraints {
             $0.top.equalTo(oldBibleLabel.snp.bottom)
             $0.leading.equalTo(oldBibleLabel.snp.leading)
             $0.trailing.equalTo(oldBibleLabel.snp.trailing)
-            $0.height.equalTo(700.0)
-
+            $0.height.equalTo(300.0)
+        }
+        
+        newBibleLabel.snp.makeConstraints {
+            $0.top.equalTo(oldBibleCollectionView.snp.bottom).offset(32.0)
+            $0.leading.equalTo(oldBibleCollectionView.snp.leading)
+            $0.trailing.equalTo(oldBibleCollectionView.snp.trailing)
+            $0.height.equalTo(32.0)
+        }
+        
+        newBibleCollectionView.snp.makeConstraints {
+            $0.top.equalTo(newBibleLabel.snp.bottom)
+            $0.leading.equalTo(newBibleLabel.snp.leading)
+            $0.trailing.equalTo(newBibleLabel.snp.trailing)
+            $0.height.equalTo(300.0)
         }
     }
     

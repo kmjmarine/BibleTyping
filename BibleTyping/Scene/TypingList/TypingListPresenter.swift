@@ -17,6 +17,7 @@ final class TypingListPresenter:NSObject {
     private weak var viewController: TypingListProtocol?
     
     private var oldBible: [Bible] = []
+    private var newBible: [Bible] = []
     
     init(viewController: TypingListProtocol) {
         self.viewController = viewController
@@ -28,6 +29,7 @@ final class TypingListPresenter:NSObject {
     
     func viewWillAppear() {
         oldBible = Bible.oldBible
+        newBible = Bible.newBible
     }
 }
 
@@ -50,15 +52,32 @@ extension TypingListPresenter: UICollectionViewDelegateFlowLayout {
 
 extension TypingListPresenter: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return oldBible.count
+        var kindBible: [Bible] = []
+
+        if collectionView.tag == 1 {
+            kindBible = oldBible
+        }
+
+        if collectionView.tag == 2 {
+            kindBible = newBible
+        }
+            return kindBible.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TypingListCollectionViewCell.identifier, for: indexPath) as? TypingListCollectionViewCell
         
-        let bible = oldBible[indexPath.item]
+        var kindBible: Bible? = nil
+        
+        if collectionView.tag == 1 {
+            kindBible = oldBible[indexPath.item]
+        }
+        
+        if collectionView.tag == 2 {
+            kindBible = newBible[indexPath.item]
+        }
        
-        cell?.setup(bible: bible)
+        cell?.setup(bible: kindBible!)
         
         return cell ?? UICollectionViewCell()
     }
