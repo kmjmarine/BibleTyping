@@ -8,6 +8,7 @@
 import Foundation
 
 struct RequestModel: Codable {
+    let user: User
     let book: String
     let chapter: Int
     let verse: Int

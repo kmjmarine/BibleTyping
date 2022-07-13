@@ -151,18 +151,21 @@ extension TypingDetailViewController: TypingDetailProtocol {
     }
     
     @objc func didTabConfirmButton() {
-        guard let sourceText = writeQuoteTextView.text else { return }
-        //if sourceText.isEmpty { return }
+        guard let sourceText = self.sourceQuoteLabel.text else { return }
+        guard let writeText = self.writeQuoteTextView.text else { return }
         
-        if sourceText != self.sourceQuoteLabel.text {
+        let checkResult = checkEqual(sourceText: sourceText, writeText: writeText)
+        
+        if !checkResult {
             presenter.didNotCorrect()
+        } else {
+            presenter.didCorrect()
         }
-        
-        print(sourceText)
     }
     
-    @objc func didTabCancelButton() {}
-    
+    @objc func didTabCancelButton() {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     func didNotCorrect() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -179,6 +182,41 @@ extension TypingDetailViewController: TypingDetailProtocol {
         
         present(alertController, animated: true)
     }
+    
+    func didCorrect() {
+         
+    }
 }
 
-
+private extension TypingDetailViewController {
+    func checkEqual(sourceText: String, writeText: String) -> Bool {
+        var checkReturn: Bool
+        
+        let arrWriteText = writeText.map { $0 }
+        let arrSourceText = sourceText.map { $0 }
+        
+        var compareWriteCharacter: String = ""
+        var compareSourceCharacter: String = ""
+        
+        let attribtuedString = NSMutableAttributedString(string: writeText)
+        
+        for chrSourceText in arrWriteText.indices {
+            compareWriteCharacter = String(arrWriteText[chrSourceText])
+            compareSourceCharacter = String(arrSourceText[chrSourceText])
+                     
+            if compareWriteCharacter != compareSourceCharacter {
+                attribtuedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.systemRed, range: NSRange(location: chrSourceText, length: 1))
+                attribtuedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: self.writeQuoteTextView.font!.pointSize), range: NSRange(location: 0, length: writeText.count))
+                self.writeQuoteTextView.attributedText = attribtuedString
+            }
+        }
+        
+        if sourceText == writeText {
+            checkReturn = true
+        } else {
+            checkReturn = false
+        }
+        
+        return checkReturn
+    }
+}

@@ -10,6 +10,7 @@ import UIKit
 protocol TypingDetailProtocol: AnyObject {
     func setupViews()
     func didNotCorrect()
+    func didCorrect()
 }
 
 final class TypingDetailPresenter: NSObject {
@@ -31,5 +32,9 @@ final class TypingDetailPresenter: NSObject {
     
     func didNotCorrect() {
         viewController?.didNotCorrect()
+    }
+    
+    func didCorrect() {
+        
     }
 }

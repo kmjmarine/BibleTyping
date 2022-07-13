@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E54F9903287E9CAA00A59A77 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54F9902287E9CAA00A59A77 /* UserDefaultsManager.swift */; };
+		E54F9905287E9F7400A59A77 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54F9904287E9F7400A59A77 /* User.swift */; };
 		E5652B342873CE09001B0B5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5652B332873CE09001B0B5F /* AppDelegate.swift */; };
 		E5652B362873CE09001B0B5F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5652B352873CE09001B0B5F /* SceneDelegate.swift */; };
 		E5652B3D2873CE0A001B0B5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5652B3C2873CE0A001B0B5F /* Assets.xcassets */; };
@@ -47,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E54F9902287E9CAA00A59A77 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		E54F9904287E9F7400A59A77 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E5652B302873CE09001B0B5F /* BibleTyping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BibleTyping.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5652B332873CE09001B0B5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5652B352873CE09001B0B5F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,9 +125,9 @@
 		E5652B322873CE09001B0B5F /* BibleTyping */ = {
 			isa = PBXGroup;
 			children = (
-				E5652B682873DAFE001B0B5F /* Manager */,
+				E5652B682873DAFE001B0B5F /* Managers */,
 				E5652B632873D8E1001B0B5F /* Models */,
-				E5C72B08287963230063E704 /* Scene */,
+				E5C72B08287963230063E704 /* Scenes */,
 				E5652B332873CE09001B0B5F /* AppDelegate.swift */,
 				E5652B352873CE09001B0B5F /* SceneDelegate.swift */,
 				E5652B3C2873CE0A001B0B5F /* Assets.xcassets */,
@@ -156,16 +160,18 @@
 				E5652B642873D8FF001B0B5F /* RequestModel.swift */,
 				E5652B662873D90A001B0B5F /* ResponseModel.swift */,
 				E5EB7519287AB90B00E62A95 /* Bible.swift */,
+				E54F9904287E9F7400A59A77 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		E5652B682873DAFE001B0B5F /* Manager */ = {
+		E5652B682873DAFE001B0B5F /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				E5652B692873DB50001B0B5F /* SearchManager.swift */,
+				E54F9902287E9CAA00A59A77 /* UserDefaultsManager.swift */,
 			);
-			path = Manager;
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		E5652B6E2873E685001B0B5F /* TypingDetail */ = {
@@ -178,13 +184,13 @@
 			path = TypingDetail;
 			sourceTree = "<group>";
 		};
-		E5C72B08287963230063E704 /* Scene */ = {
+		E5C72B08287963230063E704 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
 				E5C72B09287963FC0063E704 /* TypingList */,
 				E5652B6E2873E685001B0B5F /* TypingDetail */,
 			);
-			path = Scene;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		E5C72B09287963FC0063E704 /* TypingList */ = {
@@ -340,8 +346,10 @@
 				E5652B78287410A6001B0B5F /* TypingDetailPresenter.swift in Sources */,
 				E5C72B0B2879644A0063E704 /* TypingListViewController.swift in Sources */,
 				E5652B342873CE09001B0B5F /* AppDelegate.swift in Sources */,
+				E54F9903287E9CAA00A59A77 /* UserDefaultsManager.swift in Sources */,
 				E5C72B0F287967800063E704 /* TypingListCollectionViewCell.swift in Sources */,
 				E5652B7A2874143D001B0B5F /* TypingDetailTableViewCell.swift in Sources */,
+				E54F9905287E9F7400A59A77 /* User.swift in Sources */,
 				E5652B362873CE09001B0B5F /* SceneDelegate.swift in Sources */,
 				E5C72B0D287964870063E704 /* TypingListPresenter.swift in Sources */,
 				E5652B6A2873DB50001B0B5F /* SearchManager.swift in Sources */,
