@@ -20,14 +20,14 @@ struct UserDefaultManager: UserDefaultsManagerProtocol {
         }
     }
     
-    func getRecord() -> [RequestModel] {
+    func getRecord() -> [Record] {
         guard let data = UserDefaults.standard.data(forKey: Key.record.value) else { return [ ] }
         
-        return (try? PropertyListDecoder().decode([RequestModel].self, from: data)) ?? [ ]
+        return (try? PropertyListDecoder().decode([Record].self, from: data)) ?? [ ]
     }
     
-    func setRecord(_ newValue: RequestModel) {
-        var currentRecord: [RequestModel] = getRecord()
+    func setRecord(_ newValue: Record) {
+        var currentRecord: [Record] = getRecord()
         currentRecord.insert(newValue, at: 0)
         
         UserDefaults.standard.setValue(

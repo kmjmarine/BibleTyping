@@ -31,7 +31,7 @@ final class TypingDetailTableViewCell: UITableViewCell {
         
         selectionStyle = .none
         
-        quoteLabel.text = bible.quote//"아브라함과 다윗의 자손 예수 그리스도의 세계라"
+        quoteLabel.text = bible.quote
     }
 }
 

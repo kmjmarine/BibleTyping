@@ -35,6 +35,6 @@ final class TypingDetailPresenter: NSObject {
     }
     
     func didCorrect() {
-        
+        viewController?.didCorrect()
     }
 }

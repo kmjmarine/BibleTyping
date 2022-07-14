@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RequestModel: Codable {
+struct Record: Codable {
     let user: User
     let book: String
     let chapter: Int

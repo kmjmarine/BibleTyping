@@ -10,7 +10,7 @@ import UIKit
 
 protocol TypingListProtocol: AnyObject {
     func setupView()
-    func pushToTypingViewController()
+    func pushToTypingViewController(kindBible: Int)
 }
 
 final class TypingListPresenter:NSObject {
@@ -44,10 +44,6 @@ extension TypingListPresenter: UICollectionViewDelegateFlowLayout {
         let inset: CGFloat = 16.0
         return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewController?.pushToTypingViewController()
-    }
 }
 
 extension TypingListPresenter: UICollectionViewDataSource {
@@ -80,5 +76,9 @@ extension TypingListPresenter: UICollectionViewDataSource {
         cell?.setup(bible: kindBible!)
         
         return cell ?? UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        viewController?.pushToTypingViewController(kindBible: collectionView.tag)
     }
 }

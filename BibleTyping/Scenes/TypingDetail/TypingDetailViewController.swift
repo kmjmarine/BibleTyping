@@ -13,6 +13,7 @@ import SnapKit
 //}
 
 final class TypingDetailViewController: UIViewController {
+    private let kindBible: Int
     private lazy var presenter = TypingDetailPresenter(viewController: self)
     private let placeholderText = NSLocalizedString("여기에 입력해 주세요", comment: "입력")
     //private weak var delegate: TypingViewControllerDelegate?
@@ -79,6 +80,16 @@ final class TypingDetailViewController: UIViewController {
         
         return stackView
     }()
+    
+    init(kindBible: Int) {
+        self.kindBible = kindBible
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -184,7 +195,8 @@ extension TypingDetailViewController: TypingDetailProtocol {
     }
     
     func didCorrect() {
-         
+        let manager = UserDefaultManager()
+        manager.setRecord(Record(user: User.shared, book: "창세기", chapter: 1, verse: 2))
     }
 }
 
