@@ -8,7 +8,8 @@
 import Foundation
 
 protocol UserDefaultsManagerProtocol {
-    
+    func getRecord() -> [Record]
+    func setRecord(_ newValue: Record)
 }
 
 struct UserDefaultManager: UserDefaultsManagerProtocol {

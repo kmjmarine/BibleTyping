@@ -13,7 +13,7 @@ import SnapKit
 //}
 
 final class TypingDetailViewController: UIViewController {
-    private let kindBible: Int
+    private let book: String
     private lazy var presenter = TypingDetailPresenter(viewController: self)
     private let placeholderText = NSLocalizedString("여기에 입력해 주세요", comment: "입력")
     //private weak var delegate: TypingViewControllerDelegate?
@@ -81,8 +81,8 @@ final class TypingDetailViewController: UIViewController {
         return stackView
     }()
     
-    init(kindBible: Int) {
-        self.kindBible = kindBible
+    init(book: String) {
+        self.book = book
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -104,14 +104,18 @@ final class TypingDetailViewController: UIViewController {
         
         presenter.viewDidLoad()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        presenter.viewWillAppear()
+    }
 }
 
 extension TypingDetailViewController: UITextViewDelegate {
-    //placeholder
     func textViewDidBeginEditing(_ textView: UITextView) {
         guard textView.textColor == .secondaryLabel else { return }
         
-        //실행
         textView.text = nil
         textView.textColor = .label
     }
@@ -170,7 +174,7 @@ extension TypingDetailViewController: TypingDetailProtocol {
         if !checkResult {
             presenter.didNotCorrect()
         } else {
-            presenter.didCorrect()
+            presenter.didCorrect(book: book)
         }
     }
     
@@ -192,11 +196,6 @@ extension TypingDetailViewController: TypingDetailProtocol {
         alertController.addAction(cancelAction)
         
         present(alertController, animated: true)
-    }
-    
-    func didCorrect() {
-        let manager = UserDefaultManager()
-        manager.setRecord(Record(user: User.shared, book: "창세기", chapter: 1, verse: 2))
     }
 }
 

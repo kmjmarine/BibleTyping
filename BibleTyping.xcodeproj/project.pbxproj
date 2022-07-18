@@ -175,8 +175,8 @@
 			isa = PBXGroup;
 			children = (
 				E5652B6F2873E6A5001B0B5F /* TypingDetailViewController.swift */,
-				E5652B792874143D001B0B5F /* TypingDetailTableViewCell.swift */,
 				E5652B77287410A6001B0B5F /* TypingDetailPresenter.swift */,
+				E5652B792874143D001B0B5F /* TypingDetailTableViewCell.swift */,
 			);
 			path = TypingDetail;
 			sourceTree = "<group>";

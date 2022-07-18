@@ -81,6 +81,6 @@ extension TypingListCollectionViewCell {
     }
     
     @objc func didTabConfirmButton() {
-        
+        ///TypingDetailViewController로 이동 구현 필요
     }
 }
