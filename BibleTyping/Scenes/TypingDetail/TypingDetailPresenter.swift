@@ -26,7 +26,7 @@ final class TypingDetailPresenter: NSObject {
         userDefaultsManager: UserDefaultsManagerProtocol = UserDefaultManager()) {
         self.viewController = viewController
         self.searchManager = searchManager
-            self.userDefaultsManager = userDefaultsManager
+        self.userDefaultsManager = userDefaultsManager
     }
     
     func viewWillAppear() {
@@ -41,7 +41,7 @@ final class TypingDetailPresenter: NSObject {
         viewController?.didNotCorrect()
     }
     
-    func didCorrect(book: String) {
-        userDefaultsManager.setRecord(Record(user: User.shared, book: book, chapter: 1, verse: 2))
+    func didCorrect(bookkind: String, bookname: String) {
+        userDefaultsManager.setRecord(Record(user: User.shared, bookkind: bookkind, bookname: bookname, chapter: 1, verse: 2))
     }
 }

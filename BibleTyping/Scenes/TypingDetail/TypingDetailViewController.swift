@@ -13,10 +13,20 @@ import SnapKit
 //}
 
 final class TypingDetailViewController: UIViewController {
-    private let book: String
+    private let bookname: String
+    private let bookkind: String
     private lazy var presenter = TypingDetailPresenter(viewController: self)
     private let placeholderText = NSLocalizedString("여기에 입력해 주세요", comment: "입력")
     //private weak var delegate: TypingViewControllerDelegate?
+    
+    private lazy var bookNameLabel: UILabel = {
+       let label = UILabel()
+        label.font = .systemFont(ofSize: 30.0, weight: .bold)
+        label.textColor = .systemBlue
+        label.textAlignment = .center
+        
+        return label
+    }()
     
     private lazy var sourceQuoteView: UIView = {
         let view = UIView()
@@ -81,8 +91,9 @@ final class TypingDetailViewController: UIViewController {
         return stackView
     }()
     
-    init(book: String) {
-        self.book = book
+    init(book: String, kind: String) {
+        self.bookname = book
+        self.bookkind = kind
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -94,13 +105,17 @@ final class TypingDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let bookCode = setBook()
+        
         SearchManager()
-            .request(from: "kor-mat", chapter: 1, verse: 2) { quote in
-                print(quote)
+            .request(from: bookCode, chapter: 1, verse: 2) { quote in
+                //print(quote)
                 
                 self.sourceQuoteLabel.text = quote
                 self.sourceQuoteLabel.textColor = .label
             }
+        
+        self.bookNameLabel.text = bookname + " 1장"
         
         presenter.viewDidLoad()
     }
@@ -133,15 +148,21 @@ extension TypingDetailViewController: UITextViewDelegate {
 
 extension TypingDetailViewController: TypingDetailProtocol {
     func setupViews() {
-        [sourceQuoteView, sourceQuoteLabel, buttonStackView, writeQuoteTextView]
+        [bookNameLabel, sourceQuoteView, sourceQuoteLabel, buttonStackView, writeQuoteTextView]
             .forEach { view.addSubview($0) }
         
         let defaultSpacing: CGFloat = 16.0
         
-        sourceQuoteView.snp.makeConstraints {
+        bookNameLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
+        }
+        
+        sourceQuoteView.snp.makeConstraints {
+            $0.top.equalTo(bookNameLabel.snp.bottom).offset(24.0)
+            $0.leading.equalTo(bookNameLabel.snp.leading)
+            $0.trailing.equalTo(bookNameLabel.snp.trailing)
         }
         
         sourceQuoteLabel.snp.makeConstraints {
@@ -174,7 +195,7 @@ extension TypingDetailViewController: TypingDetailProtocol {
         if !checkResult {
             presenter.didNotCorrect()
         } else {
-            presenter.didCorrect(book: book)
+            presenter.didCorrect(bookkind: bookkind, bookname: bookname)
         }
     }
     
@@ -229,5 +250,24 @@ private extension TypingDetailViewController {
         }
         
         return checkReturn
+    }
+    
+    func setBook() -> String {
+        let bookCodes: [Bible]
+        
+        if bookkind == "old" {
+            bookCodes = Bible.oldBible.filter {
+                $0.book == self.bookname
+            }
+        } else {
+            bookCodes = Bible.newBible.filter {
+                $0.book == self.bookname
+            }
+        }
+        
+        let bookCode = bookCodes.map{ $0.bookCode }
+        let setBookCode = "kor-" + bookCode[0]
+        
+        return setBookCode
     }
 }

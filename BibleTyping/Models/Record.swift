@@ -9,7 +9,8 @@ import Foundation
 
 struct Record: Codable {
     let user: User
-    let book: String
+    let bookkind: String
+    let bookname: String
     let chapter: Int
     let verse: Int
 }

@@ -10,7 +10,7 @@ import UIKit
 
 protocol TypingListProtocol: AnyObject {
     func setupView()
-    func pushToTypingViewController(book: String)
+    func pushToTypingViewController(book: String, kind: String)
 }
 
 final class TypingListPresenter:NSObject {
@@ -81,15 +81,18 @@ extension TypingListPresenter: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         
         var listBible: Bible? = nil
+        var kindBible: String = ""
         
         if collectionView.tag == 1 {
             listBible = oldBible[indexPath.item]
+            kindBible = "old"
         }
         
         if collectionView.tag == 2 {
             listBible = newBible[indexPath.item]
+            kindBible = "new"
         }
         
-        viewController?.pushToTypingViewController(book: listBible?.book ?? "")
+        viewController?.pushToTypingViewController(book: listBible?.book ?? "", kind: kindBible)
     }
 }

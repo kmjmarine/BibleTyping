@@ -103,8 +103,8 @@ extension TypingListViewController: TypingListProtocol {
         }
     }
     
-    func pushToTypingViewController(book: String) {
-        let typingDetailViewController = TypingDetailViewController(book: book)
+    func pushToTypingViewController(book: String, kind: String) {
+        let typingDetailViewController = TypingDetailViewController(book: book, kind: kind)
         navigationController?.pushViewController(typingDetailViewController, animated: true)
     }
 }
