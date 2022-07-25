@@ -13,17 +13,21 @@ import SnapKit
 //}
 
 final class TypingDetailViewController: UIViewController {
-    private let bookname: String
     private let bookkind: String
-    private lazy var presenter = TypingDetailPresenter(viewController: self)
+    private let bookname: String
+    private var chapter: Int
+    private var verse: Int
+    
+    private lazy var presenter = TypingDetailPresenter(viewController: self, bookkind: bookkind, bookname: bookname)
     private let placeholderText = NSLocalizedString("여기에 입력해 주세요", comment: "입력")
     //private weak var delegate: TypingViewControllerDelegate?
     
     private lazy var bookNameLabel: UILabel = {
        let label = UILabel()
         label.font = .systemFont(ofSize: 30.0, weight: .bold)
-        label.textColor = .systemBlue
+        //label.textColor = .secondaryLabel
         label.textAlignment = .center
+        label.text = bookname + " 1장"
         
         return label
     }()
@@ -91,9 +95,11 @@ final class TypingDetailViewController: UIViewController {
         return stackView
     }()
     
-    init(book: String, kind: String) {
+    init(book: String, kind: String, chpater: Int, verse: Int) {
         self.bookname = book
         self.bookkind = kind
+        self.chapter = 1
+        self.verse = 1
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -105,23 +111,23 @@ final class TypingDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let bookCode = setBook()
         
-        SearchManager()
-            .request(from: bookCode, chapter: 1, verse: 2) { quote in
-                //print(quote)
-                
-                self.sourceQuoteLabel.text = quote
-                self.sourceQuoteLabel.textColor = .label
-            }
-        
-        self.bookNameLabel.text = bookname + " 1장"
         
         presenter.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        let bookCode = setBook()
+        
+        SearchManager()
+            .request(from: bookCode, chapter: chapter, verse: verse) { quote in
+                //print(quote)
+              
+                self.sourceQuoteLabel.text = quote
+                self.sourceQuoteLabel.textColor = .label
+            }
         
         presenter.viewWillAppear()
     }
@@ -218,6 +224,11 @@ extension TypingDetailViewController: TypingDetailProtocol {
         
         present(alertController, animated: true)
     }
+    
+    func setViews(with chapter: Int, verse: Int) {
+        self.chapter = chapter
+        self.verse = verse + 1
+    }
 }
 
 private extension TypingDetailViewController {
@@ -243,11 +254,7 @@ private extension TypingDetailViewController {
             }
         }
         
-        if sourceText == writeText {
-            checkReturn = true
-        } else {
-            checkReturn = false
-        }
+        checkReturn = sourceText == writeText ? true : false
         
         return checkReturn
     }
@@ -255,19 +262,20 @@ private extension TypingDetailViewController {
     func setBook() -> String {
         let bookCodes: [Bible]
         
-        if bookkind == "old" {
+        if self.bookkind == BookKind.old.rawValue {
             bookCodes = Bible.oldBible.filter {
-                $0.book == self.bookname
+                $0.bookName == self.bookname
             }
         } else {
             bookCodes = Bible.newBible.filter {
-                $0.book == self.bookname
+                $0.bookName == self.bookname
             }
         }
         
-        let bookCode = bookCodes.map{ $0.bookCode }
-        let setBookCode = "kor-" + bookCode[0]
+        var bookCode = bookCodes.map{ $0.bookCode }
+        let setBookCode = bookCode[0].addString(someString: "kor-", position: "leading" )
         
         return setBookCode
     }
 }
+

@@ -23,16 +23,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4C5071F9-A33D-4343-BBFE-4CAB34E77DE8"
-            shouldBeEnabled = "No"
+            uuid = "FF913EEC-E39A-4D45-B0DD-C04E3BBE12EC"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BibleTyping/Scenes/TypingDetail/TypingDetailViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "init(book:kind:)"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
+            landmarkName = "checkEqual(sourceText:writeText:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

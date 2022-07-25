@@ -44,7 +44,7 @@ final class TypingListCollectionViewCell: UICollectionViewCell {
         setupView()
         setupLayout()
         
-        bookLabel.text = bible.book
+        bookLabel.text = bible.bookName
         chapterLabel.text = "(\(String(bible.chapter)))"
     }
 }

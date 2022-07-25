@@ -85,11 +85,11 @@ extension TypingListViewController: TypingListProtocol {
             $0.top.equalTo(oldBibleLabel.snp.bottom)
             $0.leading.equalTo(oldBibleLabel.snp.leading)
             $0.trailing.equalTo(oldBibleLabel.snp.trailing)
-            $0.height.equalTo(300.0)
+            $0.height.equalTo(340.0)
         }
         
         newBibleLabel.snp.makeConstraints {
-            $0.top.equalTo(oldBibleCollectionView.snp.bottom).offset(32.0)
+            $0.top.equalTo(oldBibleCollectionView.snp.bottom).offset(16.0)
             $0.leading.equalTo(oldBibleCollectionView.snp.leading)
             $0.trailing.equalTo(oldBibleCollectionView.snp.trailing)
             $0.height.equalTo(32.0)
@@ -99,12 +99,12 @@ extension TypingListViewController: TypingListProtocol {
             $0.top.equalTo(newBibleLabel.snp.bottom)
             $0.leading.equalTo(newBibleLabel.snp.leading)
             $0.trailing.equalTo(newBibleLabel.snp.trailing)
-            $0.height.equalTo(300.0)
+            $0.height.equalTo(340.0)
         }
     }
     
     func pushToTypingViewController(book: String, kind: String) {
-        let typingDetailViewController = TypingDetailViewController(book: book, kind: kind)
+        let typingDetailViewController = TypingDetailViewController(book: book, kind: kind, chpater: 1, verse: 1)
         navigationController?.pushViewController(typingDetailViewController, animated: true)
     }
 }

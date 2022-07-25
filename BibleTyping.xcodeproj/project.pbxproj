@@ -27,6 +27,7 @@
 		E5C72B0B2879644A0063E704 /* TypingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C72B0A2879644A0063E704 /* TypingListViewController.swift */; };
 		E5C72B0D287964870063E704 /* TypingListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C72B0C287964870063E704 /* TypingListPresenter.swift */; };
 		E5C72B0F287967800063E704 /* TypingListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C72B0E287967800063E704 /* TypingListCollectionViewCell.swift */; };
+		E5D6DCA22888CF2400A06A5C /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D6DCA12888CF2400A06A5C /* String+.swift */; };
 		E5EB751A287AB90B00E62A95 /* Bible.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EB7519287AB90B00E62A95 /* Bible.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +70,7 @@
 		E5C72B0A2879644A0063E704 /* TypingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingListViewController.swift; sourceTree = "<group>"; };
 		E5C72B0C287964870063E704 /* TypingListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingListPresenter.swift; sourceTree = "<group>"; };
 		E5C72B0E287967800063E704 /* TypingListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingListCollectionViewCell.swift; sourceTree = "<group>"; };
+		E5D6DCA12888CF2400A06A5C /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		E5EB7519287AB90B00E62A95 /* Bible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bible.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,6 +133,7 @@
 				E5652B3C2873CE0A001B0B5F /* Assets.xcassets */,
 				E5652B3E2873CE0A001B0B5F /* LaunchScreen.storyboard */,
 				E5652B412873CE0A001B0B5F /* Info.plist */,
+				E5D6DCA12888CF2400A06A5C /* String+.swift */,
 			);
 			path = BibleTyping;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				E5652B6A2873DB50001B0B5F /* SearchManager.swift in Sources */,
 				E5EB751A287AB90B00E62A95 /* Bible.swift in Sources */,
 				E5652B702873E6A5001B0B5F /* TypingDetailViewController.swift in Sources */,
+				E5D6DCA22888CF2400A06A5C /* String+.swift in Sources */,
 				E5652B652873D8FF001B0B5F /* Record.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -49,50 +49,28 @@ extension TypingListPresenter: UICollectionViewDelegateFlowLayout {
 extension TypingListPresenter: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         var kindBible: [Bible] = []
-
-        if collectionView.tag == 1 {
-            kindBible = oldBible
-        }
-
-        if collectionView.tag == 2 {
-            kindBible = newBible
-        }
-            return kindBible.count
+        kindBible = collectionView.tag == 1 ? oldBible : newBible
+        
+        return kindBible.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TypingListCollectionViewCell.identifier, for: indexPath) as? TypingListCollectionViewCell
         
         var kindBible: Bible? = nil
-        
-        if collectionView.tag == 1 {
-            kindBible = oldBible[indexPath.item]
-        }
-        
-        if collectionView.tag == 2 {
-            kindBible = newBible[indexPath.item]
-        }
-       
+        kindBible = collectionView.tag == 1 ? oldBible[indexPath.item] : newBible[indexPath.item]
         cell?.setup(bible: kindBible!)
         
         return cell ?? UICollectionViewCell()
     }
     
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         var listBible: Bible? = nil
         var kindBible: String = ""
         
-        if collectionView.tag == 1 {
-            listBible = oldBible[indexPath.item]
-            kindBible = "old"
-        }
+        listBible = collectionView.tag == 1 ? oldBible[indexPath.item] : newBible[indexPath.item]
+        kindBible = collectionView.tag == 1 ? BookKind.old.rawValue : BookKind.new.rawValue
         
-        if collectionView.tag == 2 {
-            listBible = newBible[indexPath.item]
-            kindBible = "new"
-        }
-        
-        viewController?.pushToTypingViewController(book: listBible?.book ?? "", kind: kindBible)
+        viewController?.pushToTypingViewController(book: listBible?.bookName ?? "", kind: kindBible)
     }
 }
