@@ -111,8 +111,6 @@ final class TypingDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         presenter.viewDidLoad()
     }
     
@@ -201,7 +199,7 @@ extension TypingDetailViewController: TypingDetailProtocol {
         if !checkResult {
             presenter.didNotCorrect()
         } else {
-            presenter.didCorrect(bookkind: bookkind, bookname: bookname)
+            presenter.didCorrect(bookkind: bookkind, bookname: bookname, chapter: chapter, verse: verse)
         }
     }
     
@@ -227,7 +225,7 @@ extension TypingDetailViewController: TypingDetailProtocol {
     
     func setViews(with chapter: Int, verse: Int) {
         self.chapter = chapter
-        self.verse = verse + 1
+        self.verse = verse
     }
 }
 

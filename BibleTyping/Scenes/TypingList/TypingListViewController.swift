@@ -54,6 +54,9 @@ final class TypingListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "성경통독"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
         oldBibleCollectionView.tag = 1
         newBibleCollectionView.tag = 2
         
@@ -85,7 +88,7 @@ extension TypingListViewController: TypingListProtocol {
             $0.top.equalTo(oldBibleLabel.snp.bottom)
             $0.leading.equalTo(oldBibleLabel.snp.leading)
             $0.trailing.equalTo(oldBibleLabel.snp.trailing)
-            $0.height.equalTo(340.0)
+            $0.height.equalTo(300.0)
         }
         
         newBibleLabel.snp.makeConstraints {
@@ -99,7 +102,7 @@ extension TypingListViewController: TypingListProtocol {
             $0.top.equalTo(newBibleLabel.snp.bottom)
             $0.leading.equalTo(newBibleLabel.snp.leading)
             $0.trailing.equalTo(newBibleLabel.snp.trailing)
-            $0.height.equalTo(340.0)
+            $0.height.equalTo(300.0)
         }
     }
     

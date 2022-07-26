@@ -47,13 +47,15 @@ final class TypingDetailPresenter: NSObject {
         var lastChapter: Int = 1
         var lastVerse: Int = 1
         
+        record = userDefaultsManager.getRecord()
+        
         lastRecord = record.filter {
             $0.bookname == bookname
         }
         
         if let index = lastRecord.firstIndex(where: { $0.bookname == bookname }) {
             lastChapter = lastRecord[index].chapter
-            lastVerse = lastRecord[index].verse
+            lastVerse = lastRecord[index].verse + 1
         }
         
         viewController?.setupViews()
@@ -64,7 +66,9 @@ final class TypingDetailPresenter: NSObject {
         viewController?.didNotCorrect()
     }
     
-    func didCorrect(bookkind: String, bookname: String) {
-        userDefaultsManager.setRecord(Record(user: User.shared, bookkind: bookkind, bookname: bookname, chapter: 1, verse: 2))
+    func didCorrect(bookkind: String, bookname: String, chapter: Int, verse: Int) {
+        userDefaultsManager.setRecord(Record(user: User.shared, bookkind: bookkind, bookname: bookname, chapter: chapter, verse: verse))
+        
+        //self.viewWillAppear()
     }
 }

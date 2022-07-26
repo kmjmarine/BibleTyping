@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E5274902288F7A400070AEDA /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5274901288F7A400070AEDA /* TabbarController.swift */; };
+		E5274904288F7BC20070AEDA /* PuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5274903288F7BC20070AEDA /* PuzzleViewController.swift */; };
+		E5274907288FB6D70070AEDA /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5274906288FB6D70070AEDA /* Puzzle.swift */; };
 		E54F9903287E9CAA00A59A77 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54F9902287E9CAA00A59A77 /* UserDefaultsManager.swift */; };
 		E54F9905287E9F7400A59A77 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54F9904287E9F7400A59A77 /* User.swift */; };
 		E5652B342873CE09001B0B5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5652B332873CE09001B0B5F /* AppDelegate.swift */; };
@@ -49,6 +52,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E5274901288F7A400070AEDA /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
+		E5274903288F7BC20070AEDA /* PuzzleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleViewController.swift; sourceTree = "<group>"; };
+		E5274906288FB6D70070AEDA /* Puzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
 		E54F9902287E9CAA00A59A77 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		E54F9904287E9F7400A59A77 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E5652B302873CE09001B0B5F /* BibleTyping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BibleTyping.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +108,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E5274905288F7BCD0070AEDA /* Puzzle */ = {
+			isa = PBXGroup;
+			children = (
+				E5274903288F7BC20070AEDA /* PuzzleViewController.swift */,
+			);
+			path = Puzzle;
+			sourceTree = "<group>";
+		};
 		E5652B272873CE09001B0B5F = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +144,7 @@
 				E5C72B08287963230063E704 /* Scenes */,
 				E5652B332873CE09001B0B5F /* AppDelegate.swift */,
 				E5652B352873CE09001B0B5F /* SceneDelegate.swift */,
+				E5274901288F7A400070AEDA /* TabbarController.swift */,
 				E5652B3C2873CE0A001B0B5F /* Assets.xcassets */,
 				E5652B3E2873CE0A001B0B5F /* LaunchScreen.storyboard */,
 				E5652B412873CE0A001B0B5F /* Info.plist */,
@@ -161,6 +176,7 @@
 				E5652B642873D8FF001B0B5F /* Record.swift */,
 				E5EB7519287AB90B00E62A95 /* Bible.swift */,
 				E54F9904287E9F7400A59A77 /* User.swift */,
+				E5274906288FB6D70070AEDA /* Puzzle.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -189,6 +205,7 @@
 			children = (
 				E5C72B09287963FC0063E704 /* TypingList */,
 				E5652B6E2873E685001B0B5F /* TypingDetail */,
+				E5274905288F7BCD0070AEDA /* Puzzle */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -350,12 +367,15 @@
 				E5C72B0F287967800063E704 /* TypingListCollectionViewCell.swift in Sources */,
 				E5652B7A2874143D001B0B5F /* TypingDetailTableViewCell.swift in Sources */,
 				E54F9905287E9F7400A59A77 /* User.swift in Sources */,
+				E5274907288FB6D70070AEDA /* Puzzle.swift in Sources */,
 				E5652B362873CE09001B0B5F /* SceneDelegate.swift in Sources */,
 				E5C72B0D287964870063E704 /* TypingListPresenter.swift in Sources */,
 				E5652B6A2873DB50001B0B5F /* SearchManager.swift in Sources */,
 				E5EB751A287AB90B00E62A95 /* Bible.swift in Sources */,
 				E5652B702873E6A5001B0B5F /* TypingDetailViewController.swift in Sources */,
 				E5D6DCA22888CF2400A06A5C /* String+.swift in Sources */,
+				E5274902288F7A400070AEDA /* TabbarController.swift in Sources */,
+				E5274904288F7BC20070AEDA /* PuzzleViewController.swift in Sources */,
 				E5652B652873D8FF001B0B5F /* Record.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
