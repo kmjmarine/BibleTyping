@@ -158,7 +158,7 @@ extension TypingDetailViewController: TypingDetailProtocol {
         let defaultSpacing: CGFloat = 16.0
         
         bookNameLabel.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(defaultSpacing)
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
         }

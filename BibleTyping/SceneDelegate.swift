@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window?.rootViewController = rootViewController
         window?.backgroundColor = .systemBackground
-        window?.tintColor = .label
+        window?.tintColor = .systemBrown
         //window?.rootViewController = UINavigationController(rootViewController: TypingListViewController())
         window?.makeKeyAndVisible()
     }

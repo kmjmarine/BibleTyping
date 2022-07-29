@@ -57,6 +57,16 @@ final class TypingListViewController: UIViewController {
         title = "성경통독"
         navigationController?.navigationBar.prefersLargeTitles = true
         
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .systemYellow
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.TitleBrown ?? .systemBackground]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.TitleBrown ?? .systemBackground]
+
+        navigationController?.navigationBar.tintColor = UIColor.TitleBrown
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.compactAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        
         oldBibleCollectionView.tag = 1
         newBibleCollectionView.tag = 2
         
