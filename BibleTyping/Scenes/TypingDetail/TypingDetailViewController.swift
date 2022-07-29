@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Toast
 
 //protocol TypingViewControllerDelegate: AnyObject {
 //    func didEnterText(_ sourceText: String)
@@ -208,19 +209,7 @@ extension TypingDetailViewController: TypingDetailProtocol {
     }
     
     func didNotCorrect() {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        let action = UIAlertAction(title: "일치하지 않아요 틀린 부분을 수정해 주세요.", style: .default)
-        alertController.addAction(action)
-        
-        let cancelAction = UIAlertAction(
-            title: NSLocalizedString("확인", comment: "confirm"),
-            style: .cancel,
-            handler: nil
-        )
-        alertController.addAction(cancelAction)
-        
-        present(alertController, animated: true)
+        view.makeToast("틀린 부분이 있어요. 수정 후 다시 저장해 주세요.")
     }
     
     func setViews(with chapter: Int, verse: Int) {
