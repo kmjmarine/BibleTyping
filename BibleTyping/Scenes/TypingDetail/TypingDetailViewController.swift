@@ -19,7 +19,7 @@ final class TypingDetailViewController: UIViewController {
     private var chapter: Int
     private var verse: Int
     
-    private lazy var presenter = TypingDetailPresenter(viewController: self, bookkind: bookkind, bookname: bookname)
+    private lazy var presenter = TypingDetailPresenter(viewController: self, bookkind: bookkind, bookname: bookname, chapter: chapter, verse: verse)
     private let placeholderText = NSLocalizedString("여기에 입력해 주세요", comment: "입력")
     //private weak var delegate: TypingViewControllerDelegate?
     
@@ -28,16 +28,8 @@ final class TypingDetailViewController: UIViewController {
         label.font = .systemFont(ofSize: 30.0, weight: .bold)
         //label.textColor = .secondaryLabel
         label.textAlignment = .center
-        label.text = bookname + " 1장"
         
         return label
-    }()
-    
-    private lazy var sourceQuoteView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        
-        return view
     }()
 
     private lazy var sourceQuoteLabel: UILabel = {
@@ -56,6 +48,10 @@ final class TypingDetailViewController: UIViewController {
         textView.returnKeyType = .done
         textView.delegate = self
         
+        textView.layer.borderWidth = 1.0
+        textView.layer.borderColor = UIColor.TitleBrown?.cgColor ??
+        UIColor.systemBrown.cgColor
+        textView.layer.cornerRadius = 10
         return textView
     }()
     
@@ -118,16 +114,6 @@ final class TypingDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let bookCode = setBook()
-        
-        SearchManager()
-            .request(from: bookCode, chapter: chapter, verse: verse) { quote in
-                //print(quote)
-              
-                self.sourceQuoteLabel.text = quote
-                self.sourceQuoteLabel.textColor = .label
-            }
-        
         presenter.viewWillAppear()
     }
 }
@@ -153,10 +139,10 @@ extension TypingDetailViewController: UITextViewDelegate {
 
 extension TypingDetailViewController: TypingDetailProtocol {
     func setupViews() {
-        [bookNameLabel, sourceQuoteView, sourceQuoteLabel, buttonStackView, writeQuoteTextView]
+        [bookNameLabel, sourceQuoteLabel, writeQuoteTextView, buttonStackView]
             .forEach { view.addSubview($0) }
         
-        let defaultSpacing: CGFloat = 16.0
+        let defaultSpacing: CGFloat = 24.0
         
         bookNameLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(defaultSpacing)
@@ -164,16 +150,10 @@ extension TypingDetailViewController: TypingDetailProtocol {
             $0.trailing.equalToSuperview()
         }
         
-        sourceQuoteView.snp.makeConstraints {
-            $0.top.equalTo(bookNameLabel.snp.bottom).offset(24.0)
-            $0.leading.equalTo(bookNameLabel.snp.leading)
-            $0.trailing.equalTo(bookNameLabel.snp.trailing)
-        }
-        
         sourceQuoteLabel.snp.makeConstraints {
-            $0.top.equalTo(sourceQuoteView.snp.top).inset(24.0)
-            $0.leading.equalTo(sourceQuoteView.snp.leading).inset(24.0)
-            $0.trailing.equalTo(sourceQuoteView.snp.trailing).inset(24.0)
+            $0.top.equalTo(bookNameLabel.snp.bottom).offset(24.0)
+            $0.leading.equalTo(bookNameLabel.snp.leading).inset(16.0)
+            $0.trailing.equalTo(bookNameLabel.snp.trailing).inset(16.0)
         }
         
         writeQuoteTextView.snp.makeConstraints {
@@ -191,37 +171,31 @@ extension TypingDetailViewController: TypingDetailProtocol {
         }
     }
     
-    @objc func didTabConfirmButton() {
-        guard let sourceText = self.sourceQuoteLabel.text else { return }
-        guard let writeText = self.writeQuoteTextView.text else { return }
+    func setViews(with chapter: Int, verse: Int, quoteText: String) {
+        bookNameLabel.text = bookname + " \(chapter)장 \(verse)절"
         
-        let checkResult = checkEqual(sourceText: sourceText, writeText: writeText)
-        
-        if !checkResult {
-            presenter.didNotCorrect()
-        } else {
-            presenter.didCorrect(bookkind: bookkind, bookname: bookname, chapter: chapter, verse: verse)
-        }
-    }
-    
-    @objc func didTabCancelButton() {
-        self.navigationController?.popViewController(animated: true)
+        sourceQuoteLabel.text = quoteText
     }
     
     func didNotCorrect() {
         view.makeToast("틀린 부분이 있어요. 수정 후 다시 저장해 주세요.")
     }
     
-    func setViews(with chapter: Int, verse: Int) {
-        self.chapter = chapter
-        self.verse = verse
+    func clearWriteQuoteTextView() {
+        writeQuoteTextView.text = ""
     }
-}
-
-private extension TypingDetailViewController {
-    func checkEqual(sourceText: String, writeText: String) -> Bool {
+    
+    func checkEqual(sourceText: String?, writeText: String?) -> Bool {
         var checkReturn: Bool
         
+        guard let sourceText = sourceText else {
+            return false
+        }
+        
+        guard let writeText = writeText else {
+            return false
+        }
+
         let arrWriteText = writeText.map { $0 }
         let arrSourceText = sourceText.map { $0 }
         
@@ -236,8 +210,8 @@ private extension TypingDetailViewController {
                      
             if compareWriteCharacter != compareSourceCharacter {
                 attribtuedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.systemRed, range: NSRange(location: chrSourceText, length: 1))
-                attribtuedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: self.writeQuoteTextView.font!.pointSize), range: NSRange(location: 0, length: writeText.count))
-                self.writeQuoteTextView.attributedText = attribtuedString
+                attribtuedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: writeQuoteTextView.font!.pointSize), range: NSRange(location: 0, length: writeText.count))
+                writeQuoteTextView.attributedText = attribtuedString
             }
         }
         
@@ -245,24 +219,15 @@ private extension TypingDetailViewController {
         
         return checkReturn
     }
+}
+
+private extension TypingDetailViewController {
+    @objc func didTabConfirmButton() {
+        presenter.didTabConfirmButton(sourceText: sourceQuoteLabel.text, writeText: writeQuoteTextView.text)
+    }
     
-    func setBook() -> String {
-        let bookCodes: [Bible]
-        
-        if self.bookkind == BookKind.old.rawValue {
-            bookCodes = Bible.oldBible.filter {
-                $0.bookName == self.bookname
-            }
-        } else {
-            bookCodes = Bible.newBible.filter {
-                $0.bookName == self.bookname
-            }
-        }
-        
-        var bookCode = bookCodes.map{ $0.bookCode }
-        let setBookCode = bookCode[0].addString(someString: "kor-", position: "leading" )
-        
-        return setBookCode
+    @objc func didTabCancelButton() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

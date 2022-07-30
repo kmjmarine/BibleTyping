@@ -10,7 +10,9 @@ import UIKit
 protocol TypingDetailProtocol: AnyObject {
     func setupViews()
     func didNotCorrect()
-    func setViews(with chpater: Int, verse: Int)
+    func setViews(with chpater: Int, verse: Int, quoteText: String)
+    func checkEqual(sourceText: String?, writeText: String?) -> Bool
+    func clearWriteQuoteTextView()
 }
 
 final class TypingDetailPresenter: NSObject {
@@ -20,6 +22,8 @@ final class TypingDetailPresenter: NSObject {
     
     var bookkind: String
     var bookname: String
+    var chapter: Int
+    var verse: Int
     
     private var bible: [Bible] = [ ]
     private var record: [Record] = [ ]
@@ -29,24 +33,28 @@ final class TypingDetailPresenter: NSObject {
         searchManager: SearchManagerProtocol = SearchManager(),
         userDefaultsManager: UserDefaultsManagerProtocol = UserDefaultManager(),
         bookkind: String,
-        bookname: String
+        bookname: String,
+        chapter: Int,
+        verse: Int
     ) {
         self.viewController = viewController
         self.searchManager = searchManager
         self.userDefaultsManager = userDefaultsManager
         self.bookkind = bookkind
         self.bookname = bookname
-    }
-    
-    func viewWillAppear() {
-        record = userDefaultsManager.getRecord()
+        self.chapter = chapter
+        self.verse = verse
     }
     
     func viewDidLoad() {
+        viewController?.setupViews()
+    }
+    
+    func viewWillAppear() {
         let lastRecord: [Record]
         var lastChapter: Int = 1
         var lastVerse: Int = 1
-        
+ 
         record = userDefaultsManager.getRecord()
         
         lastRecord = record.filter {
@@ -58,17 +66,61 @@ final class TypingDetailPresenter: NSObject {
             lastVerse = lastRecord[index].verse + 1
         }
         
-        viewController?.setupViews()
-        viewController?.setViews(with: lastChapter, verse: lastVerse)
+        let bookCode = setBook()
+        
+        SearchManager()
+            .request(from: bookCode, chapter: lastChapter, verse: lastVerse) { quote in
+              
+                self.viewController?.setViews(with: lastChapter, verse: lastVerse, quoteText: quote)
+            }
+
+        self.chapter = lastChapter
+        self.verse = lastVerse
     }
     
     func didNotCorrect() {
         viewController?.didNotCorrect()
     }
     
+    func clearWriteQuoteTextView() {
+        viewController?.clearWriteQuoteTextView()
+    }
+    
     func didCorrect(bookkind: String, bookname: String, chapter: Int, verse: Int) {
         userDefaultsManager.setRecord(Record(user: User.shared, bookkind: bookkind, bookname: bookname, chapter: chapter, verse: verse))
         
-        //self.viewWillAppear()
+        self.viewWillAppear()
+    }
+    
+    func didTabConfirmButton(sourceText: String?, writeText: String?) {
+        let checkResult = viewController?.checkEqual(sourceText: sourceText, writeText: writeText)
+        
+        guard let checkResult = checkResult else { return }
+        
+        if !checkResult {
+            didNotCorrect()
+        } else {
+            clearWriteQuoteTextView()
+            didCorrect(bookkind: bookkind, bookname: bookname, chapter: chapter, verse: verse)
+        }
+    }
+    
+    func setBook() -> String {
+        let bookCodes: [Bible]
+        
+        if self.bookkind == BookKind.old.rawValue {
+            bookCodes = Bible.oldBible.filter {
+                $0.bookName == self.bookname
+            }
+        } else {
+            bookCodes = Bible.newBible.filter {
+                $0.bookName == self.bookname
+            }
+        }
+        
+        var bookCode = bookCodes.map{ $0.bookCode }
+        let setBookCode = bookCode[0].addString(someString: "kor-", position: "leading" )
+        
+        return setBookCode
     }
 }
