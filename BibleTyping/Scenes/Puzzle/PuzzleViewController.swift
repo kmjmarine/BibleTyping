@@ -9,5 +9,5 @@ import UIKit
 import SnapKit
 
 final class PuzzleViewController: UIViewController {
-    
+    private lazy var presenter = PuzzlePresenter(viewController: self)
 }

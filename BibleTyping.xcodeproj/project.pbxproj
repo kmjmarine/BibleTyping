@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E50135D52897994F00B36D9D /* PuzzlePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50135D42897994F00B36D9D /* PuzzlePresenter.swift */; };
 		E5274902288F7A400070AEDA /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5274901288F7A400070AEDA /* TabbarController.swift */; };
 		E5274904288F7BC20070AEDA /* PuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5274903288F7BC20070AEDA /* PuzzleViewController.swift */; };
 		E5274907288FB6D70070AEDA /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5274906288FB6D70070AEDA /* Puzzle.swift */; };
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E50135D42897994F00B36D9D /* PuzzlePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzlePresenter.swift; sourceTree = "<group>"; };
 		E5274901288F7A400070AEDA /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
 		E5274903288F7BC20070AEDA /* PuzzleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleViewController.swift; sourceTree = "<group>"; };
 		E5274906288FB6D70070AEDA /* Puzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				E5274903288F7BC20070AEDA /* PuzzleViewController.swift */,
+				E50135D42897994F00B36D9D /* PuzzlePresenter.swift */,
 			);
 			path = Puzzle;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				E5C72B0F287967800063E704 /* TypingListCollectionViewCell.swift in Sources */,
 				E5652B7A2874143D001B0B5F /* TypingDetailTableViewCell.swift in Sources */,
 				E54F9905287E9F7400A59A77 /* User.swift in Sources */,
+				E50135D52897994F00B36D9D /* PuzzlePresenter.swift in Sources */,
 				E5274907288FB6D70070AEDA /* Puzzle.swift in Sources */,
 				E5652B362873CE09001B0B5F /* SceneDelegate.swift in Sources */,
 				E5C72B0D287964870063E704 /* TypingListPresenter.swift in Sources */,

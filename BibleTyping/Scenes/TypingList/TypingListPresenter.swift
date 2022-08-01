@@ -13,7 +13,7 @@ protocol TypingListProtocol: AnyObject {
     func pushToTypingViewController(book: String, kind: String)
 }
 
-final class TypingListPresenter:NSObject {
+final class TypingListPresenter: NSObject {
     private weak var viewController: TypingListProtocol?
     
     private var oldBible: [Bible] = []

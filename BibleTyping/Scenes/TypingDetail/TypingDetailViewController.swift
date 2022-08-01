@@ -26,7 +26,6 @@ final class TypingDetailViewController: UIViewController {
     private lazy var bookNameLabel: UILabel = {
        let label = UILabel()
         label.font = .systemFont(ofSize: 30.0, weight: .bold)
-        //label.textColor = .secondaryLabel
         label.textAlignment = .center
         
         return label
@@ -199,23 +198,27 @@ extension TypingDetailViewController: TypingDetailProtocol {
         let arrWriteText = writeText.map { $0 }
         let arrSourceText = sourceText.map { $0 }
         
-        var compareWriteCharacter: String = ""
-        var compareSourceCharacter: String = ""
-        
-        let attribtuedString = NSMutableAttributedString(string: writeText)
-        
-        for chrSourceText in arrWriteText.indices {
-            compareWriteCharacter = String(arrWriteText[chrSourceText])
-            compareSourceCharacter = String(arrSourceText[chrSourceText])
-                     
-            if compareWriteCharacter != compareSourceCharacter {
-                attribtuedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.systemRed, range: NSRange(location: chrSourceText, length: 1))
-                attribtuedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: writeQuoteTextView.font!.pointSize), range: NSRange(location: 0, length: writeText.count))
-                writeQuoteTextView.attributedText = attribtuedString
+        if arrWriteText.count > arrSourceText .count {
+            checkReturn = false
+        } else {
+            var compareWriteCharacter: String = ""
+            var compareSourceCharacter: String = ""
+            
+            let attribtuedString = NSMutableAttributedString(string: writeText)
+            
+            for chrSourceText in arrWriteText.indices {
+                compareWriteCharacter = String(arrWriteText[chrSourceText])
+                compareSourceCharacter = String(arrSourceText[chrSourceText])
+                         
+                if compareWriteCharacter != compareSourceCharacter {
+                    attribtuedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.systemRed, range: NSRange(location: chrSourceText, length: 1))
+                    attribtuedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: writeQuoteTextView.font!.pointSize), range: NSRange(location: 0, length: writeText.count))
+                    writeQuoteTextView.attributedText = attribtuedString
+                }
             }
+            
+            checkReturn = sourceText == writeText ? true : false
         }
-        
-        checkReturn = sourceText == writeText ? true : false
         
         return checkReturn
     }

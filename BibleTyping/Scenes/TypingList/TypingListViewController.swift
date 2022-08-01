@@ -14,7 +14,8 @@ final class TypingListViewController: UIViewController {
     private lazy var oldBibleLabel: UILabel = {
         let label = UILabel()
         label.text = "구약성경"
-        label.font = .systemFont(ofSize: 16.0, weight: .semibold)
+        label.textColor = .secondaryLabel
+        label.font = .systemFont(ofSize: 18.0, weight: .medium)
         
         return label
     }()
@@ -34,7 +35,8 @@ final class TypingListViewController: UIViewController {
     private lazy var newBibleLabel: UILabel = {
         let label = UILabel()
         label.text = "신약성경"
-        label.font = .systemFont(ofSize: 16.0, weight: .semibold)
+        label.textColor = .secondaryLabel
+        label.font = .systemFont(ofSize: 18.0, weight: .medium)
         
         return label
     }()
@@ -98,11 +100,11 @@ extension TypingListViewController: TypingListProtocol {
             $0.top.equalTo(oldBibleLabel.snp.bottom)
             $0.leading.equalTo(oldBibleLabel.snp.leading)
             $0.trailing.equalTo(oldBibleLabel.snp.trailing)
-            $0.height.equalTo(300.0)
+            $0.height.equalTo(280.0)
         }
         
         newBibleLabel.snp.makeConstraints {
-            $0.top.equalTo(oldBibleCollectionView.snp.bottom).offset(16.0)
+            $0.top.equalTo(oldBibleCollectionView.snp.bottom).offset(32.0)
             $0.leading.equalTo(oldBibleCollectionView.snp.leading)
             $0.trailing.equalTo(oldBibleCollectionView.snp.trailing)
             $0.height.equalTo(32.0)
@@ -112,7 +114,7 @@ extension TypingListViewController: TypingListProtocol {
             $0.top.equalTo(newBibleLabel.snp.bottom)
             $0.leading.equalTo(newBibleLabel.snp.leading)
             $0.trailing.equalTo(newBibleLabel.snp.trailing)
-            $0.height.equalTo(300.0)
+            $0.height.equalTo(280.0)
         }
     }
     
