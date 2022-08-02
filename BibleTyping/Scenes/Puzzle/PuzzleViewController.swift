@@ -11,7 +11,8 @@ import SnapKit
 final class PuzzleViewController: UIViewController {
     private lazy var presenter = PuzzlePresenter(viewController: self)
     private var timer: Timer?
-    private var timeLeft = 5
+    private var timeLeft: Int = 5
+    private var progressTime: Float = 0.0
     
     private lazy var quoteBaseView: UIView = {
         let view = UIView()
@@ -24,7 +25,7 @@ final class PuzzleViewController: UIViewController {
     private lazy var quoteLabel: UILabel = {
         let label = UILabel()
         label.text = ""
-        label.font = .systemFont(ofSize: 30.0, weight: .black)
+        label.font = .systemFont(ofSize: 25.0, weight: .semibold)
         label.textAlignment = .center
         label.numberOfLines = 0
         
@@ -34,11 +35,22 @@ final class PuzzleViewController: UIViewController {
     private lazy var timerLabel: UILabel = {
         let label = UILabel()
         label.text = "5"
-        label.font = .systemFont(ofSize: 60.0, weight: .bold)
+        label.font = .systemFont(ofSize: 100.0, weight: .bold)
         label.textAlignment = .center
-        label.textColor = .systemBlue
+        label.textColor = .TitleBrown
         
         return label
+    }()
+    
+    private lazy var progressView: UIProgressView = {
+        let progressView = UIProgressView()
+        progressView.trackTintColor = .lightGray
+        progressView.progressTintColor = .TitleBrown
+        progressView.progress = 0.0
+        progressView.layer.cornerRadius = 6
+        progressView.clipsToBounds = true
+        
+        return progressView
     }()
     
     override func viewDidLoad() {
@@ -57,6 +69,7 @@ final class PuzzleViewController: UIViewController {
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         
+        timer?.invalidate()
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(pushToPuzzleWriteViewController), userInfo: nil, repeats: true)
         
         presenter.viewDidLoad()
@@ -71,14 +84,14 @@ final class PuzzleViewController: UIViewController {
 
 extension PuzzleViewController: PuzzleProtocol {
     func setupViews() {
-        [quoteBaseView, quoteLabel, timerLabel]
+        [quoteBaseView, quoteLabel, timerLabel, progressView]
             .forEach{ view.addSubview($0) }
         
         quoteBaseView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(24.0)
             $0.leading.equalToSuperview().inset(16.0)
             $0.trailing.equalToSuperview().inset(16.0)
-            $0.height.equalTo(200.0)
+            $0.height.equalTo(300.0)
             //$0.bottom.equalToSuperview().inset(tabBarController?.tabBar.frame.height ?? 0.0)
         }
         
@@ -89,21 +102,31 @@ extension PuzzleViewController: PuzzleProtocol {
         }
         
         timerLabel.snp.makeConstraints {
-            $0.top.equalTo(quoteBaseView.snp.bottom).offset(32.0)
+            $0.top.equalTo(quoteBaseView.snp.bottom).offset(100.0)
             $0.leading.equalTo(quoteLabel.snp.leading)
             $0.trailing.equalTo(quoteLabel.snp.trailing)
+        }
+        
+        progressView.snp.makeConstraints {
+            $0.top.equalTo(timerLabel.snp.bottom).offset(16.0)
+            $0.leading.equalTo(quoteBaseView.snp.leading)
+            $0.trailing.equalTo(quoteBaseView.snp.trailing)
+            $0.height.equalTo(10.0)
         }
     }
     
     func setup(verse: String, verse_info: String) {
-        quoteLabel.text = verse + verse_info
+        quoteLabel.text = verse + " "  + verse_info
     }
 }
 
 extension PuzzleViewController {
     @objc func pushToPuzzleWriteViewController() {
         timerLabel.text = String(timeLeft)
-        timeLeft = timeLeft - 1
+        timeLeft -=  1
+        
+        progressView.setProgress(progressTime, animated: true)
+        progressTime += 0.25
         
         if timeLeft <= -1 {
             timer?.invalidate()
