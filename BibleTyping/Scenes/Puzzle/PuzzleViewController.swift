@@ -13,6 +13,8 @@ final class PuzzleViewController: UIViewController {
     private var timer: Timer?
     private var timeLeft: Int = 5
     private var progressTime: Float = 0.0
+    private var verse: String = ""
+    private var verse_info: String = ""
     
     private lazy var quoteBaseView: UIView = {
         let view = UIView()
@@ -116,6 +118,9 @@ extension PuzzleViewController: PuzzleProtocol {
     }
     
     func setup(verse: String, verse_info: String) {
+        self.verse = verse
+        self.verse_info = verse_info
+        
         quoteLabel.text = verse + " "  + verse_info
     }
 }
@@ -132,7 +137,7 @@ extension PuzzleViewController {
             timer?.invalidate()
             timer = nil
             
-            let puzzleDetailViewViewController = PuzzleDetailViewController(verse: quoteLabel.text!)
+            let puzzleDetailViewViewController = PuzzleDetailViewController(verse: self.verse, verse_info: self.verse_info)
             navigationController?.pushViewController(puzzleDetailViewViewController, animated: true)
         }
     }
