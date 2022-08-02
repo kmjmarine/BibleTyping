@@ -29,8 +29,8 @@ final class PuzzleDetailPresenter: NSObject {
         let arrQuote: [String] = quote.components(separatedBy: " ")
         var randomIndex: [Int] = [ ]
         
-        while randomIndex.count < 5 {
-            let number = Int.random(in: 1...arrQuote.count)
+        while randomIndex.count < 3 {
+            let number = Int.random(in: 0...arrQuote.count - 1)
                     if !randomIndex.contains(number){
                         randomIndex.append(number)
                     }

@@ -83,8 +83,8 @@ extension PuzzleDetailViewController: PuzzleDetailProtocol {
         
         randomLabel.snp.makeConstraints {
             $0.top.equalTo(infoLabel.snp.bottom).offset(16.0)
-            $0.leading.equalTo(infoLabel.snp.leading)
-            $0.trailing.equalTo(infoLabel.snp.trailing)
+            $0.leading.equalTo(infoLabel.snp.leading).offset(16.0)
+            $0.trailing.equalTo(infoLabel.snp.trailing).offset(16.0)
         }
     }
     
@@ -125,6 +125,5 @@ extension PuzzleDetailViewController: PuzzleDetailProtocol {
         }
         
         randomLabel.attributedText = attributedStr
-        //randomLabel.setLineSpacing(spacing: 30.0)
     }
 }

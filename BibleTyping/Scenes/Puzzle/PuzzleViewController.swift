@@ -104,7 +104,7 @@ extension PuzzleViewController: PuzzleProtocol {
         }
         
         timerLabel.snp.makeConstraints {
-            $0.top.equalTo(quoteBaseView.snp.bottom).offset(100.0)
+            $0.top.equalTo(quoteBaseView.snp.bottom).offset(80.0)
             $0.leading.equalTo(quoteLabel.snp.leading)
             $0.trailing.equalTo(quoteLabel.snp.trailing)
         }
