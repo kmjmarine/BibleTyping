@@ -110,8 +110,8 @@
             filePath = "BibleTyping/Scenes/PuzzleDetail/PuzzleDetailViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "setup(randomIndex:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -126,8 +126,8 @@
             filePath = "BibleTyping/Scenes/PuzzleDetail/PuzzleDetailViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "setup(randomIndex:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -142,8 +142,8 @@
             filePath = "BibleTyping/Scenes/PuzzleDetail/PuzzleDetailViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
             landmarkName = "setup(randomIndex:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -158,24 +158,8 @@
             filePath = "BibleTyping/Scenes/PuzzleDetail/PuzzleDetailViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
-            landmarkName = "setup(randomIndex:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0D543805-5670-49F3-8747-39746C748E27"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BibleTyping/Scenes/PuzzleDetail/PuzzleDetailViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
             landmarkName = "setup(randomIndex:)"
             landmarkType = "7">
          </BreakpointContent>
