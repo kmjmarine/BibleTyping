@@ -98,9 +98,9 @@ extension PuzzleViewController: PuzzleProtocol {
         }
         
         quoteLabel.snp.makeConstraints {
+            $0.top.equalTo(quoteBaseView.snp.top).inset(24.0)
             $0.leading.equalTo(quoteBaseView.snp.leading).inset(24.0)
             $0.trailing.equalTo(quoteBaseView.snp.trailing).inset(24.0)
-            $0.top.equalTo(quoteBaseView.snp.top).inset(24.0)
         }
         
         timerLabel.snp.makeConstraints {

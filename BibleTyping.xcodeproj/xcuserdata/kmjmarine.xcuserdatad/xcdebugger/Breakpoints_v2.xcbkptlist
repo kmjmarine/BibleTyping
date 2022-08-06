@@ -103,64 +103,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "EFC4A451-CE62-40BA-9C3A-24C0855BDAD6"
+            uuid = "11D3CD3D-1D19-4747-8FA0-E3BC1795B3E6"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BibleTyping/Scenes/PuzzleDetail/PuzzleDetailViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
-            landmarkName = "setup(randomIndex:)"
+            startingLineNumber = "296"
+            endingLineNumber = "296"
+            landmarkName = "asColor(targetString:keepString1:keepString2:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "AA9244CA-0DAE-4285-9071-CF07FEE3AAD7"
+            uuid = "7F5F97F2-1786-4401-ADDB-1F63FCBE584C"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BibleTyping/Scenes/PuzzleDetail/PuzzleDetailViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "setup(randomIndex:)"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
+            landmarkName = "asColor(targetString:keepString1:keepString2:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "540FD94F-493C-44A8-AF97-15D55C7FFCCC"
+            uuid = "4713DFC2-F1D0-4BDC-B96D-FD15AE12DFF4"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BibleTyping/Scenes/PuzzleDetail/PuzzleDetailViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
-            landmarkName = "setup(randomIndex:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3F62C728-27EB-4D89-9B88-61F975C22D9A"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BibleTyping/Scenes/PuzzleDetail/PuzzleDetailViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
-            landmarkName = "setup(randomIndex:)"
+            startingLineNumber = "303"
+            endingLineNumber = "303"
+            landmarkName = "asColor(targetString:keepString1:keepString2:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
