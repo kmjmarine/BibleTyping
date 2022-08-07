@@ -20,6 +20,7 @@ final class PuzzleDetailViewController: UIViewController {
     private var doneVerse1: Bool = false
     private var doneVerse2: Bool = false
     private var doneVerse3: Bool = false
+    private var timer: Timer?
     
     private lazy var explainLabel: UILabel = {
         let label = UILabel()
@@ -254,6 +255,11 @@ extension PuzzleDetailViewController {
         checkText(randomVerseButton3.titleLabel?.text)
     }
     
+    @objc func moveToPuzzleViewController() {
+        let puzzleViewController = PuzzleViewController()
+        navigationController?.pushViewController(puzzleViewController, animated: true)
+    }
+    
     private func checkText(_ buttonText: String?) {
         guard let buttonText = buttonText else { return }
         
@@ -286,6 +292,10 @@ extension PuzzleDetailViewController {
         
         if doneVerse1, doneVerse2, doneVerse3 {
             animationView.isHidden = false
+            
+            //3초후 view 이동
+            timer?.invalidate()
+            timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(moveToPuzzleViewController), userInfo: nil, repeats: false)
         }
     }
 }

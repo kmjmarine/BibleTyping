@@ -10,6 +10,7 @@ import Foundation
 protocol PuzzleDetailProtocol: AnyObject {
     func setupViews()
     func setup(randomIndex: [Int])
+    func moveToPuzzleViewController()
 }
 
 final class PuzzleDetailPresenter: NSObject {
@@ -38,5 +39,9 @@ final class PuzzleDetailPresenter: NSObject {
         }
         
         viewController?.setup(randomIndex: randomIndex.sorted())
+    }
+    
+    func moveToPuzzleViewController() {
+        viewController?.moveToPuzzleViewController()
     }
 }
