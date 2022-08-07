@@ -244,15 +244,21 @@ extension PuzzleDetailViewController: PuzzleDetailProtocol {
 
 extension PuzzleDetailViewController {
     @objc func setRandomLabelText1() {
-        checkText(randomVerseButton1.titleLabel?.text)
+        if checkText(randomVerseButton1.titleLabel?.text) {
+            randomVerseButton1.setTitleColor(.label, for: .normal)
+        }
     }
     
     @objc func setRandomLabelText2() {
-        checkText(randomVerseButton2.titleLabel?.text)
+        if checkText(randomVerseButton2.titleLabel?.text) {
+            randomVerseButton2.setTitleColor(.label, for: .normal)
+        }
     }
     
     @objc func setRandomLabelText3() {
-        checkText(randomVerseButton3.titleLabel?.text)
+        if checkText(randomVerseButton3.titleLabel?.text) {
+            randomVerseButton3.setTitleColor(.label, for: .normal)
+        }
     }
     
     @objc func moveToPuzzleViewController() {
@@ -260,8 +266,8 @@ extension PuzzleDetailViewController {
         navigationController?.pushViewController(puzzleViewController, animated: true)
     }
     
-    private func checkText(_ buttonText: String?) {
-        guard let buttonText = buttonText else { return }
+    private func checkText(_ buttonText: String?) -> Bool {
+        guard let buttonText = buttonText else { return false }
         
         if !doneVerse1 {
             if setVerse1 == buttonText {
@@ -269,27 +275,48 @@ extension PuzzleDetailViewController {
                 randomLabel.asColor(targetString: setVerse1, keepString1: setVerse2, keepString2: setVerse3)
                 view.makeToast("짝짝짝! 정답이에요.")
                 
+                checkDone()
+                
+                return true
             } else {
                 view.makeToast("앗! 첫번째에 들어갈 낱말과 다른 낱말이에요.")
+                
+                return false
             }
         } else if !doneVerse2 {
             if setVerse2 == buttonText {
                 doneVerse2 = true
                 randomLabel.asColor(targetString: setVerse2, keepString1: "", keepString2: setVerse3)
                 view.makeToast("짝짝짝! 정답이에요.")
+                
+                checkDone()
+                
+                return true
             } else {
                 view.makeToast("앗! 두번째에 들어갈 낱말과 다른 낱말이에요.")
+                
+                return false
             }
         } else if !doneVerse3 {
             if setVerse3 == buttonText {
                 doneVerse3 = true
                 randomLabel.asColor(targetString: setVerse3, keepString1: "", keepString2: "")
                 view.makeToast("짝짝짝! 정답이에요.")
+                
+                checkDone()
+                
+                return true
             } else {
                 view.makeToast("앗! 세번째에 들어갈 낲말과 다른 낱말이에요.")
+                
+                return false
             }
         }
         
+        return false
+    }
+    
+    private func checkDone() {
         if doneVerse1, doneVerse2, doneVerse3 {
             animationView.isHidden = false
             
