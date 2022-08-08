@@ -8,6 +8,7 @@
 import Foundation
 
 protocol PuzzleDetailProtocol: AnyObject {
+    func setupNavigationBar()
     func setupViews()
     func setup(randomIndex: [Int])
     func moveToPuzzleViewController()
@@ -23,6 +24,7 @@ final class PuzzleDetailPresenter: NSObject {
     }
     
     func viewDidLoad() {
+        viewController?.setupNavigationBar()
         viewController?.setupViews()
     }
     

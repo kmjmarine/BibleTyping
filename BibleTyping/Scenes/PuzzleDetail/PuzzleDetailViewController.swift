@@ -22,6 +22,13 @@ final class PuzzleDetailViewController: UIViewController {
     private var doneVerse3: Bool = false
     private var timer: Timer?
     
+    private lazy var rigthBarButtonItem = UIBarButtonItem(
+        image: UIImage(systemName: "arrow.clockwise"),
+        style: .plain,
+        target: self,
+        action: #selector(moveToPuzzleViewController)
+    )
+    
     private lazy var explainLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18.0, weight: .regular)
@@ -141,6 +148,10 @@ final class PuzzleDetailViewController: UIViewController {
 }
 
 extension PuzzleDetailViewController: PuzzleDetailProtocol {
+    func setupNavigationBar() {
+        navigationItem.rightBarButtonItem = rigthBarButtonItem
+    }
+    
     func setupViews() {
         [explainLabel, infoBaseView, infoLabel, randomLabel, animationView, buttonStackView]
             .forEach { view.addSubview($0) }
@@ -245,19 +256,19 @@ extension PuzzleDetailViewController: PuzzleDetailProtocol {
 extension PuzzleDetailViewController {
     @objc func setRandomLabelText1() {
         if checkText(randomVerseButton1.titleLabel?.text) {
-            randomVerseButton1.setTitleColor(.label, for: .normal)
+            randomVerseButton1.setTitleColor(.TitleBrown, for: .normal)
         }
     }
     
     @objc func setRandomLabelText2() {
         if checkText(randomVerseButton2.titleLabel?.text) {
-            randomVerseButton2.setTitleColor(.label, for: .normal)
+            randomVerseButton2.setTitleColor(.TitleBrown, for: .normal)
         }
     }
     
     @objc func setRandomLabelText3() {
         if checkText(randomVerseButton3.titleLabel?.text) {
-            randomVerseButton3.setTitleColor(.label, for: .normal)
+            randomVerseButton3.setTitleColor(.TitleBrown, for: .normal)
         }
     }
     
@@ -273,13 +284,13 @@ extension PuzzleDetailViewController {
             if setVerse1 == buttonText {
                 doneVerse1 = true
                 randomLabel.asColor(targetString: setVerse1, keepString1: setVerse2, keepString2: setVerse3)
-                view.makeToast("짝짝짝! 정답이에요.")
-                
+                view.makeToast("짝짝짝! 정답이에요.", duration: 1.5)
+                                
                 checkDone()
                 
                 return true
             } else {
-                view.makeToast("앗! 첫번째에 들어갈 낱말과 다른 낱말이에요.")
+                view.makeToast("앗! 첫번째에 들어갈 낱말과 다른 낱말이에요.", duration: 1.5)
                 
                 return false
             }
@@ -287,13 +298,13 @@ extension PuzzleDetailViewController {
             if setVerse2 == buttonText {
                 doneVerse2 = true
                 randomLabel.asColor(targetString: setVerse2, keepString1: "", keepString2: setVerse3)
-                view.makeToast("짝짝짝! 정답이에요.")
+                view.makeToast("짝짝짝! 정답이에요.", duration: 1.5)
                 
                 checkDone()
                 
                 return true
             } else {
-                view.makeToast("앗! 두번째에 들어갈 낱말과 다른 낱말이에요.")
+                view.makeToast("앗! 두번째에 들어갈 낱말과 다른 낱말이에요.", duration: 1.5)
                 
                 return false
             }
@@ -301,13 +312,13 @@ extension PuzzleDetailViewController {
             if setVerse3 == buttonText {
                 doneVerse3 = true
                 randomLabel.asColor(targetString: setVerse3, keepString1: "", keepString2: "")
-                view.makeToast("짝짝짝! 정답이에요.")
+                view.makeToast("짝짝짝! 정답이에요.", duration: 1.5)
                 
                 checkDone()
                 
                 return true
             } else {
-                view.makeToast("앗! 세번째에 들어갈 낲말과 다른 낱말이에요.")
+                view.makeToast("앗! 세번째에 들어갈 낲말과 다른 낱말이에요.", duration: 1.5)
                 
                 return false
             }
@@ -332,8 +343,10 @@ extension UILabel {
         let fullText = text ?? ""
         let attributedString = NSMutableAttributedString(string: fullText)
         let range = (fullText as NSString).range(of: targetString)
-        
+
         attributedString.addAttribute(.backgroundColor, value: UIColor.white, range: range)
+        attributedString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range)
+        attributedString.addAttribute(.underlineColor, value: UIColor.TitleBrown ?? .systemBackground, range: range)
         
         if !keepString1.isEmpty {
         let keepRange1 = (fullText as NSString).range(of: keepString1)

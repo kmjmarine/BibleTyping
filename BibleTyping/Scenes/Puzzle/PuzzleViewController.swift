@@ -58,7 +58,7 @@ final class PuzzleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "퍼즐맞추기"
+        title = "구절맞추기"
         navigationController?.navigationBar.prefersLargeTitles = true
         
         let appearance = UINavigationBarAppearance()

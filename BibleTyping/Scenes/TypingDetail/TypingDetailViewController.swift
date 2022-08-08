@@ -58,7 +58,7 @@ final class TypingDetailViewController: UIViewController {
         let button = UIButton()
         button.setTitle("저장", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 15.0, weight: .semibold)
-        button.setTitleColor(.label, for: .normal)
+        button.setTitleColor(.TitleBrown, for: .normal)
         button.backgroundColor = .lightGray
         button.layer.cornerRadius = 9.0
         
@@ -71,7 +71,7 @@ final class TypingDetailViewController: UIViewController {
         let button = UIButton()
         button.setTitle("취소", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 15.0, weight: .semibold)
-        button.setTitleColor(.label, for: .normal)
+        button.setTitleColor(.TitleBrown, for: .normal)
         button.backgroundColor = .lightGray
         button.layer.cornerRadius = 9.0
         
@@ -173,7 +173,11 @@ extension TypingDetailViewController: TypingDetailProtocol {
     func setViews(with chapter: Int, verse: Int, quoteText: String) {
         bookNameLabel.text = bookname + " \(chapter)장 \(verse)절"
         
-        sourceQuoteLabel.text = quoteText
+        let startIdx: String.Index = quoteText.index(quoteText.startIndex, offsetBy: 4) //장, 절 삭제
+
+        let finalQuoteText = String(quoteText[startIdx...])
+        
+        sourceQuoteLabel.text = finalQuoteText
     }
     
     func didNotCorrect() {
