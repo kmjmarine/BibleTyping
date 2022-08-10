@@ -125,13 +125,14 @@ extension TypingDetailViewController: UITextViewDelegate {
         textView.textColor = .label
     }
     
-    //키보드 완료 탭시 뷰 닫기
+    //키보드 완료 탭 시 키보드 내리기
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         guard text == "\n" else { return true }
         
-        self.writeQuoteTextView.text = text
-        //delegate?.didEnterText(textView.text)
-      
+        presenter.didTabConfirmButton(sourceText: sourceQuoteLabel.text, writeText: writeQuoteTextView.text)
+        
+        textView.resignFirstResponder()
+        
         return true
     }
 }
@@ -217,9 +218,13 @@ extension TypingDetailViewController: TypingDetailProtocol {
                 if compareWriteCharacter != compareSourceCharacter {
                     attribtuedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.systemRed, range: NSRange(location: chrSourceText, length: 1))
                     attribtuedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: writeQuoteTextView.font!.pointSize), range: NSRange(location: 0, length: writeText.count))
-                    writeQuoteTextView.attributedText = attribtuedString
+                } else {
+                    attribtuedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.label, range: NSRange(location: chrSourceText, length: 1))
+                    attribtuedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: writeQuoteTextView.font!.pointSize), range: NSRange(location: 0, length: writeText.count))
                 }
             }
+            
+            writeQuoteTextView.attributedText = attribtuedString
             
             checkReturn = sourceText == writeText ? true : false
         }
@@ -231,10 +236,12 @@ extension TypingDetailViewController: TypingDetailProtocol {
 private extension TypingDetailViewController {
     @objc func didTabConfirmButton() {
         presenter.didTabConfirmButton(sourceText: sourceQuoteLabel.text, writeText: writeQuoteTextView.text)
+        self.view.endEditing(true)
     }
     
     @objc func didTabCancelButton() {
         self.navigationController?.popViewController(animated: true)
     }
 }
+
 

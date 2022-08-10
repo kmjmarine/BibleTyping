@@ -76,7 +76,7 @@ extension TypingListCollectionViewCell {
         statusButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalTo(bookLabel.snp.bottom).offset(16.0)
-            $0.width.equalTo(100.0)
+            $0.width.equalToSuperview().inset(8.0)
         }
     }
     

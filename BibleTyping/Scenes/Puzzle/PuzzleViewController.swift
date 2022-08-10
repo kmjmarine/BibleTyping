@@ -93,8 +93,7 @@ extension PuzzleViewController: PuzzleProtocol {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(24.0)
             $0.leading.equalToSuperview().inset(16.0)
             $0.trailing.equalToSuperview().inset(16.0)
-            $0.height.equalTo(300.0)
-            //$0.bottom.equalToSuperview().inset(tabBarController?.tabBar.frame.height ?? 0.0)
+            $0.height.equalTo(250.0)
         }
         
         quoteLabel.snp.makeConstraints {
@@ -109,11 +108,14 @@ extension PuzzleViewController: PuzzleProtocol {
             $0.trailing.equalTo(quoteLabel.snp.trailing)
         }
         
+        let bottomSpacing: CGFloat = (tabBarController?.tabBar.frame.height)!
+        
         progressView.snp.makeConstraints {
             $0.top.equalTo(timerLabel.snp.bottom).offset(16.0)
             $0.leading.equalTo(quoteBaseView.snp.leading)
             $0.trailing.equalTo(quoteBaseView.snp.trailing)
             $0.height.equalTo(10.0)
+            $0.bottom.equalToSuperview().inset(bottomSpacing * 2.0)
         }
     }
     

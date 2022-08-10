@@ -65,8 +65,6 @@ final class PuzzleDetailViewController: UIViewController {
     
     private lazy var animationView: AnimationView = {
         let animationView = AnimationView(name:"success")
-        //view.addSubview(animationView)
-        //animationView.frame = animationView.superview!.bounds
         animationView.contentMode = .scaleAspectFit
         animationView.play()
         animationView.loopMode = .loop
@@ -156,8 +154,10 @@ extension PuzzleDetailViewController: PuzzleDetailProtocol {
         [explainLabel, infoBaseView, infoLabel, randomLabel, animationView, buttonStackView]
             .forEach { view.addSubview($0) }
         
+        let bottomSpacing: CGFloat = (tabBarController?.tabBar.frame.height)!
+        
         explainLabel.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(24.0)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(16.0)
             $0.leading.equalToSuperview().inset(16.0)
             $0.trailing.equalToSuperview().inset(16.0)
             $0.height.equalTo(30.0)
@@ -167,11 +167,11 @@ extension PuzzleDetailViewController: PuzzleDetailProtocol {
             $0.top.equalTo(explainLabel.snp.bottom).offset(16.0)
             $0.leading.equalToSuperview().inset(16.0)
             $0.trailing.equalToSuperview().inset(16.0)
-            $0.height.equalTo(250.0)
+            $0.bottom.equalToSuperview().inset(bottomSpacing * 5.0)
         }
         
         infoLabel.snp.makeConstraints {
-            $0.top.equalTo(infoBaseView.snp.top).inset(24.0)
+            $0.top.equalTo(infoBaseView.snp.top).inset(16.0)
             $0.leading.equalTo(infoBaseView.snp.leading).inset(16.0)
             $0.trailing.equalTo(infoBaseView.snp.trailing).inset(16.0)
         }
@@ -183,18 +183,18 @@ extension PuzzleDetailViewController: PuzzleDetailProtocol {
         }
         
         animationView.snp.makeConstraints {
-            $0.top.equalTo(infoBaseView.snp.bottom).offset(50.0)
-            $0.leading.equalToSuperview().inset(16.0)
-            $0.trailing.equalToSuperview().inset(16.0)
-            //$0.width.equalTo(150.0)
+            //$0.top.equalTo(infoBaseView.snp.bottom).offset(50.0)
+            $0.bottom.equalToSuperview().inset(bottomSpacing * 2.6)
+            $0.centerX.equalToSuperview()
             $0.height.equalTo(120.0)
         }
         
         buttonStackView.snp.makeConstraints {
-            $0.top.equalTo(animationView.snp.bottom).offset(50.0)
+            //$0.top.equalTo(animationView.snp.bottom).offset(50.0)
             $0.leading.equalToSuperview().inset(16.0)
             $0.trailing.equalToSuperview().inset(16.0)
             $0.height.equalTo(50.0)
+            $0.bottom.equalToSuperview().inset(bottomSpacing * 1.5)
         }
     }
     
@@ -224,7 +224,7 @@ extension PuzzleDetailViewController: PuzzleDetailProtocol {
             
             for j in 0...randomIndex.count - 1 {
                     if i == randomIndex[j] {
-                        print(arrQuote[i])
+                        //print(arrQuote[i]) 답안 낱말 디버그용
                         
                         randomVerse.append(arrQuote[i] + " ") // 답안 낱말 문자열
                         arrRandomVerse.append(arrQuote[i])

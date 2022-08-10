@@ -88,6 +88,7 @@ extension TypingListViewController: TypingListProtocol {
             .forEach { view.addSubview($0) }
         
         let inset: CGFloat = 16.0
+        let bottomSpacing: CGFloat = (tabBarController?.tabBar.frame.height)!
         
         oldBibleLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin).inset(inset)
@@ -115,6 +116,7 @@ extension TypingListViewController: TypingListProtocol {
             $0.leading.equalTo(newBibleLabel.snp.leading)
             $0.trailing.equalTo(newBibleLabel.snp.trailing)
             $0.height.equalTo(280.0)
+            $0.bottom.equalToSuperview().inset(bottomSpacing * 1.3)
         }
     }
     
