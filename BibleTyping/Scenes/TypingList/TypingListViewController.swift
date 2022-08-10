@@ -101,7 +101,7 @@ extension TypingListViewController: TypingListProtocol {
             $0.top.equalTo(oldBibleLabel.snp.bottom)
             $0.leading.equalTo(oldBibleLabel.snp.leading)
             $0.trailing.equalTo(oldBibleLabel.snp.trailing)
-            $0.height.equalTo(280.0)
+            $0.height.equalTo(270.0)
         }
         
         newBibleLabel.snp.makeConstraints {
@@ -115,7 +115,7 @@ extension TypingListViewController: TypingListProtocol {
             $0.top.equalTo(newBibleLabel.snp.bottom)
             $0.leading.equalTo(newBibleLabel.snp.leading)
             $0.trailing.equalTo(newBibleLabel.snp.trailing)
-            $0.height.equalTo(280.0)
+            $0.height.equalTo(270.0)
             $0.bottom.equalToSuperview().inset(bottomSpacing * 1.3)
         }
     }

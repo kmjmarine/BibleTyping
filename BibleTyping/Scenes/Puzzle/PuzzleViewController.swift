@@ -71,16 +71,23 @@ final class PuzzleViewController: UIViewController {
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         
-        timer?.invalidate()
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(pushToPuzzleWriteViewController), userInfo: nil, repeats: true)
-        
         presenter.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(pushToPuzzleWriteViewController), userInfo: nil, repeats: true)
+        
         presenter.viewWillAppear()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        timeLeft = 5
+        progressTime = 0.0
     }
 }
 
@@ -127,7 +134,7 @@ extension PuzzleViewController: PuzzleProtocol {
     }
 }
 
-extension PuzzleViewController {
+private extension PuzzleViewController {
     @objc func pushToPuzzleWriteViewController() {
         timerLabel.text = String(timeLeft)
         timeLeft -=  1
