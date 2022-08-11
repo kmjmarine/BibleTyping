@@ -125,3 +125,4 @@ extension TypingListViewController: TypingListProtocol {
         navigationController?.pushViewController(typingDetailViewController, animated: true)
     }
 }
+
