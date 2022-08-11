@@ -115,6 +115,10 @@ final class TypingDetailViewController: UIViewController {
         
         presenter.viewWillAppear()
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }
 
 extension TypingDetailViewController: UITextViewDelegate {
@@ -242,6 +246,8 @@ private extension TypingDetailViewController {
     @objc func didTabCancelButton() {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    
 }
 
 
