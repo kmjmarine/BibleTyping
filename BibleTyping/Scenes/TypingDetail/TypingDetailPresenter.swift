@@ -25,8 +25,8 @@ final class TypingDetailPresenter: NSObject {
     var chapter: Int
     var verse: Int
     
-    private var bible: [Bible] = [ ]
-    private var record: [Record] = [ ]
+    private var bible: [Bible] = []
+    private var record: [Record] = []
     
     init(
         viewController: TypingDetailProtocol,

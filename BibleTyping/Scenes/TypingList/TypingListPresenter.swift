@@ -15,12 +15,18 @@ protocol TypingListProtocol: AnyObject {
 
 final class TypingListPresenter: NSObject {
     private weak var viewController: TypingListProtocol?
+    private let userDefaultsManager: UserDefaultsManagerProtocol
     
     private var oldBible: [Bible] = []
     private var newBible: [Bible] = []
+    private var record: [Record] = []
     
-    init(viewController: TypingListProtocol) {
+    init(
+         viewController: TypingListProtocol,
+         userDefaultsManager: UserDefaultsManagerProtocol = UserDefaultManager()
+    ) {
         self.viewController = viewController
+        self.userDefaultsManager = userDefaultsManager
     }
     
     func viewDidLoad() {
@@ -30,6 +36,8 @@ final class TypingListPresenter: NSObject {
     func viewWillAppear() {
         oldBible = Bible.oldBible
         newBible = Bible.newBible
+        
+        record = userDefaultsManager.getRecord()
     }
 }
 
@@ -59,7 +67,22 @@ extension TypingListPresenter: UICollectionViewDataSource {
         
         var kindBible: Bible? = nil
         kindBible = collectionView.tag == 1 ? oldBible[indexPath.item] : newBible[indexPath.item]
-        cell?.setup(bible: kindBible!)
+        
+        //Reocord
+        let lastRecord: [Record]
+        var lastChapter: Int = 0
+        var lastVerse: Int = 0
+        
+        lastRecord = record.filter {
+            $0.bookname == kindBible?.bookName
+        }
+        
+        if let index = lastRecord.firstIndex(where: { $0.bookname == kindBible?.bookName }) {
+            lastChapter = lastRecord[index].chapter
+            lastVerse = lastRecord[index].verse + 1
+        }
+        
+        cell?.setup(bible: kindBible!, chapter: lastChapter, verse: lastVerse)
         
         return cell ?? UICollectionViewCell()
     }

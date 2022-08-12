@@ -31,7 +31,7 @@ final class TypingListCollectionViewCell: UICollectionViewCell {
 
         button.setTitle("통독전", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 15.0, weight: .semibold)
-        button.setTitleColor(.label, for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .lightGray
         button.layer.cornerRadius = 9.0
         
@@ -40,12 +40,19 @@ final class TypingListCollectionViewCell: UICollectionViewCell {
         return button
     }()
     
-    func setup(bible: Bible) {
+    func setup(bible: Bible, chapter: Int, verse: Int) {
         setupView()
         setupLayout()
         
         bookLabel.text = bible.bookName
         chapterLabel.text = "(\(String(bible.chapter)))"
+        
+        if chapter != 0 && verse != 0 {
+            var writeRecord: String
+            writeRecord = "\(chapter)장 \(verse)절"
+            statusButton.setTitle(writeRecord, for: .normal)
+            statusButton.backgroundColor = .TitleBrown
+        }
     }
 }
 

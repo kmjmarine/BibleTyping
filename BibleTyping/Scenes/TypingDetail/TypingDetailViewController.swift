@@ -34,6 +34,7 @@ final class TypingDetailViewController: UIViewController {
     private lazy var sourceQuoteLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 23.0, weight: .bold)
+        label.lineBreakMode = .byCharWrapping
         label.numberOfLines = 0
         
         return label
