@@ -82,7 +82,8 @@ extension TypingListPresenter: UICollectionViewDataSource {
             lastVerse = lastRecord[index].verse + 1
         }
         
-        cell?.setup(bible: kindBible!, chapter: lastChapter, verse: lastVerse)
+        cell?.setup(bible: kindBible!)
+        cell?.setupStatusButton(lastChapter, lastVerse)
         
         return cell ?? UICollectionViewCell()
     }

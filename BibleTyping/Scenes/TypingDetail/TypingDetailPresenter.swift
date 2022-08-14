@@ -10,7 +10,7 @@ import UIKit
 protocol TypingDetailProtocol: AnyObject {
     func setupViews()
     func didNotCorrect()
-    func setViews(with chpater: Int, verse: Int, quoteText: String)
+    func setViews(chapter: Int, verse: Int, quoteText: String)
     func checkEqual(sourceText: String?, writeText: String?) -> Bool
     func clearWriteQuoteTextView()
 }
@@ -71,7 +71,7 @@ final class TypingDetailPresenter: NSObject {
         SearchManager()
             .request(from: bookCode, chapter: lastChapter, verse: lastVerse) { quote in
               
-                self.viewController?.setViews(with: lastChapter, verse: lastVerse, quoteText: quote)
+                self.viewController?.setViews(chapter: lastChapter, verse: lastVerse, quoteText: quote)
             }
 
         self.chapter = lastChapter

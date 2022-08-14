@@ -176,10 +176,10 @@ extension TypingDetailViewController: TypingDetailProtocol {
         }
     }
     
-    func setViews(with chapter: Int, verse: Int, quoteText: String) {
+    func setViews(chapter: Int, verse: Int, quoteText: String) {
         bookNameLabel.text = bookname + " \(chapter)장 \(verse)절"
         
-        let startIdx: String.Index = quoteText.index(quoteText.startIndex, offsetBy: 4) //장, 절 삭제
+        let startIdx: String.Index = quoteText.index(quoteText.startIndex, offsetBy: getMakeQuote(chapter, verse)) //장, 절 삭제
 
         let finalQuoteText = String(quoteText[startIdx...])
         
@@ -248,7 +248,13 @@ private extension TypingDetailViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    
+    //장:절 삭제 (1:10)
+    func getMakeQuote(_ chpater: Int, _ verse: Int) -> Int {
+        let chapterLength: Int = String(chpater).count
+        let verseLength: Int = String(verse).count
+        
+        return chapterLength + verseLength + 2 //"1:10 (장+절) + 공백+콜론 2 더함"
+    }
 }
 
 

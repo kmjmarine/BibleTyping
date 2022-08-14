@@ -40,13 +40,15 @@ final class TypingListCollectionViewCell: UICollectionViewCell {
         return button
     }()
     
-    func setup(bible: Bible, chapter: Int, verse: Int) {
+    func setup(bible: Bible) {
         setupView()
         setupLayout()
         
         bookLabel.text = bible.bookName
         chapterLabel.text = "(\(String(bible.chapter)))"
-        
+    }
+    
+    func setupStatusButton(_ chapter: Int, _ verse: Int) {
         if chapter != 0 && verse != 0 {
             var writeRecord: String
             writeRecord = "\(chapter)장 \(verse)절"
