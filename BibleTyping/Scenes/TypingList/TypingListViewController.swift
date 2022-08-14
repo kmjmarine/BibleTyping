@@ -78,6 +78,9 @@ final class TypingListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.oldBibleCollectionView.reloadData()
+        self.newBibleCollectionView.reloadData()
+        
         presenter.viewWillAppear()
     }
 }

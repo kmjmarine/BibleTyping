@@ -77,7 +77,8 @@ extension TypingListPresenter: UICollectionViewDataSource {
             $0.bookname == kindBible?.bookName
         }
         
-        if let index = lastRecord.firstIndex(where: { $0.bookname == kindBible?.bookName }) {
+        if let index = lastRecord.firstIndex(where: { $0.bookname == kindBible?.bookName
+        }) {
             lastChapter = lastRecord[index].chapter
             lastVerse = lastRecord[index].verse + 1
         }
