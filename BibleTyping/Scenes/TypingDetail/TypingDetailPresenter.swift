@@ -85,10 +85,10 @@ final class TypingDetailPresenter: NSObject {
         if lastChapter == doneChapter && (lastVerse - 1) >= doneVerse {
             finalChapter += 1
             finalVerse = 1
+        } else {
+            finalChapter = lastChapter
+            finalVerse = lastVerse
         }
-        
-        print(finalChapter)
-        print(finalVerse)
         
         let bookCode = setBook()
         
@@ -156,7 +156,6 @@ final class TypingDetailPresenter: NSObject {
         
         // 3. 파일 위치
         guard let fileLocation = Bundle.main.url(forResource: fileNm, withExtension: extensionType) else { return nil }
-        
         
         do {
             // 4. 해당 위치의 파일을 Data로 초기화하기

@@ -72,6 +72,9 @@ extension TypingListPresenter: UICollectionViewDataSource {
         let lastRecord: [Record]
         var lastChapter: Int = 0
         var lastVerse: Int = 0
+        var doneChapter: Int = 0
+        var doneVerse: Int = 0
+        var doneWrite: Bool = false
         
         lastRecord = record.filter {
             $0.bookname == kindBible?.bookName
@@ -83,8 +86,29 @@ extension TypingListPresenter: UICollectionViewDataSource {
             lastVerse = lastRecord[index].verse + 1
         }
         
+        guard
+            let jsonData = loadBibleJson(),
+            let bibleList = try? JSONDecoder().decode(BibleJson.self, from: jsonData)
+        else { return cell ?? UICollectionViewCell() }
+        
+        if let indexJson = bibleList.Bibles.lastIndex(where: { $0.bookName == kindBible?.bookName
+        }) {
+            doneChapter = bibleList.Bibles[indexJson].chapter
+            doneVerse = bibleList.Bibles[indexJson].verse
+        }
+        
+        //통독완 여부
+        if lastChapter == doneChapter && (lastVerse - 1) >= doneVerse {
+            doneWrite = true
+        } else {
+            doneWrite = false
+        }
+//        print(kindBible?.bookName)
+//        print(doneChapter)
+//        print(doneVerse)
+//        print(doneWrite)
         cell?.setup(bible: kindBible!)
-        cell?.setupStatusButton(lastChapter, lastVerse)
+        cell?.setupStatusButton(lastChapter, lastVerse, doneWrite)
         
         return cell ?? UICollectionViewCell()
     }
@@ -96,6 +120,27 @@ extension TypingListPresenter: UICollectionViewDataSource {
         listBible = collectionView.tag == 1 ? oldBible[indexPath.item] : newBible[indexPath.item]
         kindBible = collectionView.tag == 1 ? BookKind.old.rawValue : BookKind.new.rawValue
         
+    
         viewController?.pushToTypingViewController(book: listBible?.bookName ?? "", kind: kindBible)
+        
+    }
+    
+    func loadBibleJson() -> Data? {
+        // 1. 불러올 파일 이름
+        let fileNm: String = "JsonBible"
+        // 2. 불러올 파일의 확장자명
+        let extensionType = "json"
+        
+        // 3. 파일 위치
+        guard let fileLocation = Bundle.main.url(forResource: fileNm, withExtension: extensionType) else { return nil }
+        
+        do {
+            // 4. 해당 위치의 파일을 Data로 초기화하기
+            let data = try Data(contentsOf: fileLocation)
+            return data
+        } catch {
+            // 5. 잘못된 위치나 불가능한 파일 처리 (오늘은 따로 안하기)
+            return nil
+        }
     }
 }

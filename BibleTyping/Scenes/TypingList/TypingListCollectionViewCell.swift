@@ -48,12 +48,18 @@ final class TypingListCollectionViewCell: UICollectionViewCell {
         chapterLabel.text = "(\(String(bible.chapter)))"
     }
     
-    func setupStatusButton(_ chapter: Int, _ verse: Int) {
-        if chapter != 0 && verse != 0 {
+    func setupStatusButton(_ chapter: Int, _ verse: Int, _ doneWrite: Bool) {
+        if doneWrite {
+            statusButton.setTitle("통독완", for: .normal)
+            statusButton.backgroundColor = .systemYellow
+        } else if chapter != 0 && verse != 0 {
             var writeRecord: String
             writeRecord = "\(chapter)장 \(verse)절"
             statusButton.setTitle(writeRecord, for: .normal)
             statusButton.backgroundColor = .TitleBrown
+        } else {
+            statusButton.setTitle("통독전", for: .normal)
+            statusButton.backgroundColor = .lightGray
         }
     }
 }
