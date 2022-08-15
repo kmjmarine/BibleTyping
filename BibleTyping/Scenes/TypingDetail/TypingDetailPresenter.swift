@@ -54,6 +54,8 @@ final class TypingDetailPresenter: NSObject {
         let lastRecord: [Record]
         var lastChapter: Int = 1
         var lastVerse: Int = 1
+        var doneChapter: Int = 1
+        var doneVerse: Int = 1
  
         record = userDefaultsManager.getRecord()
         
@@ -66,16 +68,38 @@ final class TypingDetailPresenter: NSObject {
             lastVerse = lastRecord[index].verse + 1
         }
         
+        guard
+            let jsonData = loadBibleJson(),
+            let bibleList = try? JSONDecoder().decode(BibleJson.self, from: jsonData)
+        else { return }
+        
+        
+        if let indexJson = bibleList.Bibles.firstIndex(where: { $0.bookName == bookname && $0.chapter == chapter }) {
+            doneChapter = bibleList.Bibles[indexJson].chapter
+            doneVerse = bibleList.Bibles[indexJson].verse
+        }
+
+        var finalChapter: Int = 1
+        var finalVerse: Int = 1
+        
+        if lastChapter == doneChapter && (lastVerse - 1) >= doneVerse {
+            finalChapter += 1
+            finalVerse = 1
+        }
+        
+        print(finalChapter)
+        print(finalVerse)
+        
         let bookCode = setBook()
         
         SearchManager()
-            .request(from: bookCode, chapter: lastChapter, verse: lastVerse) { quote in
+            .request(from: bookCode, chapter: finalChapter, verse: finalVerse) { quote in
               
-                self.viewController?.setViews(chapter: lastChapter, verse: lastVerse, quoteText: quote)
+                self.viewController?.setViews(chapter: finalChapter, verse: finalVerse, quoteText: quote)
             }
 
-        self.chapter = lastChapter
-        self.verse = lastVerse
+        self.chapter = finalChapter
+        self.verse = finalVerse
     }
     
     func didNotCorrect() {
@@ -122,5 +146,25 @@ final class TypingDetailPresenter: NSObject {
         let setBookCode = bookCode[0].addString(someString: "kor-", position: "leading" )
         
         return setBookCode
+    }
+    
+    func loadBibleJson() -> Data? {
+        // 1. 불러올 파일 이름
+        let fileNm: String = "JsonBible"
+        // 2. 불러올 파일의 확장자명
+        let extensionType = "json"
+        
+        // 3. 파일 위치
+        guard let fileLocation = Bundle.main.url(forResource: fileNm, withExtension: extensionType) else { return nil }
+        
+        
+        do {
+            // 4. 해당 위치의 파일을 Data로 초기화하기
+            let data = try Data(contentsOf: fileLocation)
+            return data
+        } catch {
+            // 5. 잘못된 위치나 불가능한 파일 처리 (오늘은 따로 안하기)
+            return nil
+        }
     }
 }

@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		E50135D52897994F00B36D9D /* PuzzlePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50135D42897994F00B36D9D /* PuzzlePresenter.swift */; };
 		E503E26228982D9F00BA6133 /* PuzzleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E503E26128982D9F00BA6133 /* PuzzleDetailViewController.swift */; };
-		E50D12DF28A9498C008E0C5D /* bibleVerse.json in Resources */ = {isa = PBXBuildFile; fileRef = E50D12DE28A9498C008E0C5D /* bibleVerse.json */; };
+		E511A7F428AA12E700E46114 /* BibleJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = E511A7F328AA12E700E46114 /* BibleJson.swift */; };
+		E511A7F628AA173C00E46114 /* JsonBible.json in Resources */ = {isa = PBXBuildFile; fileRef = E511A7F528AA173C00E46114 /* JsonBible.json */; };
 		E5274902288F7A400070AEDA /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5274901288F7A400070AEDA /* TabbarController.swift */; };
 		E5274904288F7BC20070AEDA /* PuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5274903288F7BC20070AEDA /* PuzzleViewController.swift */; };
 		E5274907288FB6D70070AEDA /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5274906288FB6D70070AEDA /* Puzzle.swift */; };
@@ -63,7 +64,8 @@
 /* Begin PBXFileReference section */
 		E50135D42897994F00B36D9D /* PuzzlePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzlePresenter.swift; sourceTree = "<group>"; };
 		E503E26128982D9F00BA6133 /* PuzzleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleDetailViewController.swift; sourceTree = "<group>"; };
-		E50D12DE28A9498C008E0C5D /* bibleVerse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bibleVerse.json; sourceTree = "<group>"; };
+		E511A7F328AA12E700E46114 /* BibleJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibleJson.swift; sourceTree = "<group>"; };
+		E511A7F528AA173C00E46114 /* JsonBible.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = JsonBible.json; sourceTree = "<group>"; };
 		E5274901288F7A400070AEDA /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
 		E5274903288F7BC20070AEDA /* PuzzleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleViewController.swift; sourceTree = "<group>"; };
 		E5274906288FB6D70070AEDA /* Puzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
@@ -179,8 +181,8 @@
 				E5D6DCA12888CF2400A06A5C /* String+.swift */,
 				E529F1C628935D1D00B37A13 /* UIColor+.swift */,
 				E5CB5968289913F600D333B5 /* UILabel+.swift */,
-				E50D12DE28A9498C008E0C5D /* bibleVerse.json */,
 				E532384C289E47E100B69749 /* success.json */,
+				E511A7F528AA173C00E46114 /* JsonBible.json */,
 			);
 			path = BibleTyping;
 			sourceTree = "<group>";
@@ -209,6 +211,7 @@
 				E5EB7519287AB90B00E62A95 /* Bible.swift */,
 				E54F9904287E9F7400A59A77 /* User.swift */,
 				E5274906288FB6D70070AEDA /* Puzzle.swift */,
+				E511A7F328AA12E700E46114 /* BibleJson.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -373,9 +376,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E511A7F628AA173C00E46114 /* JsonBible.json in Resources */,
 				E5652B402873CE0A001B0B5F /* LaunchScreen.storyboard in Resources */,
 				E5652B3D2873CE0A001B0B5F /* Assets.xcassets in Resources */,
-				E50D12DF28A9498C008E0C5D /* bibleVerse.json in Resources */,
 				E532384D289E47E100B69749 /* success.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,6 +408,7 @@
 				E5C72B0B2879644A0063E704 /* TypingListViewController.swift in Sources */,
 				E5652B342873CE09001B0B5F /* AppDelegate.swift in Sources */,
 				E54F9903287E9CAA00A59A77 /* UserDefaultsManager.swift in Sources */,
+				E511A7F428AA12E700E46114 /* BibleJson.swift in Sources */,
 				E5C72B0F287967800063E704 /* TypingListCollectionViewCell.swift in Sources */,
 				E5652B7A2874143D001B0B5F /* TypingDetailTableViewCell.swift in Sources */,
 				E503E26228982D9F00BA6133 /* PuzzleDetailViewController.swift in Sources */,
