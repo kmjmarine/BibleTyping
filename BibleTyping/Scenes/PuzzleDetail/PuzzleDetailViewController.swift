@@ -183,14 +183,12 @@ extension PuzzleDetailViewController: PuzzleDetailProtocol {
         }
         
         animationView.snp.makeConstraints {
-            //$0.top.equalTo(infoBaseView.snp.bottom).offset(50.0)
             $0.bottom.equalToSuperview().inset(bottomSpacing * 2.8)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(120.0)
         }
         
         buttonStackView.snp.makeConstraints {
-            //$0.top.equalTo(animationView.snp.bottom).offset(50.0)
             $0.leading.equalToSuperview().inset(16.0)
             $0.trailing.equalToSuperview().inset(16.0)
             $0.height.equalTo(50.0)

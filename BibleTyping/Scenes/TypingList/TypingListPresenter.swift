@@ -11,6 +11,7 @@ import UIKit
 protocol TypingListProtocol: AnyObject {
     func setupView()
     func pushToTypingViewController(book: String, kind: String)
+    func showCloseAlertController()
 }
 
 final class TypingListPresenter: NSObject {
@@ -20,6 +21,8 @@ final class TypingListPresenter: NSObject {
     private var oldBible: [Bible] = []
     private var newBible: [Bible] = []
     private var record: [Record] = []
+    private var oldDoneWriteIndexes: [Int] = []
+    private var newDoneWriteIndexes: [Int] = []
     
     init(
          viewController: TypingListProtocol,
@@ -100,13 +103,15 @@ extension TypingListPresenter: UICollectionViewDataSource {
         //통독완 여부
         if lastChapter == doneChapter && (lastVerse - 1) >= doneVerse {
             doneWrite = true
+            if collectionView.tag == 1 {
+                oldDoneWriteIndexes.append(indexPath.item)
+            } else {
+                newDoneWriteIndexes.append(indexPath.item)
+            }
         } else {
             doneWrite = false
         }
-//        print(kindBible?.bookName)
-//        print(doneChapter)
-//        print(doneVerse)
-//        print(doneWrite)
+
         cell?.setup(bible: kindBible!)
         cell?.setupStatusButton(lastChapter, lastVerse, doneWrite)
         
@@ -120,26 +125,29 @@ extension TypingListPresenter: UICollectionViewDataSource {
         listBible = collectionView.tag == 1 ? oldBible[indexPath.item] : newBible[indexPath.item]
         kindBible = collectionView.tag == 1 ? BookKind.old.rawValue : BookKind.new.rawValue
         
-    
-        viewController?.pushToTypingViewController(book: listBible?.bookName ?? "", kind: kindBible)
-        
+        if collectionView.tag == 1 && !oldDoneWriteIndexes.contains(indexPath.item)
+        {
+            viewController?.pushToTypingViewController(book: listBible?.bookName ?? "", kind: kindBible)
+        }
+        else if collectionView.tag == 2 && !newDoneWriteIndexes.contains(indexPath.item) {
+                viewController?.pushToTypingViewController(book: listBible?.bookName ?? "", kind: kindBible)
+        }
     }
     
     func loadBibleJson() -> Data? {
-        // 1. 불러올 파일 이름
         let fileNm: String = "JsonBible"
-        // 2. 불러올 파일의 확장자명
         let extensionType = "json"
         
-        // 3. 파일 위치
-        guard let fileLocation = Bundle.main.url(forResource: fileNm, withExtension: extensionType) else { return nil }
+        guard let fileLocation = Bundle.main.url(forResource: fileNm, withExtension: extensionType) else {
+            viewController?.showCloseAlertController()
+            return nil
+        }
         
         do {
-            // 4. 해당 위치의 파일을 Data로 초기화하기
             let data = try Data(contentsOf: fileLocation)
             return data
         } catch {
-            // 5. 잘못된 위치나 불가능한 파일 처리 (오늘은 따로 안하기)
+            viewController?.showCloseAlertController()
             return nil
         }
     }

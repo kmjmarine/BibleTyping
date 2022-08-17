@@ -77,6 +77,8 @@ final class PuzzleViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.tabBarController?.navigationController?.isNavigationBarHidden = true
+        
         timer?.invalidate()
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(pushToPuzzleWriteViewController), userInfo: nil, repeats: true)
         

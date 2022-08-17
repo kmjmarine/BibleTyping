@@ -78,6 +78,7 @@ final class TypingListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.tabBarController?.navigationController?.isNavigationBarHidden = true
         self.oldBibleCollectionView.reloadData()
         self.newBibleCollectionView.reloadData()
         
@@ -126,6 +127,20 @@ extension TypingListViewController: TypingListProtocol {
     func pushToTypingViewController(book: String, kind: String) {
         let typingDetailViewController = TypingDetailViewController(book: book, kind: kind, chpater: 1, verse: 1)
         navigationController?.pushViewController(typingDetailViewController, animated: true)
+    }
+    
+    func showCloseAlertController() {
+        let alertController = UIAlertController(title: "데이터 읽기에 실패 했습니다.\n잠시 후에 다시 시도해 주세요.", message: nil, preferredStyle: .alert)
+      
+        let closeAction = UIAlertAction(title: "닫기", style: .destructive) {[weak self] _ in
+            self?.dismiss(animated: true)
+        }
+        
+        [closeAction].forEach { action in
+            alertController.addAction(action)
+        }
+        
+        present(alertController, animated: true)
     }
 }
 
