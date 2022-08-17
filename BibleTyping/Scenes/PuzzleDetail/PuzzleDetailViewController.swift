@@ -64,7 +64,7 @@ final class PuzzleDetailViewController: UIViewController {
     }()
     
     private lazy var animationView: AnimationView = {
-        let animationView = AnimationView(name:"success")
+        let animationView = AnimationView(name: "success")
         animationView.contentMode = .scaleAspectFit
         animationView.play()
         animationView.loopMode = .loop
@@ -138,7 +138,7 @@ final class PuzzleDetailViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewWillAppear(false)
         
         animationView.isHidden = true //정답 이미지 기본 숨기기
         presenter.viewWillAppear()
@@ -210,7 +210,6 @@ extension PuzzleDetailViewController: PuzzleDetailProtocol {
         
         let arrQuote: [String] = verse.components(separatedBy: " ")
         var arrRandomVerse: [String] = [ ]
-       // print(randomIndex)
         
         var i = 0
         var randomString: String = "" //완전한 구절 문자열
@@ -272,7 +271,7 @@ extension PuzzleDetailViewController {
     
     @objc func moveToPuzzleViewController() {
         let puzzleViewController = PuzzleViewController()
-        navigationController?.pushViewController(puzzleViewController, animated: true)
+        navigationController?.pushViewController(puzzleViewController, animated: false)
     }
     
     private func checkText(_ buttonText: String?) -> Bool {

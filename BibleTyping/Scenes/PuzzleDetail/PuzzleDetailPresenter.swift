@@ -34,10 +34,9 @@ final class PuzzleDetailPresenter: NSObject {
         
         while randomIndex.count < 3 {
             let number = Int.random(in: 0...arrQuote.count - 1)
-                    if !randomIndex.contains(number){
+                    if !randomIndex.contains(number) {
                         randomIndex.append(number)
                     }
-                    //print(randomIndex.sorted())
         }
         
         viewController?.setup(randomIndex: randomIndex.sorted())

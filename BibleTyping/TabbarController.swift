@@ -11,12 +11,14 @@ final class TabbarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let IntroController = UINavigationController(rootViewController: IntroViewController())
+        IntroController.tabBarItem = UITabBarItem(title: "홈", image: UIImage(systemName: "house"), selectedImage:UIImage (systemName: "house.fill"))
         let TypingController = UINavigationController(rootViewController: TypingListViewController())
-        TypingController.tabBarItem = UITabBarItem(title: "성경타자", image: UIImage(systemName: "keyboard"), selectedImage: UIImage(systemName: "keyboard.fill"))
+        TypingController.tabBarItem = UITabBarItem(title: "성경통독", image: UIImage(systemName: "keyboard"), selectedImage: UIImage(systemName: "keyboard.fill"))
         let PuzzleController = UINavigationController(rootViewController: PuzzleViewController())
         PuzzleController.tabBarItem = UITabBarItem(title: "구절맞추기", image: UIImage(systemName: "puzzlepiece.extension"), selectedImage: UIImage(systemName: "puzzlepiece.extension.fill"))
         
-        viewControllers = [TypingController, PuzzleController]
+        viewControllers = [IntroController, TypingController, PuzzleController]
     }
 }
 

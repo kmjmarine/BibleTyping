@@ -18,6 +18,8 @@
 		E529F1CA28937CD300B37A13 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = E529F1C928937CD300B37A13 /* Toast */; };
 		E532384D289E47E100B69749 /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = E532384C289E47E100B69749 /* success.json */; };
 		E5323850289E497800B69749 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = E532384F289E497800B69749 /* Lottie */; };
+		E53C860928ACC6A500D3D734 /* intro.json in Resources */ = {isa = PBXBuildFile; fileRef = E53C860828ACC6A500D3D734 /* intro.json */; };
+		E53C860B28ACCD5C00D3D734 /* intro2.json in Resources */ = {isa = PBXBuildFile; fileRef = E53C860A28ACCD5C00D3D734 /* intro2.json */; };
 		E54F9903287E9CAA00A59A77 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54F9902287E9CAA00A59A77 /* UserDefaultsManager.swift */; };
 		E54F9905287E9F7400A59A77 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54F9904287E9F7400A59A77 /* User.swift */; };
 		E5652B342873CE09001B0B5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5652B332873CE09001B0B5F /* AppDelegate.swift */; };
@@ -72,6 +74,8 @@
 		E5274906288FB6D70070AEDA /* Puzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
 		E529F1C628935D1D00B37A13 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		E532384C289E47E100B69749 /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
+		E53C860828ACC6A500D3D734 /* intro.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = intro.json; sourceTree = "<group>"; };
+		E53C860A28ACCD5C00D3D734 /* intro2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = intro2.json; sourceTree = "<group>"; };
 		E54F9902287E9CAA00A59A77 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		E54F9904287E9F7400A59A77 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E5652B302873CE09001B0B5F /* BibleTyping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BibleTyping.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +187,8 @@
 				E5D6DCA12888CF2400A06A5C /* String+.swift */,
 				E529F1C628935D1D00B37A13 /* UIColor+.swift */,
 				E5CB5968289913F600D333B5 /* UILabel+.swift */,
+				E53C860A28ACCD5C00D3D734 /* intro2.json */,
+				E53C860828ACC6A500D3D734 /* intro.json */,
 				E532384C289E47E100B69749 /* success.json */,
 				E511A7F528AA173C00E46114 /* JsonBible.json */,
 			);
@@ -391,6 +397,8 @@
 				E5652B402873CE0A001B0B5F /* LaunchScreen.storyboard in Resources */,
 				E5652B3D2873CE0A001B0B5F /* Assets.xcassets in Resources */,
 				E532384D289E47E100B69749 /* success.json in Resources */,
+				E53C860928ACC6A500D3D734 /* intro.json in Resources */,
+				E53C860B28ACCD5C00D3D734 /* intro2.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,7 +629,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "aeron-kim.BibleTyping";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -651,7 +659,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "aeron-kim.BibleTyping";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

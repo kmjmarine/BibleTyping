@@ -112,7 +112,7 @@ final class TypingDetailViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewWillAppear(false)
         
         presenter.viewWillAppear()
     }

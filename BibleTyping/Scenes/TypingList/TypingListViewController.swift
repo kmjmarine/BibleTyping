@@ -76,7 +76,7 @@ final class TypingListViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewWillAppear(false)
         
         self.tabBarController?.navigationController?.isNavigationBarHidden = true
         self.oldBibleCollectionView.reloadData()
@@ -126,7 +126,7 @@ extension TypingListViewController: TypingListProtocol {
     
     func pushToTypingViewController(book: String, kind: String) {
         let typingDetailViewController = TypingDetailViewController(book: book, kind: kind, chpater: 1, verse: 1)
-        navigationController?.pushViewController(typingDetailViewController, animated: true)
+        navigationController?.pushViewController(typingDetailViewController, animated: false)
     }
     
     func showCloseAlertController() {

@@ -75,7 +75,7 @@ final class PuzzleViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewWillAppear(false)
         
         self.tabBarController?.navigationController?.isNavigationBarHidden = true
         
@@ -86,7 +86,7 @@ final class PuzzleViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+        super.viewWillDisappear(false)
         
         timeLeft = 5
         progressTime = 0.0
@@ -149,7 +149,7 @@ private extension PuzzleViewController {
             timer = nil
             
             let puzzleDetailViewViewController = PuzzleDetailViewController(verse: self.verse, verse_info: self.verse_info)
-            navigationController?.pushViewController(puzzleDetailViewViewController, animated: true)
+            navigationController?.pushViewController(puzzleDetailViewViewController, animated: false)
         }
     }
 }

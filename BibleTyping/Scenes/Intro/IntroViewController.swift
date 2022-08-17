@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Lottie
 
 final class IntroViewController: UIViewController {
     private lazy var baseView: UIView = {
@@ -16,10 +17,19 @@ final class IntroViewController: UIViewController {
         return view
     }()
     
+    private lazy var animationView: AnimationView = {
+        let animationView = AnimationView(name: "intro2")
+        animationView.contentMode = .scaleAspectFit
+        animationView.play()
+        animationView.loopMode = .loop
+        
+        return animationView
+    }()
+    
     private lazy var TypingButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = .systemFont(ofSize: 28.0, weight: .bold)
-        button.setTitleColor(.label, for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .TitleBrown
         button.layer.cornerRadius = 9.0
         button.setTitle("성경통독", for: .normal)
@@ -31,7 +41,7 @@ final class IntroViewController: UIViewController {
     private lazy var PuzzleButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = .systemFont(ofSize: 28.0, weight: .bold)
-        button.setTitleColor(.label, for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .TitleBrown
         button.layer.cornerRadius = 9.0
         button.setTitle("구절맞추기", for: .normal)
@@ -58,8 +68,12 @@ final class IntroViewController: UIViewController {
         setupViews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
     func setupViews() {
-        [baseView, buttonStackView]
+        [baseView, animationView, buttonStackView]
             .forEach { view.addSubview($0) }
         
         baseView.snp.makeConstraints {
@@ -67,6 +81,12 @@ final class IntroViewController: UIViewController {
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
+        }
+        
+        animationView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview().offset(-60.0)
+            $0.width.equalTo(300.0)
         }
         
         buttonStackView.snp.makeConstraints {
@@ -80,13 +100,13 @@ final class IntroViewController: UIViewController {
 extension IntroViewController {
     @objc func moveToTypingListViewController() {
         let typingViewController = TabbarController()
-        typingViewController.selectedIndex = 0
+        typingViewController.selectedIndex = 1
         navigationController?.pushViewController(typingViewController, animated: false)
     }
     
     @objc func moveToPuzzleViewController() {
         let puzzleViewController = TabbarController()
-        puzzleViewController.selectedIndex = 1
+        puzzleViewController.selectedIndex = 2
         navigationController?.pushViewController(puzzleViewController, animated: false)
     }
 }
