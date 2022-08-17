@@ -18,7 +18,7 @@ final class IntroViewController: UIViewController {
     }()
     
     private lazy var animationView: AnimationView = {
-        let animationView = AnimationView(name: "intro2")
+        let animationView = AnimationView(name: "intro")
         animationView.contentMode = .scaleAspectFit
         animationView.play()
         animationView.loopMode = .loop

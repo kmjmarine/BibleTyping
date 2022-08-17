@@ -13,6 +13,7 @@ protocol TypingDetailProtocol: AnyObject {
     func setViews(chapter: Int, verse: Int, quoteText: String)
     func checkEqual(sourceText: String?, writeText: String?) -> Bool
     func clearWriteQuoteTextView()
+    func showCloseAlertController()
 }
 
 final class TypingDetailPresenter: NSObject {
@@ -149,20 +150,19 @@ final class TypingDetailPresenter: NSObject {
     }
     
     func loadBibleJson() -> Data? {
-        // 1. 불러올 파일 이름
-        let fileNm: String = "JsonBible"
-        // 2. 불러올 파일의 확장자명
+        let fileNm: String = "jsonbible"
         let extensionType = "json"
         
-        // 3. 파일 위치
-        guard let fileLocation = Bundle.main.url(forResource: fileNm, withExtension: extensionType) else { return nil }
+        guard let fileLocation = Bundle.main.url(forResource: fileNm, withExtension: extensionType) else {
+            viewController?.showCloseAlertController()
+            return nil
+        }
         
         do {
-            // 4. 해당 위치의 파일을 Data로 초기화하기
             let data = try Data(contentsOf: fileLocation)
             return data
         } catch {
-            // 5. 잘못된 위치나 불가능한 파일 처리 (오늘은 따로 안하기)
+            viewController?.showCloseAlertController()
             return nil
         }
     }

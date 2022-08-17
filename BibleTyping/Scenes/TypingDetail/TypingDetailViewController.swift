@@ -236,6 +236,20 @@ extension TypingDetailViewController: TypingDetailProtocol {
         
         return checkReturn
     }
+    
+    func showCloseAlertController() {
+        let alertController = UIAlertController(title: "데이터 읽기에 실패 했습니다.\n잠시 후에 다시 시도해 주세요.", message: nil, preferredStyle: .alert)
+      
+        let closeAction = UIAlertAction(title: "닫기", style: .destructive) {[weak self] _ in
+            self?.dismiss(animated: true)
+        }
+        
+        [closeAction].forEach { action in
+            alertController.addAction(action)
+        }
+        
+        present(alertController, animated: true)
+    }
 }
 
 private extension TypingDetailViewController {

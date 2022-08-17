@@ -135,7 +135,7 @@ extension TypingListPresenter: UICollectionViewDataSource {
     }
     
     func loadBibleJson() -> Data? {
-        let fileNm: String = "JsonBible"
+        let fileNm: String = "jsonbible"
         let extensionType = "json"
         
         guard let fileLocation = Bundle.main.url(forResource: fileNm, withExtension: extensionType) else {
