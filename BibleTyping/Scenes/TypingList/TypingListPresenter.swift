@@ -48,7 +48,7 @@ extension TypingListPresenter: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let spacing: CGFloat = 16.0
         let width: CGFloat = (collectionView.frame.width - spacing * 4) / 3
-        return CGSize(width: width, height: 100.0)
+        return CGSize(width: width, height: 94.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -113,7 +113,7 @@ extension TypingListPresenter: UICollectionViewDataSource {
         }
 
         cell?.setup(bible: kindBible!)
-        cell?.setupStatusButton(lastChapter, lastVerse, doneWrite)
+        cell?.setupStatusLabel(lastChapter, lastVerse, doneWrite)
         
         return cell ?? UICollectionViewCell()
     }

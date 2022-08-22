@@ -26,18 +26,17 @@ final class TypingListCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private lazy var statusButton: UIButton = {
-        let button = UIButton()
-
-        button.setTitle("통독전", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 15.0, weight: .semibold)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .lightGray
-        button.layer.cornerRadius = 9.0
+    private lazy var statusLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 15.0, weight: .semibold)
+        label.text = "통독전"
+        label.textColor = .white
+        label.textAlignment = .center
+        label.backgroundColor = .lightGray
+        label.clipsToBounds = true
+        label.layer.cornerRadius = 10.0
         
-        button.addTarget(self, action: #selector(didTabConfirmButton), for: .touchUpInside)
-        
-        return button
+        return label
     }()
     
     func setup(bible: Bible) {
@@ -48,18 +47,18 @@ final class TypingListCollectionViewCell: UICollectionViewCell {
         chapterLabel.text = "(\(String(bible.chapter)))"
     }
     
-    func setupStatusButton(_ chapter: Int, _ verse: Int, _ doneWrite: Bool) {
+    func setupStatusLabel(_ chapter: Int, _ verse: Int, _ doneWrite: Bool) {
         if doneWrite {
-            statusButton.setTitle("통독완", for: .normal)
-            statusButton.backgroundColor = .systemYellow
+            statusLabel.text = "통독완"
+            statusLabel.backgroundColor = .systemYellow
         } else if chapter != 0 && verse != 0 {
             var writeRecord: String
             writeRecord = "\(chapter)장 \(verse)절"
-            statusButton.setTitle(writeRecord, for: .normal)
-            statusButton.backgroundColor = .TitleBrown
+            statusLabel.text = writeRecord
+            statusLabel.backgroundColor = .TitleBrown
         } else {
-            statusButton.setTitle("통독전", for: .normal)
-            statusButton.backgroundColor = .lightGray
+            statusLabel.text = "통독전"
+            statusLabel.backgroundColor = .lightGray
         }
     }
 }
@@ -75,7 +74,7 @@ extension TypingListCollectionViewCell {
     }
     
     func setupLayout() {
-        [bookLabel, chapterLabel, statusButton]
+        [bookLabel, chapterLabel, statusLabel]
             .forEach { addSubview($0) }
         
         bookLabel.snp.makeConstraints {
@@ -88,14 +87,11 @@ extension TypingListCollectionViewCell {
             $0.bottom.equalTo(bookLabel.snp.bottom)
         }
         
-        statusButton.snp.makeConstraints {
+        statusLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalTo(bookLabel.snp.bottom).offset(16.0)
             $0.width.equalToSuperview().inset(8.0)
+            $0.height.equalTo(28.0)
         }
-    }
-    
-    @objc func didTabConfirmButton() {
-        ///TypingDetailViewController로 이동 구현 필요
     }
 }

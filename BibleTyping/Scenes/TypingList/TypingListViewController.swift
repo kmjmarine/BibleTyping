@@ -11,11 +11,30 @@ import SnapKit
 final class TypingListViewController: UIViewController {
     private lazy var presenter = TypingListPresenter(viewController: self)
     
-    private lazy var oldBibleLabel: UILabel = {
+    private lazy var bibleSwitch: UISwitch = {
+        let mySwitch = UISwitch(frame: CGRect.zero)
+        mySwitch.isOn = false
+        mySwitch.onTintColor = .systemGray4
+        mySwitch.tintColor = .red
+        mySwitch.thumbTintColor = .TitleBrown
+        mySwitch.layer.cornerRadius = mySwitch.frame.height / 2.0
+        mySwitch.backgroundColor = .systemGray4
+        mySwitch.clipsToBounds = true
+        mySwitch.addTarget(self, action: #selector(switchTab), for:  .valueChanged)
+        
+        return mySwitch
+    }()
+    
+    private lazy var bibleKindLabel: UILabel = {
         let label = UILabel()
         label.text = "구약성경"
-        label.textColor = .secondaryLabel
-        label.font = .systemFont(ofSize: 18.0, weight: .medium)
+        label.textColor = .TitleBrown
+        label.textColor = .white
+        label.textAlignment = .center
+        label.backgroundColor = .TitleBrown
+        label.clipsToBounds = true
+        label.layer.cornerRadius = 10.0
+        label.font = .systemFont(ofSize: 15.0, weight: .medium)
         
         return label
     }()
@@ -30,15 +49,6 @@ final class TypingListViewController: UIViewController {
         collectionView.register(TypingListCollectionViewCell.self, forCellWithReuseIdentifier: TypingListCollectionViewCell.identifier)
         
         return collectionView
-    }()
-    
-    private lazy var newBibleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "신약성경"
-        label.textColor = .secondaryLabel
-        label.font = .systemFont(ofSize: 18.0, weight: .medium)
-        
-        return label
     }()
     
     private lazy var newBibleCollectionView: UICollectionView = {
@@ -78,49 +88,53 @@ final class TypingListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
         
+        if (bibleSwitch.isOn == true) {
+            bibleKindLabel.text = "신약성경"
+            oldBibleCollectionView.isHidden = true
+            newBibleCollectionView.isHidden = false
+        } else {
+            bibleKindLabel.text = "구약성경"
+            newBibleCollectionView.isHidden = true
+            oldBibleCollectionView.isHidden = false
+        }
+        
         self.tabBarController?.navigationController?.isNavigationBarHidden = true
         self.oldBibleCollectionView.reloadData()
         self.newBibleCollectionView.reloadData()
+                                                   
+        let rightBarButtonItem1 = bibleSwitch
+        rightBarButtonItem1.bounds = CGRect(x: 0, y: 0, width: 50, height: 30)
+        let rightItem1 = UIBarButtonItem(customView: rightBarButtonItem1)
+       
+        let rightBarButtonItem2 = bibleKindLabel
+        rightBarButtonItem2.bounds = CGRect(x: 0, y: 0, width: 70, height: 30)
+        let rightItem2 = UIBarButtonItem(customView: rightBarButtonItem2)
         
+        self.navigationItem.setRightBarButtonItems([rightItem2, rightItem1], animated: true)
+
         presenter.viewWillAppear()
     }
 }
 
 extension TypingListViewController: TypingListProtocol {
     func setupView() {
-        [oldBibleLabel, oldBibleCollectionView, newBibleLabel, newBibleCollectionView]
+        [oldBibleCollectionView, newBibleCollectionView]
             .forEach { view.addSubview($0) }
         
         let inset: CGFloat = 16.0
-        let bottomSpacing: CGFloat = (tabBarController?.tabBar.frame.height)!
-        
-        oldBibleLabel.snp.makeConstraints {
+    
+        oldBibleCollectionView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin).inset(inset)
             $0.leading.equalToSuperview().inset(inset)
             $0.trailing.equalToSuperview().inset(inset)
-            $0.height.equalTo(32.0)
-        }
-        
-        oldBibleCollectionView.snp.makeConstraints {
-            $0.top.equalTo(oldBibleLabel.snp.bottom)
-            $0.leading.equalTo(oldBibleLabel.snp.leading)
-            $0.trailing.equalTo(oldBibleLabel.snp.trailing)
-            $0.height.equalTo(270.0)
-        }
-        
-        newBibleLabel.snp.makeConstraints {
-            $0.top.equalTo(oldBibleCollectionView.snp.bottom).offset(32.0)
-            $0.leading.equalTo(oldBibleCollectionView.snp.leading)
-            $0.trailing.equalTo(oldBibleCollectionView.snp.trailing)
-            $0.height.equalTo(32.0)
+            $0.bottom.equalToSuperview().inset(inset)
         }
         
         newBibleCollectionView.snp.makeConstraints {
-            $0.top.equalTo(newBibleLabel.snp.bottom)
-            $0.leading.equalTo(newBibleLabel.snp.leading)
-            $0.trailing.equalTo(newBibleLabel.snp.trailing)
-            $0.height.equalTo(270.0)
-            $0.bottom.equalToSuperview().inset(bottomSpacing * 1.3)
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin).inset(inset)
+            $0.leading.equalToSuperview().inset(inset)
+            $0.trailing.equalToSuperview().inset(inset)
+            $0.bottom.equalToSuperview().inset(inset)
         }
     }
     
@@ -141,6 +155,20 @@ extension TypingListViewController: TypingListProtocol {
         }
         
         present(alertController, animated: true)
+    }
+    
+    @objc func switchTab(sender: UISwitch) {
+        if (sender.isOn == true) {
+            sender.setOn(true, animated: true)
+            bibleKindLabel.text = "신약성경"
+            oldBibleCollectionView.isHidden = true
+            newBibleCollectionView.isHidden = false
+        } else {
+            sender.setOn(false, animated: true)
+            bibleKindLabel.text = "구약성경"
+            newBibleCollectionView.isHidden = true
+            oldBibleCollectionView.isHidden = false
+        }
     }
 }
 
