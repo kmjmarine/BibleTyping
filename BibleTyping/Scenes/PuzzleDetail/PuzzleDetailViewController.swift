@@ -167,7 +167,7 @@ extension PuzzleDetailViewController: PuzzleDetailProtocol {
             $0.top.equalTo(explainLabel.snp.bottom).offset(16.0)
             $0.leading.equalToSuperview().inset(16.0)
             $0.trailing.equalToSuperview().inset(16.0)
-            $0.bottom.equalToSuperview().inset(bottomSpacing * 5.0)
+            $0.bottom.equalToSuperview().inset(bottomSpacing * 5.1)
         }
         
         infoLabel.snp.makeConstraints {

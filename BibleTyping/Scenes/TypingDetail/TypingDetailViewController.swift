@@ -181,7 +181,8 @@ extension TypingDetailViewController: TypingDetailProtocol {
         
         let startIdx: String.Index = quoteText.index(quoteText.startIndex, offsetBy: getMakeQuote(chapter, verse)) //장, 절 삭제
 
-        let finalQuoteText = String(quoteText[startIdx...])
+        var finalQuoteText = String(quoteText[startIdx...])
+        finalQuoteText = finalQuoteText.replacingOccurrences(of: "(神)", with: "") //한자 삭제
         
         sourceQuoteLabel.text = finalQuoteText
     }
