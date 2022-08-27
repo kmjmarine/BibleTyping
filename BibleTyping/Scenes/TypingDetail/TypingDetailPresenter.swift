@@ -116,7 +116,7 @@ final class TypingDetailPresenter: NSObject {
         viewController?.clearWriteQuoteTextView()
         
         timer?.invalidate()
-        timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(moveToViewWillAppear), userInfo: nil, repeats: false)
+        timer = Timer.scheduledTimer(timeInterval: 2.4, target: self, selector: #selector(moveToViewWillAppear), userInfo: nil, repeats: false)
     }
     
     func didTabConfirmButton(sourceText: String?, writeText: String?) {
