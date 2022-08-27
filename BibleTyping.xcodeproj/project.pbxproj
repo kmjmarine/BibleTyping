@@ -15,6 +15,8 @@
 		E5274904288F7BC20070AEDA /* PuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5274903288F7BC20070AEDA /* PuzzleViewController.swift */; };
 		E5274907288FB6D70070AEDA /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5274906288FB6D70070AEDA /* Puzzle.swift */; };
 		E528583028BA681A0083208D /* wrongeffect.wav in Resources */ = {isa = PBXBuildFile; fileRef = E528582F28BA681A0083208D /* wrongeffect.wav */; };
+		E528583228BA6D3D0083208D /* TypingDetailDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E528583128BA6D3D0083208D /* TypingDetailDoneViewController.swift */; };
+		E528583428BA70F90083208D /* congratulations.json in Resources */ = {isa = PBXBuildFile; fileRef = E528583328BA70F90083208D /* congratulations.json */; };
 		E529F1C728935D1D00B37A13 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E529F1C628935D1D00B37A13 /* UIColor+.swift */; };
 		E529F1CA28937CD300B37A13 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = E529F1C928937CD300B37A13 /* Toast */; };
 		E532384D289E47E100B69749 /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = E532384C289E47E100B69749 /* success.json */; };
@@ -74,6 +76,8 @@
 		E5274903288F7BC20070AEDA /* PuzzleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleViewController.swift; sourceTree = "<group>"; };
 		E5274906288FB6D70070AEDA /* Puzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
 		E528582F28BA681A0083208D /* wrongeffect.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wrongeffect.wav; sourceTree = "<group>"; };
+		E528583128BA6D3D0083208D /* TypingDetailDoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingDetailDoneViewController.swift; sourceTree = "<group>"; };
+		E528583328BA70F90083208D /* congratulations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = congratulations.json; sourceTree = "<group>"; };
 		E529F1C628935D1D00B37A13 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		E532384C289E47E100B69749 /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
 		E53C860A28ACCD5C00D3D734 /* intro.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = intro.json; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 				E5D6DCA12888CF2400A06A5C /* String+.swift */,
 				E529F1C628935D1D00B37A13 /* UIColor+.swift */,
 				E5CB5968289913F600D333B5 /* UILabel+.swift */,
+				E528583328BA70F90083208D /* congratulations.json */,
 				E5475DB528BA2A0000BDFC0F /* correct.json */,
 				E53C860A28ACCD5C00D3D734 /* intro.json */,
 				E532384C289E47E100B69749 /* success.json */,
@@ -242,6 +247,7 @@
 				E5652B6F2873E6A5001B0B5F /* TypingDetailViewController.swift */,
 				E5652B77287410A6001B0B5F /* TypingDetailPresenter.swift */,
 				E5652B792874143D001B0B5F /* TypingDetailTableViewCell.swift */,
+				E528583128BA6D3D0083208D /* TypingDetailDoneViewController.swift */,
 			);
 			path = TypingDetail;
 			sourceTree = "<group>";
@@ -397,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E511A7F628AA173C00E46114 /* jsonbible.json in Resources */,
+				E528583428BA70F90083208D /* congratulations.json in Resources */,
 				E528583028BA681A0083208D /* wrongeffect.wav in Resources */,
 				E5475DB628BA2A0000BDFC0F /* correct.json in Resources */,
 				E5652B402873CE0A001B0B5F /* LaunchScreen.storyboard in Resources */,
@@ -430,6 +437,7 @@
 				E5652B78287410A6001B0B5F /* TypingDetailPresenter.swift in Sources */,
 				E5C72B0B2879644A0063E704 /* TypingListViewController.swift in Sources */,
 				E5652B342873CE09001B0B5F /* AppDelegate.swift in Sources */,
+				E528583228BA6D3D0083208D /* TypingDetailDoneViewController.swift in Sources */,
 				E54F9903287E9CAA00A59A77 /* UserDefaultsManager.swift in Sources */,
 				E511A7F428AA12E700E46114 /* BibleJson.swift in Sources */,
 				E5C72B0F287967800063E704 /* TypingListCollectionViewCell.swift in Sources */,

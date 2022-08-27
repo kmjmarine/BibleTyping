@@ -11,10 +11,6 @@ import Toast
 import Lottie
 import AVFoundation
 
-//protocol TypingViewControllerDelegate: AnyObject {
-//    func didEnterText(_ sourceText: String)
-//}
-
 final class TypingDetailViewController: UIViewController {
     private let bookkind: String
     private let bookname: String
@@ -24,7 +20,6 @@ final class TypingDetailViewController: UIViewController {
     
     private lazy var presenter = TypingDetailPresenter(viewController: self, bookkind: bookkind, bookname: bookname, chapter: chapter, verse: verse)
     private let placeholderText = NSLocalizedString("여기에 입력해 주세요", comment: "입력")
-    //private weak var delegate: TypingViewControllerDelegate?
     
     private lazy var bookNameLabel: UILabel = {
        let label = UILabel()
@@ -289,6 +284,11 @@ extension TypingDetailViewController: TypingDetailProtocol {
         }
         
         present(alertController, animated: true)
+    }
+    
+    func moveToTypingListViewController() {
+        let typingDetailDoneViewController = TypingDetailDoneViewController(bookname: bookname)
+        self.navigationController?.pushViewController(typingDetailDoneViewController, animated: false)
     }
 }
 

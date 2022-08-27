@@ -15,6 +15,7 @@ protocol TypingDetailProtocol: AnyObject {
     func clearWriteQuoteTextView()
     func showCorrectAmnimationView(_ show: Bool)
     func showCloseAlertController()
+    func moveToTypingListViewController()
 }
 
 final class TypingDetailPresenter: NSObject {
@@ -59,6 +60,8 @@ final class TypingDetailPresenter: NSObject {
         var lastVerse: Int = 1
         var doneChapter: Int = 1
         var doneVerse: Int = 1
+        var completeChapter: Int = 1
+        var completeVerse: Int = 1
  
         record = userDefaultsManager.getRecord()
         
@@ -76,15 +79,27 @@ final class TypingDetailPresenter: NSObject {
             let bibleList = try? JSONDecoder().decode(BibleJson.self, from: jsonData)
         else { return }
         
+        //해당 성경 마지막 장절 가져오기
+        if let lastIndexJson = bibleList.Bibles.lastIndex(where: { $0.bookName == bookname }) {
+            completeChapter = bibleList.Bibles[lastIndexJson].chapter
+            completeVerse = bibleList.Bibles[lastIndexJson].verse
+        }
         
+        //현재 저장된 장절 가져오기
         if let indexJson = bibleList.Bibles.firstIndex(where: { $0.bookName == bookname && $0.chapter == chapter }) {
             doneChapter = bibleList.Bibles[indexJson].chapter
             doneVerse = bibleList.Bibles[indexJson].verse
+        }
+        
+        //마지막 장절 완료 시 TypingDetailDoneViewContoller로 push
+        if doneChapter >= completeChapter && doneVerse >= completeVerse {
+            viewController?.moveToTypingListViewController()
         }
 
         var finalChapter: Int = 1
         var finalVerse: Int = 1
         
+        //1장 마지막절 완료 시 2장 1절로 셋팅 처리
         if lastChapter == doneChapter && (lastVerse - 1) >= doneVerse {
             finalChapter += 1
             finalVerse = 1
@@ -116,7 +131,7 @@ final class TypingDetailPresenter: NSObject {
         viewController?.clearWriteQuoteTextView()
         
         timer?.invalidate()
-        timer = Timer.scheduledTimer(timeInterval: 2.4, target: self, selector: #selector(moveToViewWillAppear), userInfo: nil, repeats: false)
+        timer = Timer.scheduledTimer(timeInterval: 2.2, target: self, selector: #selector(moveToViewWillAppear), userInfo: nil, repeats: false)
     }
     
     func didTabConfirmButton(sourceText: String?, writeText: String?) {

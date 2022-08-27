@@ -87,6 +87,9 @@ final class TypingListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
         
+        //navigationbar back button 숨김
+        self.navigationItem.hidesBackButton = true
+        
         if (bibleSwitch.isOn == true) {
             bibleKindLabel.text = "신약성경"
             oldBibleCollectionView.isHidden = true
