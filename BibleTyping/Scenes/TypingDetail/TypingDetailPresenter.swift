@@ -13,6 +13,7 @@ protocol TypingDetailProtocol: AnyObject {
     func setViews(chapter: Int, verse: Int, quoteText: String)
     func checkEqual(sourceText: String?, writeText: String?) -> Bool
     func clearWriteQuoteTextView()
+    func showCorrectAmnimationView(_ show: Bool)
     func showCloseAlertController()
 }
 
@@ -20,6 +21,7 @@ final class TypingDetailPresenter: NSObject {
     private weak var viewController: TypingDetailProtocol?
     private let searchManager: SearchManagerProtocol
     private let userDefaultsManager: UserDefaultsManagerProtocol
+    private var timer: Timer?
     
     var bookkind: String
     var bookname: String
@@ -107,14 +109,14 @@ final class TypingDetailPresenter: NSObject {
         viewController?.didNotCorrect()
     }
     
-    func clearWriteQuoteTextView() {
-        viewController?.clearWriteQuoteTextView()
-    }
-    
     func didCorrect(bookkind: String, bookname: String, chapter: Int, verse: Int) {
         userDefaultsManager.setRecord(Record(user: User.shared, bookkind: bookkind, bookname: bookname, chapter: chapter, verse: verse))
         
-        self.viewWillAppear()
+        viewController?.showCorrectAmnimationView(true)
+        viewController?.clearWriteQuoteTextView()
+        
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(moveToViewWillAppear), userInfo: nil, repeats: false)
     }
     
     func didTabConfirmButton(sourceText: String?, writeText: String?) {
@@ -125,7 +127,6 @@ final class TypingDetailPresenter: NSObject {
         if !checkResult {
             didNotCorrect()
         } else {
-            clearWriteQuoteTextView()
             didCorrect(bookkind: bookkind, bookname: bookname, chapter: chapter, verse: verse)
         }
     }
@@ -165,5 +166,13 @@ final class TypingDetailPresenter: NSObject {
             viewController?.showCloseAlertController()
             return nil
         }
+    }
+}
+
+extension TypingDetailPresenter {
+    @objc func moveToViewWillAppear() {
+        self.viewWillAppear()
+       
+        viewController?.showCorrectAmnimationView(false)
     }
 }

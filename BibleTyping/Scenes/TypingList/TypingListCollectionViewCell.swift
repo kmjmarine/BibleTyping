@@ -26,6 +26,18 @@ final class TypingListCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.distribution = .fillProportionally
+        stackView.spacing = 1.0
+        stackView.alignment = .center
+        
+        [bookLabel, chapterLabel]
+            .forEach { stackView.addArrangedSubview($0) }
+        
+        return stackView
+    }()
+    
     private lazy var statusLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 15.0, weight: .semibold)
@@ -74,17 +86,12 @@ extension TypingListCollectionViewCell {
     }
     
     func setupLayout() {
-        [bookLabel, chapterLabel, statusLabel]
+        [stackView, statusLabel]
             .forEach { addSubview($0) }
         
-        bookLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(16.0)
+        stackView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(16.0)
-        }
-        
-        chapterLabel.snp.makeConstraints {
-            $0.leading.equalTo(bookLabel.snp.trailing)
-            $0.bottom.equalTo(bookLabel.snp.bottom)
+            $0.centerX.equalToSuperview()
         }
         
         statusLabel.snp.makeConstraints {

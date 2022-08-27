@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import Toast
 import Lottie
+import AVFoundation
 
 final class PuzzleDetailViewController: UIViewController {
     private lazy var presenter = PuzzleDetailPresenter(viewController: self, quote: verse)
@@ -288,6 +289,7 @@ extension PuzzleDetailViewController {
                 return true
             } else {
                 view.makeToast("앗! 첫번째에 들어갈 낱말과 다른 낱말이에요.", duration: 1.5)
+                UIDevice.vibrate()
                 
                 return false
             }
@@ -302,6 +304,7 @@ extension PuzzleDetailViewController {
                 return true
             } else {
                 view.makeToast("앗! 두번째에 들어갈 낱말과 다른 낱말이에요.", duration: 1.5)
+                UIDevice.vibrate()
                 
                 return false
             }
@@ -315,7 +318,8 @@ extension PuzzleDetailViewController {
                 
                 return true
             } else {
-                view.makeToast("앗! 세번째에 들어갈 낲말과 다른 낱말이에요.", duration: 1.5)
+                view.makeToast("앗! 세번째에 들어갈 낱말과 다른 낱말이에요.", duration: 1.5)
+                UIDevice.vibrate()
                 
                 return false
             }
@@ -362,5 +366,11 @@ extension UILabel {
                                              range: NSRange(location: 0, length: attributedString.length))
         
         attributedText = attributedString
+    }
+}
+
+private extension UIDevice {
+    static func vibrate() {
+        AudioServicesPlaySystemSound(1005)
     }
 }

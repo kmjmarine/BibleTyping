@@ -17,6 +17,16 @@ final class IntroViewController: UIViewController {
         return view
     }()
     
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "BIBLE TYPING"
+        label.textColor = .white
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 45.0, weight: .heavy)
+        
+        return label
+    }()
+    
     private lazy var animationView: AnimationView = {
         let animationView = AnimationView(name: "intro")
         animationView.contentMode = .scaleAspectFit
@@ -62,6 +72,16 @@ final class IntroViewController: UIViewController {
         return stackView
     }()
     
+    private lazy var versionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "v2.2"
+        label.textColor = .TitleBrown
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 15.0, weight: .light)
+        
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -73,8 +93,14 @@ final class IntroViewController: UIViewController {
     }
     
     func setupViews() {
-        [baseView, animationView, buttonStackView]
+        [baseView, titleLabel, animationView, buttonStackView, versionLabel]
             .forEach { view.addSubview($0) }
+            
+        guard let info = Bundle.main.infoDictionary,
+                  let currentVersion = info["CFBundleShortVersionString"] as? String else { return }
+        versionLabel.text = "v" + currentVersion
+        
+        let width = UIScreen.main.bounds.width
         
         baseView.snp.makeConstraints {
             $0.top.equalToSuperview()
@@ -83,16 +109,26 @@ final class IntroViewController: UIViewController {
             $0.bottom.equalToSuperview()
         }
         
+        titleLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(16.0)
+        }
+        
         animationView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.centerY.equalToSuperview().offset(-60.0)
-            $0.width.equalTo(300.0)
+            $0.centerY.equalToSuperview().offset(-45.0)
+            $0.width.equalTo(width / 1.3)
         }
         
         buttonStackView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.width.equalToSuperview().inset(50.0)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(100.0)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(110.0)
+        }
+        
+        versionLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(buttonStackView.snp.bottom).offset(60.0)
         }
     }
 }

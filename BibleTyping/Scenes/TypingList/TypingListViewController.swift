@@ -28,7 +28,6 @@ final class TypingListViewController: UIViewController {
     private lazy var bibleKindLabel: UILabel = {
         let label = UILabel()
         label.text = "구약성경"
-        label.textColor = .TitleBrown
         label.textColor = .white
         label.textAlignment = .center
         label.backgroundColor = .TitleBrown

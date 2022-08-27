@@ -8,6 +8,8 @@
 import UIKit
 import SnapKit
 import Toast
+import Lottie
+import AVFoundation
 
 //protocol TypingViewControllerDelegate: AnyObject {
 //    func didEnterText(_ sourceText: String)
@@ -92,6 +94,15 @@ final class TypingDetailViewController: UIViewController {
         return stackView
     }()
     
+    private lazy var animationView: AnimationView = {
+        let animationView = AnimationView(name: "correct")
+        animationView.contentMode = .scaleAspectFit
+        animationView.play()
+        animationView.loopMode = .loop
+        
+        return animationView
+    }()
+    
     init(book: String, kind: String, chpater: Int, verse: Int) {
         self.bookname = book
         self.bookkind = kind
@@ -114,6 +125,7 @@ final class TypingDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
         
+        animationView.isHidden = true //정답 이미지 기본 숨기기
         presenter.viewWillAppear()
     }
     
@@ -144,13 +156,14 @@ extension TypingDetailViewController: UITextViewDelegate {
 
 extension TypingDetailViewController: TypingDetailProtocol {
     func setupViews() {
-        [bookNameLabel, sourceQuoteLabel, writeQuoteTextView, buttonStackView]
+        [bookNameLabel, sourceQuoteLabel, writeQuoteTextView, buttonStackView, animationView]
             .forEach { view.addSubview($0) }
         
         let defaultSpacing: CGFloat = 24.0
         
         bookNameLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(defaultSpacing)
+            $0.centerX.equalToSuperview()
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
         }
@@ -174,6 +187,12 @@ extension TypingDetailViewController: TypingDetailProtocol {
             $0.trailing.equalToSuperview().inset(defaultSpacing)
             $0.height.equalTo(50.0)
         }
+        
+        animationView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalTo(writeQuoteTextView.snp.centerY)
+            $0.height.equalTo(150.0)
+        }
     }
     
     func setViews(chapter: Int, verse: Int, quoteText: String) {
@@ -189,10 +208,19 @@ extension TypingDetailViewController: TypingDetailProtocol {
     
     func didNotCorrect() {
         view.makeToast("틀린 부분이 있어요. 수정 후 다시 저장해 주세요.")
+        UIDevice.vibrate()
     }
     
     func clearWriteQuoteTextView() {
         writeQuoteTextView.text = ""
+    }
+    
+    func showCorrectAmnimationView(_ show: Bool) {
+        if show {
+            animationView.isHidden = false
+        } else {
+            animationView.isHidden = true
+        }
     }
     
     func checkEqual(sourceText: String?, writeText: String?) -> Bool {
@@ -269,6 +297,12 @@ private extension TypingDetailViewController {
         let verseLength: Int = String(verse).count
         
         return chapterLength + verseLength + 2 //"1:10 (장+절) + 공백+콜론 2 더함"
+    }
+}
+
+private extension UIDevice {
+    static func vibrate() {
+        AudioServicesPlaySystemSound(1005)
     }
 }
 
