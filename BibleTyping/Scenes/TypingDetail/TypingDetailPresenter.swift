@@ -85,14 +85,14 @@ final class TypingDetailPresenter: NSObject {
             completeVerse = bibleList.Bibles[lastIndexJson].verse
         }
         
-        //현재 저장된 장절 가져오기
+        //현재 장의 마지막 장절 가져오기
         if let indexJson = bibleList.Bibles.firstIndex(where: { $0.bookName == bookname && $0.chapter == chapter }) {
             doneChapter = bibleList.Bibles[indexJson].chapter
             doneVerse = bibleList.Bibles[indexJson].verse
         }
         
         //마지막 장절 완료 시 TypingDetailDoneViewContoller로 push
-        if doneChapter >= completeChapter && doneVerse >= completeVerse {
+        if lastChapter >= completeChapter && (lastVerse - 1) >= completeVerse {
             viewController?.moveToTypingListViewController()
         }
 
