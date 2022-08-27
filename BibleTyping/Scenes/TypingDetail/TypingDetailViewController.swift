@@ -20,6 +20,7 @@ final class TypingDetailViewController: UIViewController {
     private let bookname: String
     private var chapter: Int
     private var verse: Int
+    private var audioPlayer: AVAudioPlayer?
     
     private lazy var presenter = TypingDetailPresenter(viewController: self, bookkind: bookkind, bookname: bookname, chapter: chapter, verse: verse)
     private let placeholderText = NSLocalizedString("여기에 입력해 주세요", comment: "입력")
@@ -208,6 +209,16 @@ extension TypingDetailViewController: TypingDetailProtocol {
     
     func didNotCorrect() {
         view.makeToast("틀린 부분이 있어요. 수정 후 다시 저장해 주세요.")
+        let url = Bundle.main.url(forResource: "wrongeffect", withExtension: "wav")
+            if let url = url {
+                do {
+                    audioPlayer = try AVAudioPlayer(contentsOf: url)
+                    audioPlayer?.prepareToPlay()
+                    audioPlayer?.play()
+                } catch {
+                    print(error)
+                }
+            }
         UIDevice.vibrate()
     }
     
@@ -302,7 +313,7 @@ private extension TypingDetailViewController {
 
 private extension UIDevice {
     static func vibrate() {
-        AudioServicesPlaySystemSound(1005)
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
     }
 }
 

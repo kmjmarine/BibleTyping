@@ -14,6 +14,7 @@
 		E5274902288F7A400070AEDA /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5274901288F7A400070AEDA /* TabbarController.swift */; };
 		E5274904288F7BC20070AEDA /* PuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5274903288F7BC20070AEDA /* PuzzleViewController.swift */; };
 		E5274907288FB6D70070AEDA /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5274906288FB6D70070AEDA /* Puzzle.swift */; };
+		E528583028BA681A0083208D /* wrongeffect.wav in Resources */ = {isa = PBXBuildFile; fileRef = E528582F28BA681A0083208D /* wrongeffect.wav */; };
 		E529F1C728935D1D00B37A13 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E529F1C628935D1D00B37A13 /* UIColor+.swift */; };
 		E529F1CA28937CD300B37A13 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = E529F1C928937CD300B37A13 /* Toast */; };
 		E532384D289E47E100B69749 /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = E532384C289E47E100B69749 /* success.json */; };
@@ -72,6 +73,7 @@
 		E5274901288F7A400070AEDA /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
 		E5274903288F7BC20070AEDA /* PuzzleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleViewController.swift; sourceTree = "<group>"; };
 		E5274906288FB6D70070AEDA /* Puzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
+		E528582F28BA681A0083208D /* wrongeffect.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wrongeffect.wav; sourceTree = "<group>"; };
 		E529F1C628935D1D00B37A13 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		E532384C289E47E100B69749 /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
 		E53C860A28ACCD5C00D3D734 /* intro.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = intro.json; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				E53C860A28ACCD5C00D3D734 /* intro.json */,
 				E532384C289E47E100B69749 /* success.json */,
 				E511A7F528AA173C00E46114 /* jsonbible.json */,
+				E528582F28BA681A0083208D /* wrongeffect.wav */,
 			);
 			path = BibleTyping;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E511A7F628AA173C00E46114 /* jsonbible.json in Resources */,
+				E528583028BA681A0083208D /* wrongeffect.wav in Resources */,
 				E5475DB628BA2A0000BDFC0F /* correct.json in Resources */,
 				E5652B402873CE0A001B0B5F /* LaunchScreen.storyboard in Resources */,
 				E5652B3D2873CE0A001B0B5F /* Assets.xcassets in Resources */,

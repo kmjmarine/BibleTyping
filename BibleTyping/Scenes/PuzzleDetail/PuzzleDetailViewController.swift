@@ -22,6 +22,7 @@ final class PuzzleDetailViewController: UIViewController {
     private var doneVerse2: Bool = false
     private var doneVerse3: Bool = false
     private var timer: Timer?
+    private var audioPlayer: AVAudioPlayer?
     
     private lazy var rigthBarButtonItem = UIBarButtonItem(
         image: UIImage(systemName: "arrow.clockwise"),
@@ -290,6 +291,7 @@ extension PuzzleDetailViewController {
             } else {
                 view.makeToast("앗! 첫번째에 들어갈 낱말과 다른 낱말이에요.", duration: 1.5)
                 UIDevice.vibrate()
+                wrongEffect()
                 
                 return false
             }
@@ -305,6 +307,7 @@ extension PuzzleDetailViewController {
             } else {
                 view.makeToast("앗! 두번째에 들어갈 낱말과 다른 낱말이에요.", duration: 1.5)
                 UIDevice.vibrate()
+                wrongEffect()
                 
                 return false
             }
@@ -320,6 +323,7 @@ extension PuzzleDetailViewController {
             } else {
                 view.makeToast("앗! 세번째에 들어갈 낱말과 다른 낱말이에요.", duration: 1.5)
                 UIDevice.vibrate()
+                wrongEffect()
                 
                 return false
             }
@@ -336,6 +340,19 @@ extension PuzzleDetailViewController {
             timer?.invalidate()
             timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(moveToPuzzleViewController), userInfo: nil, repeats: false)
         }
+    }
+    
+    private func wrongEffect() {
+        let url = Bundle.main.url(forResource: "wrongeffect", withExtension: "wav")
+            if let url = url {
+                do {
+                    audioPlayer = try AVAudioPlayer(contentsOf: url)
+                    audioPlayer?.prepareToPlay()
+                    audioPlayer?.play()
+                } catch {
+                    print(error)
+                }
+            }
     }
 }
 
@@ -371,6 +388,6 @@ extension UILabel {
 
 private extension UIDevice {
     static func vibrate() {
-        AudioServicesPlaySystemSound(1005)
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
     }
 }
