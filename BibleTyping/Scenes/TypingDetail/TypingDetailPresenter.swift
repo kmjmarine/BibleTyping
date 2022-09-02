@@ -8,6 +8,7 @@
 import UIKit
 
 protocol TypingDetailProtocol: AnyObject {
+    func setupNavigationBar()
     func setupViews()
     func didNotCorrect()
     func setViews(chapter: Int, verse: Int, quoteText: String)
@@ -16,6 +17,7 @@ protocol TypingDetailProtocol: AnyObject {
     func showCorrectAmnimationView(_ show: Bool)
     func showCloseAlertController()
     func moveToTypingListViewController()
+    func setBookmarked(_ isBookmark: Bool, _ isAlert: Bool)
 }
 
 final class TypingDetailPresenter: NSObject {
@@ -23,6 +25,7 @@ final class TypingDetailPresenter: NSObject {
     private let searchManager: SearchManagerProtocol
     private let userDefaultsManager: UserDefaultsManagerProtocol
     private var timer: Timer?
+    private var bookmark: [Bookmark] = []
     
     var bookkind: String
     var bookname: String
@@ -51,6 +54,7 @@ final class TypingDetailPresenter: NSObject {
     }
     
     func viewDidLoad() {
+        viewController?.setupNavigationBar()
         viewController?.setupViews()
     }
     
@@ -118,6 +122,13 @@ final class TypingDetailPresenter: NSObject {
 
         self.chapter = finalChapter
         self.verse = finalVerse
+        
+        //북마크 여부 처리
+        bookmark = userDefaultsManager.getBookmark()
+        if (bookmark.firstIndex(where: { $0.bookname == self.bookname && $0.chapter == self.chapter && $0.verse == self.verse
+        }) != nil) {
+            viewController?.setBookmarked(true, false)
+        }
     }
     
     func didNotCorrect() {
@@ -144,6 +155,31 @@ final class TypingDetailPresenter: NSObject {
         } else {
             didCorrect(bookkind: bookkind, bookname: bookname, chapter: chapter, verse: verse)
         }
+    }
+    
+    func didTabBookmakButton(quote: String, isBookmark: Bool) {
+        bookmark = userDefaultsManager.getBookmark()
+        
+        if isBookmark {
+            //이미 북마크 되어 있는지 확인
+            if (bookmark.firstIndex(where: { $0.bookname == self.bookname && $0.chapter == self.chapter && $0.verse == self.verse}) == nil) {
+                userDefaultsManager.setBookmark(Bookmark(
+                    bookname: self.bookname,
+                    chapter: self.chapter,
+                    verse: self.verse,
+                    quote: quote)
+                    )
+                    viewController?.setBookmarked(true, true)
+                }
+            } else {
+                userDefaultsManager.delBookmark(Bookmark(
+                    bookname: self.bookname,
+                    chapter: self.chapter,
+                    verse: self.verse,
+                    quote: quote)
+                    )
+                    viewController?.setBookmarked(false, true)
+            }
     }
     
     func setBook() -> String {

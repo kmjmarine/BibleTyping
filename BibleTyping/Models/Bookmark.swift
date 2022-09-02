@@ -7,8 +7,9 @@
 
 import Foundation
 
-struct Bookmak: Codable {
+struct Bookmark: Codable {
     let bookname: String
-    let chpater: String
-    let verse: String
+    let chapter: Int
+    let verse: Int
+    let quote: String
 }

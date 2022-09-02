@@ -141,7 +141,7 @@ extension TypingListViewController: TypingListProtocol {
     }
     
     func pushToTypingViewController(book: String, kind: String) {
-        let typingDetailViewController = TypingDetailViewController(book: book, kind: kind, chpater: 1, verse: 1)
+        let typingDetailViewController = TypingDetailViewController(book: book, kind: kind, chapter: 1, verse: 1)
         navigationController?.pushViewController(typingDetailViewController, animated: false)
     }
     

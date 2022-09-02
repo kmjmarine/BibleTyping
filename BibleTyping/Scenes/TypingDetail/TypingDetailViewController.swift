@@ -22,7 +22,7 @@ final class TypingDetailViewController: UIViewController {
     private let placeholderText = NSLocalizedString("여기에 입력해 주세요", comment: "입력")
     
     private lazy var bookNameLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.font = .systemFont(ofSize: 30.0, weight: .bold)
         label.textAlignment = .center
         
@@ -99,7 +99,14 @@ final class TypingDetailViewController: UIViewController {
         return animationView
     }()
     
-    init(book: String, kind: String, chpater: Int, verse: Int) {
+    private lazy var rigthBarButtonItem = UIBarButtonItem(
+        image: UIImage(systemName: "bookmark"),
+        style: .plain,
+        target: self,
+        action: #selector(didTabBookmakButton)
+    )
+    
+    init(book: String, kind: String, chapter: Int, verse: Int) {
         self.bookname = book
         self.bookkind = kind
         self.chapter = 1
@@ -191,6 +198,10 @@ extension TypingDetailViewController: TypingDetailProtocol {
         }
     }
     
+    func setupNavigationBar() {
+        navigationItem.rightBarButtonItem = rigthBarButtonItem
+    }
+    
     func setViews(chapter: Int, verse: Int, quoteText: String) {
         bookNameLabel.text = bookname + " \(chapter)장 \(verse)절"
         
@@ -200,6 +211,18 @@ extension TypingDetailViewController: TypingDetailProtocol {
         finalQuoteText = finalQuoteText.replacingOccurrences(of: "(神)", with: "") //한자 삭제
         
         sourceQuoteLabel.text = finalQuoteText
+    }
+    
+    func setBookmarked(_ isBookmark: Bool, _ isAlert: Bool) {
+        if isBookmark {
+            rigthBarButtonItem.image = UIImage(systemName: "bookmark.fill")
+            if isAlert {
+                view.makeToast("북마크가 설정 되었어요.")
+            }
+        } else {
+            rigthBarButtonItem.image = UIImage(systemName: "bookmark")
+            view.makeToast("북마크 설정이 해제 되었어요.")
+        }
     }
     
     func didNotCorrect() {
@@ -302,9 +325,25 @@ private extension TypingDetailViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @objc func didTabBookmakButton() {
+        var isBookmark: Bool
+        
+        if rigthBarButtonItem.image == UIImage(systemName: "bookmark") {
+            rigthBarButtonItem.image = UIImage(systemName: "bookmark.fill")
+            isBookmark = true
+        } else {
+            rigthBarButtonItem.image = UIImage(systemName: "bookmark")
+            isBookmark = false
+        }
+        
+        if let quote = sourceQuoteLabel.text {
+            presenter.didTabBookmakButton(quote: quote, isBookmark: isBookmark)
+        }
+    }
+    
     //장:절 삭제 (1:10)
-    func getMakeQuote(_ chpater: Int, _ verse: Int) -> Int {
-        let chapterLength: Int = String(chpater).count
+    func getMakeQuote(_ chapter: Int, _ verse: Int) -> Int {
+        let chapterLength: Int = String(chapter).count
         let verseLength: Int = String(verse).count
         
         return chapterLength + verseLength + 2 //"1:10 (장+절) + 공백+콜론 2 더함"

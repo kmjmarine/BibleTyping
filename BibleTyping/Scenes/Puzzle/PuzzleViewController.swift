@@ -96,7 +96,7 @@ final class PuzzleViewController: UIViewController {
 extension PuzzleViewController: PuzzleProtocol {
     func setupViews() {
         [quoteBaseView, quoteLabel, timerLabel, progressView]
-            .forEach{ view.addSubview($0) }
+            .forEach { view.addSubview($0) }
         
         quoteBaseView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(24.0)
