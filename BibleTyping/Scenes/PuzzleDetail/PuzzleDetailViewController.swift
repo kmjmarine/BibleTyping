@@ -169,7 +169,7 @@ extension PuzzleDetailViewController: PuzzleDetailProtocol {
             $0.top.equalTo(explainLabel.snp.bottom).offset(16.0)
             $0.leading.equalToSuperview().inset(16.0)
             $0.trailing.equalToSuperview().inset(16.0)
-            $0.bottom.equalToSuperview().inset(bottomSpacing * 5.1)
+            $0.bottom.equalToSuperview().inset(bottomSpacing * 4.8)
         }
         
         infoLabel.snp.makeConstraints {
@@ -206,9 +206,11 @@ extension PuzzleDetailViewController: PuzzleDetailProtocol {
         
         let style = NSMutableParagraphStyle()
         style.lineSpacing = 15.0
-        attributedStr.addAttribute(.paragraphStyle,
-                                             value: style,
-                                             range: NSRange(location: 0, length: attributedStr.length))
+        attributedStr.addAttribute(
+            .paragraphStyle,
+            value: style,
+            range: NSRange(location: 0, length: attributedStr.length)
+        )
         
         let arrQuote: [String] = verse.components(separatedBy: " ")
         var arrRandomVerse: [String] = [ ]
@@ -222,13 +224,13 @@ extension PuzzleDetailViewController: PuzzleDetailProtocol {
             randomString.append(" " + arrQuote[i])
             
             for j in 0...randomIndex.count - 1 {
-                    if i == randomIndex[j] {
-                        //print(arrQuote[i]) 답안 낱말 디버그용
-                        
-                        randomVerse.append(arrQuote[i] + " ") // 답안 낱말 문자열
-                        arrRandomVerse.append(arrQuote[i])
-                   
-                        attributedStr.addAttribute(.backgroundColor, value: UIColor.systemGray, range: (verse as NSString).range(of: arrQuote[i]))
+                if i == randomIndex[j] {
+                    //print(arrQuote[i]) 답안 낱말 디버그용
+                    
+                    randomVerse.append(arrQuote[i] + " ") // 답안 낱말 문자열
+                    arrRandomVerse.append(arrQuote[i])
+               
+                    attributedStr.addAttribute(.backgroundColor, value: UIColor.systemGray, range: (verse as NSString).range(of: arrQuote[i]))
                 }
             }
             
@@ -272,8 +274,7 @@ extension PuzzleDetailViewController {
     }
     
     @objc func moveToPuzzleViewController() {
-        let puzzleViewController = PuzzleViewController()
-        navigationController?.pushViewController(puzzleViewController, animated: false)
+        navigationController?.popViewController(animated: false)
     }
     
     private func checkText(_ buttonText: String?) -> Bool {
@@ -344,15 +345,15 @@ extension PuzzleDetailViewController {
     
     private func wrongEffect() {
         let url = Bundle.main.url(forResource: "wrongeffect", withExtension: "wav")
-            if let url = url {
-                do {
-                    audioPlayer = try AVAudioPlayer(contentsOf: url)
-                    audioPlayer?.prepareToPlay()
-                    audioPlayer?.play()
-                } catch {
-                    print(error)
-                }
+        if let url = url {
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: url)
+                audioPlayer?.prepareToPlay()
+                audioPlayer?.play()
+            } catch {
+                print(error)
             }
+        }
     }
 }
 
@@ -367,20 +368,22 @@ extension UILabel {
         attributedString.addAttribute(.underlineColor, value: UIColor.TitleBrown ?? .systemBackground, range: range)
         
         if !keepString1.isEmpty {
-        let keepRange1 = (fullText as NSString).range(of: keepString1)
-        attributedString.addAttribute(.backgroundColor, value: UIColor.systemGray, range: keepRange1)
+            let keepRange1 = (fullText as NSString).range(of: keepString1)
+            attributedString.addAttribute(.backgroundColor, value: UIColor.systemGray, range: keepRange1)
         }
         
         if !keepString2.isEmpty {
-        let keepRange2 = (fullText as NSString).range(of: keepString2)
-        attributedString.addAttribute(.backgroundColor, value: UIColor.systemGray, range: keepRange2)
+            let keepRange2 = (fullText as NSString).range(of: keepString2)
+            attributedString.addAttribute(.backgroundColor, value: UIColor.systemGray, range: keepRange2)
         }
         
         let style = NSMutableParagraphStyle()
         style.lineSpacing = 15.0
-        attributedString.addAttribute(.paragraphStyle,
-                                             value: style,
-                                             range: NSRange(location: 0, length: attributedString.length))
+        attributedString.addAttribute(
+            .paragraphStyle,
+            value: style,
+            range: NSRange(location: 0, length: attributedString.length)
+        )
         
         attributedText = attributedString
     }

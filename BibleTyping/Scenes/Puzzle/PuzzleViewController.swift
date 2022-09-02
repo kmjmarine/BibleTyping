@@ -16,6 +16,15 @@ final class PuzzleViewController: UIViewController {
     private var verse: String = ""
     private var verse_info: String = ""
     
+    private lazy var explainLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 18.0, weight: .regular)
+        label.textAlignment = .center
+        label.text = "아래 구절을 읽고 다음 화면에서 빈 단어를 맞춰 주세요."
+        
+        return label
+    }()
+    
     private lazy var quoteBaseView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemGray6
@@ -61,16 +70,6 @@ final class PuzzleViewController: UIViewController {
         title = "구절맞추기"
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = .systemYellow
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.TitleBrown ?? .systemBackground]
-        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.TitleBrown ?? .systemBackground]
-
-        navigationController?.navigationBar.tintColor = UIColor.TitleBrown
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.compactAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        
         presenter.viewDidLoad()
     }
     
@@ -95,11 +94,18 @@ final class PuzzleViewController: UIViewController {
 
 extension PuzzleViewController: PuzzleProtocol {
     func setupViews() {
-        [quoteBaseView, quoteLabel, timerLabel, progressView]
+        [explainLabel, quoteBaseView, quoteLabel, timerLabel, progressView]
             .forEach { view.addSubview($0) }
         
+        explainLabel.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(16.0)
+            $0.leading.equalToSuperview().inset(16.0)
+            $0.trailing.equalToSuperview().inset(16.0)
+            $0.height.equalTo(30.0)
+        }
+        
         quoteBaseView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(24.0)
+            $0.top.equalTo(explainLabel.snp.bottom).offset(24.0)
             $0.leading.equalToSuperview().inset(16.0)
             $0.trailing.equalToSuperview().inset(16.0)
             $0.height.equalTo(250.0)

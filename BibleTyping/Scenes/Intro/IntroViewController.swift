@@ -89,7 +89,8 @@ final class IntroViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = true
+        tabBarController?.tabBar.isHidden = true
+        navigationController?.isNavigationBarHidden = true
     }
     
     func setupViews() {
@@ -111,24 +112,24 @@ final class IntroViewController: UIViewController {
         
         titleLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(16.0)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(width / 6.5)
         }
         
         animationView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.centerY.equalToSuperview().offset(-45.0)
+            $0.centerY.equalToSuperview().offset(-35.0)
             $0.width.equalTo(width / 1.3)
         }
         
         buttonStackView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.width.equalToSuperview().inset(50.0)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(110.0)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(width / 5.0)
         }
         
         versionLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(buttonStackView.snp.bottom).offset(60.0)
+            $0.top.equalTo(buttonStackView.snp.bottom).offset(width / 10.0)
         }
     }
 }
