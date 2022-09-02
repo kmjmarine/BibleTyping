@@ -43,7 +43,7 @@
 		E5652B78287410A6001B0B5F /* TypingDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5652B77287410A6001B0B5F /* TypingDetailPresenter.swift */; };
 		E5652B7A2874143D001B0B5F /* TypingDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5652B792874143D001B0B5F /* TypingDetailTableViewCell.swift */; };
 		E56641F128AB7D8A006B718A /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56641F028AB7D8A006B718A /* IntroViewController.swift */; };
-		E57836E628C1D36C00263B14 /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = E57836E528C1D36C00263B14 /* empty.json */; };
+		E57836EA28C1E32B00263B14 /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = E57836E928C1E32B00263B14 /* empty.json */; };
 		E5C72B0B2879644A0063E704 /* TypingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C72B0A2879644A0063E704 /* TypingListViewController.swift */; };
 		E5C72B0D287964870063E704 /* TypingListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C72B0C287964870063E704 /* TypingListPresenter.swift */; };
 		E5C72B0F287967800063E704 /* TypingListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C72B0E287967800063E704 /* TypingListCollectionViewCell.swift */; };
@@ -107,7 +107,7 @@
 		E5652B77287410A6001B0B5F /* TypingDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingDetailPresenter.swift; sourceTree = "<group>"; };
 		E5652B792874143D001B0B5F /* TypingDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingDetailTableViewCell.swift; sourceTree = "<group>"; };
 		E56641F028AB7D8A006B718A /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
-		E57836E528C1D36C00263B14 /* empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
+		E57836E928C1E32B00263B14 /* empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
 		E5C72B0A2879644A0063E704 /* TypingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingListViewController.swift; sourceTree = "<group>"; };
 		E5C72B0C287964870063E704 /* TypingListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingListPresenter.swift; sourceTree = "<group>"; };
 		E5C72B0E287967800063E704 /* TypingListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingListCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -178,7 +178,7 @@
 			children = (
 				E528583328BA70F90083208D /* congratulations.json */,
 				E5475DB528BA2A0000BDFC0F /* correct.json */,
-				E57836E528C1D36C00263B14 /* empty.json */,
+				E57836E928C1E32B00263B14 /* empty.json */,
 				E53C860A28ACCD5C00D3D734 /* intro.json */,
 				E532384C289E47E100B69749 /* success.json */,
 				E511A7F528AA173C00E46114 /* jsonbible.json */,
@@ -442,7 +442,7 @@
 				E528583428BA70F90083208D /* congratulations.json in Resources */,
 				E528583028BA681A0083208D /* wrongeffect.wav in Resources */,
 				E5475DB628BA2A0000BDFC0F /* correct.json in Resources */,
-				E57836E628C1D36C00263B14 /* empty.json in Resources */,
+				E57836EA28C1E32B00263B14 /* empty.json in Resources */,
 				E5652B402873CE0A001B0B5F /* LaunchScreen.storyboard in Resources */,
 				E5652B3D2873CE0A001B0B5F /* Assets.xcassets in Resources */,
 				E532384D289E47E100B69749 /* success.json in Resources */,

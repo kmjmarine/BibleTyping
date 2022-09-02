@@ -111,10 +111,12 @@ private extension BookmarkListViewController {
         [animationView, collectionView]
             .forEach { view.addSubview($0) }
         
+        let width = UIScreen.main.bounds.width
+        
         animationView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.centerY.equalToSuperview()
-            $0.width.equalTo(UIScreen.main.bounds.size.width - 96.0)
+            $0.width.equalTo(width / 1.3)
             $0.height.equalTo(animationView.snp.width)
         }
         
