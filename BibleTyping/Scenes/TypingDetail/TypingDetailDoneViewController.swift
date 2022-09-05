@@ -39,7 +39,7 @@ final class TypingDetailDoneViewController: UIViewController {
     
     private lazy var confirmButton: UIButton = {
         let button = UIButton()
-        button.setTitle("확인", for: .normal)
+        button.setTitle(NSLocalizedString("Confirm", comment: "확인"), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 15.0, weight: .semibold)
         button.setTitleColor(.TitleBrown, for: .normal)
         button.backgroundColor = .lightGray
@@ -106,7 +106,7 @@ extension TypingDetailDoneViewController {
     }
     
     func setViews() {
-        bookNameLabel.text = bookname + " 통독완료!"
+        bookNameLabel.text = NSLocalizedString(bookname, comment: "bookname")  + " \(NSLocalizedString("TypingDone", comment: "통독완료"))!"
     }
     
     @objc func didTabConfirmButton() {

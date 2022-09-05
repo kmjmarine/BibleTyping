@@ -38,4 +38,25 @@ extension Puzzle {
         Puzzle(verse: "새 계명을 너희에게 주노니 서로 사랑하라. 내가 너희를 사랑한 것같이 너희도 서로 사랑하라. 너희가 서로 사랑하면 이로써 모든 사람이 너희가 내 제자인 줄 알리라.", verse_info: "(요 13:34-35)"),
         Puzzle(verse: "너희가 내 안에 거하고 내 말이 너희 안에 거하면 무엇이든지 원하는 대로 구하라. 그리하면 이루리라.", verse_info: "(요 15:7)")
     ]
+    
+    static let puzzleEnList: [Puzzle] = [
+        Puzzle(verse: "I am able to do all things through him who gives me strength", verse_info: "(Philippians 4:13)"),
+        Puzzle(verse: "But he knows what I am doing, and when he tests me, I will be pure as gold.", verse_info: "(Job 23:10)"),
+        Puzzle(verse: "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life", verse_info: "(John 3:16)"),
+        Puzzle(verse: "We make our own plans, but the LORD decides where we will go.", verse_info: "(Proverbs 16:9)"),
+        Puzzle(verse: "For now there are faith, hope, and love. But of these three, the greatest is love", verse_info: "(1 Corinthians 13:13)"),
+        Puzzle(verse: "Respect and obey the LORD! This is the beginning of wisdom. To have understanding, you must know the Holy God", verse_info: "(Proverbs 9:10)"),
+        Puzzle(verse: "Yet to all who did received him, to those who believed his name, he gave the right to become children of God", verse_info: "(John 1:12)"),
+        Puzzle(verse: "Don't worry about anything, but pray about everything. With thankful hearts offer up your prayers and requests to God", verse_info: "(Philippians 4:6)"),
+        Puzzle(verse: "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.", verse_info: "(John 3:16)"),
+        Puzzle(verse: "Be joyful always, pray continually, give thanks in all circumstances, for this is God's will for you in Christ Jesus.", verse_info: "(1 Thessalonians 5:16~18)"),
+        Puzzle(verse: "For we brought nothing åç the world, and we can take nothing out of it.", verse_info: "(1 Timothy 6:7)"),
+        Puzzle(verse: "And now these three remain: faith, hope and love . But the greatest of these is love.", verse_info: "(1 Corinthians 13:13)"),
+        Puzzle(verse: "In his heart a man plans his course, but the LORD determines his steps.", verse_info: "(Proverbs 16:9)")
+    ]
+}
+
+enum PuzzleKind: String {
+    case kor
+    case eng
 }

@@ -58,7 +58,7 @@ final class PuzzleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "구절맞추기"
+        title = NSLocalizedString("Quiz", comment: "구절맞추기")
         navigationController?.navigationBar.prefersLargeTitles = true
         
         presenter.viewDidLoad()

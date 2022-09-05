@@ -42,7 +42,7 @@ final class IntroViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .TitleBrown
         button.layer.cornerRadius = 9.0
-        button.setTitle("성경통독", for: .normal)
+        button.setTitle(NSLocalizedString("BibleTyping", comment: "성경통독"), for: .normal)
         button.addTarget(self, action: #selector(moveToTypingListViewController), for: .touchUpInside)
         
         return button
@@ -54,7 +54,7 @@ final class IntroViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .TitleBrown
         button.layer.cornerRadius = 9.0
-        button.setTitle("구절맞추기", for: .normal)
+        button.setTitle(NSLocalizedString("Quiz", comment: "구절맞추기"), for: .normal)
         button.addTarget(self, action: #selector(moveToPuzzleViewController), for: .touchUpInside)
         
         return button

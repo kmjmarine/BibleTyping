@@ -27,7 +27,7 @@ final class TypingListViewController: UIViewController {
     
     private lazy var bibleKindLabel: UILabel = {
         let label = UILabel()
-        label.text = "구약성경"
+        label.text = NSLocalizedString("OldBible", comment: "구약성경")
         label.textColor = .white
         label.textAlignment = .center
         label.backgroundColor = .TitleBrown
@@ -65,7 +65,7 @@ final class TypingListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "성경통독"
+        title = NSLocalizedString("BibleTyping", comment: "성경통독")
         navigationController?.navigationBar.prefersLargeTitles = true
         
         oldBibleCollectionView.tag = 1
@@ -81,11 +81,11 @@ final class TypingListViewController: UIViewController {
         self.navigationItem.hidesBackButton = true
         
         if (bibleSwitch.isOn == true) {
-            bibleKindLabel.text = "신약성경"
+            bibleKindLabel.text = NSLocalizedString("NewBible", comment: "신약성경")
             oldBibleCollectionView.isHidden = true
             newBibleCollectionView.isHidden = false
         } else {
-            bibleKindLabel.text = "구약성경"
+            bibleKindLabel.text = NSLocalizedString("OldBible", comment: "구약성경")
             newBibleCollectionView.isHidden = true
             oldBibleCollectionView.isHidden = false
         }
@@ -152,12 +152,12 @@ extension TypingListViewController: TypingListProtocol {
     @objc func switchTab(sender: UISwitch) {
         if (sender.isOn == true) {
             sender.setOn(true, animated: true)
-            bibleKindLabel.text = "신약성경"
+            bibleKindLabel.text = NSLocalizedString("NewBible", comment: "신약성경")
             oldBibleCollectionView.isHidden = true
             newBibleCollectionView.isHidden = false
         } else {
             sender.setOn(false, animated: true)
-            bibleKindLabel.text = "구약성경"
+            bibleKindLabel.text = NSLocalizedString("OldBible", comment: "구약성경")
             newBibleCollectionView.isHidden = true
             oldBibleCollectionView.isHidden = false
         }

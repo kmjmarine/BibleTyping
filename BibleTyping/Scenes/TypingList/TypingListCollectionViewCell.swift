@@ -41,7 +41,7 @@ final class TypingListCollectionViewCell: UICollectionViewCell {
     private lazy var statusLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 15.0, weight: .semibold)
-        label.text = "통독전"
+        label.text = NSLocalizedString("noReading", comment: "통독전")
         label.textColor = .white
         label.textAlignment = .center
         label.backgroundColor = .lightGray
@@ -55,21 +55,21 @@ final class TypingListCollectionViewCell: UICollectionViewCell {
         setupView()
         setupLayout()
         
-        bookLabel.text = bible.bookName
+        bookLabel.text = NSLocalizedString(bible.bookName, comment: "BookName")
         chapterLabel.text = "(\(String(bible.chapter)))"
     }
     
     func setupStatusLabel(_ chapter: Int, _ verse: Int, _ doneWrite: Bool) {
         if doneWrite {
-            statusLabel.text = "통독완"
+            statusLabel.text = NSLocalizedString("doneReading", comment: "통독완")
             statusLabel.backgroundColor = .systemYellow
         } else if chapter != 0 && verse != 0 {
             var writeRecord: String
-            writeRecord = "\(chapter)장 \(verse)절"
+            writeRecord = "\(chapter)\(NSLocalizedString("chapter", comment: "장")) \(verse)\(NSLocalizedString("verse", comment: "절"))"
             statusLabel.text = writeRecord
             statusLabel.backgroundColor = .TitleBrown
         } else {
-            statusLabel.text = "통독전"
+            statusLabel.text = NSLocalizedString("noReading", comment: "통독전")
             statusLabel.backgroundColor = .lightGray
         }
     }

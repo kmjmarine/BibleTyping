@@ -36,7 +36,6 @@ final class SearchManager: SearchManagerProtocol {
                 let doc: Document = try SwiftSoup.parse(html)
                 let htmlText = try doc.body()!.text()
                 completionHandler(htmlText)
-                //print(htmlText)
             } catch {
                 print("crawl error")
             }
