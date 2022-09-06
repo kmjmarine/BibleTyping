@@ -75,6 +75,8 @@
 /* Begin PBXFileReference section */
 		E50135D42897994F00B36D9D /* PuzzlePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzlePresenter.swift; sourceTree = "<group>"; };
 		E503E26128982D9F00BA6133 /* PuzzleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleDetailViewController.swift; sourceTree = "<group>"; };
+		E510617628C78ECD001856E2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		E510617728C78ECD001856E2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E511A7F328AA12E700E46114 /* BibleJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibleJson.swift; sourceTree = "<group>"; };
 		E511A7F528AA173C00E46114 /* jsonbible.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = jsonbible.json; sourceTree = "<group>"; };
 		E51D704B28BDE8D4000573C3 /* BookmarkListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +87,8 @@
 		E528582F28BA681A0083208D /* wrongeffect.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wrongeffect.wav; sourceTree = "<group>"; };
 		E528583128BA6D3D0083208D /* TypingDetailDoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingDetailDoneViewController.swift; sourceTree = "<group>"; };
 		E528583328BA70F90083208D /* congratulations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = congratulations.json; sourceTree = "<group>"; };
+		E528CD1428C70C2C001B836D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		E528CD1528C70C2C001B836D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E529F1C628935D1D00B37A13 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		E532384C289E47E100B69749 /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
 		E53C860A28ACCD5C00D3D734 /* intro.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = intro.json; sourceTree = "<group>"; };
@@ -417,6 +421,8 @@
 				en,
 				Base,
 				ko,
+				ja,
+				"zh-Hans",
 			);
 			mainGroup = E5652B272873CE09001B0B5F;
 			packageReferences = (
@@ -547,6 +553,8 @@
 			children = (
 				E54AC94228C3AB190018E9AB /* en */,
 				E54AC94428C3AB1F0018E9AB /* ko */,
+				E528CD1528C70C2C001B836D /* ja */,
+				E510617728C78ECD001856E2 /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -556,6 +564,8 @@
 			children = (
 				E5652B3F2873CE0A001B0B5F /* Base */,
 				E54AC94028C3AAB10018E9AB /* ko */,
+				E528CD1428C70C2C001B836D /* ja */,
+				E510617628C78ECD001856E2 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -700,7 +710,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.6.1;
+				MARKETING_VERSION = 2.6.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "aeron-kim.BibleTyping";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -730,7 +740,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.6.1;
+				MARKETING_VERSION = 2.6.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "aeron-kim.BibleTyping";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

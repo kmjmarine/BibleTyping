@@ -199,7 +199,7 @@ extension PuzzleDetailViewController: PuzzleDetailProtocol {
     }
     
     func setup(randomIndex: [Int]) {
-        explainLabel.text = NSLocalizedString("Explain", comment: "빈 칸에 알맞은 단어를 순서대로 선택해 주세요.")
+        explainLabel.text = "Explain".localized
         infoLabel.text = verse_info
         
         let attributedStr = NSMutableAttributedString(string: verse)
@@ -284,13 +284,13 @@ extension PuzzleDetailViewController {
             if setVerse1 == buttonText {
                 doneVerse1 = true
                 randomLabel.asColor(targetString: setVerse1, keepString1: setVerse2, keepString2: setVerse3)
-                view.makeToast(NSLocalizedString("correct", comment: "짝짝짝! 정답이에요."), duration: 1.5)
+                view.makeToast("correct".localized, duration: 1.5)
                                 
                 checkDone()
                 
                 return true
             } else {
-                view.makeToast(NSLocalizedString("Wrongword1", comment: "앗! 첫번째에 들어갈 낱말과 다른 낱말이에요."), duration: 1.5)
+                view.makeToast("Wrongword1".localized, duration: 1.5)
                 UIDevice.vibrate()
                 wrongEffect()
                 
@@ -300,13 +300,13 @@ extension PuzzleDetailViewController {
             if setVerse2 == buttonText {
                 doneVerse2 = true
                 randomLabel.asColor(targetString: setVerse2, keepString1: "", keepString2: setVerse3)
-                view.makeToast(NSLocalizedString("correct", comment: "짝짝짝! 정답이에요."), duration: 1.5)
+                view.makeToast("correct".localized, duration: 1.5)
                 
                 checkDone()
                 
                 return true
             } else {
-                view.makeToast(NSLocalizedString("Wrongword2", comment: "앗! 두번째에 들어갈 낱말과 다른 낱말이에요."), duration: 1.5)
+                view.makeToast("Wrongword2".localized, duration: 1.5)
                 UIDevice.vibrate()
                 wrongEffect()
                 
@@ -316,13 +316,13 @@ extension PuzzleDetailViewController {
             if setVerse3 == buttonText {
                 doneVerse3 = true
                 randomLabel.asColor(targetString: setVerse3, keepString1: "", keepString2: "")
-                view.makeToast(NSLocalizedString("correct", comment: "짝짝짝! 정답이에요."), duration: 1.5)
+                view.makeToast("correct".localized, duration: 1.5)
                 
                 checkDone()
                 
                 return true
             } else {
-                view.makeToast(NSLocalizedString("Wrongword3", comment: "앗! 세번째에 들어갈 낱말과 다른 낱말이에요."), duration: 1.5)
+                view.makeToast("Wrongword3".localized, duration: 1.5)
                 UIDevice.vibrate()
                 wrongEffect()
                 

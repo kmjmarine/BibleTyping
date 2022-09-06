@@ -13,7 +13,7 @@ struct Puzzle {
 }
 
 extension Puzzle {
-    static let puzzleList: [Puzzle] = [
+    static let puzzleKOList: [Puzzle] = [
         Puzzle(verse: "내 형제들아 너희가 여러 가지 시험을 당하거든 온전히 기쁘게 여기라", verse_info: "(약 1:2)"),
         Puzzle(verse: "내가 네 갈 길을 가르쳐 보이고 너를 주목하여 훈계하리로다", verse_info: "(시 32:8)"),
         Puzzle(verse: "여호와는 나의 목자시니 내게 부족함이 없으리로다 그가 나를 푸른 초장에 누이시며 쉴 만한 물가으로 인도하시는도다", verse_info: "(시 23:1)"),
@@ -39,7 +39,7 @@ extension Puzzle {
         Puzzle(verse: "너희가 내 안에 거하고 내 말이 너희 안에 거하면 무엇이든지 원하는 대로 구하라. 그리하면 이루리라.", verse_info: "(요 15:7)")
     ]
     
-    static let puzzleEnList: [Puzzle] = [
+    static let puzzleENList: [Puzzle] = [
         Puzzle(verse: "I am able to do all things through him who gives me strength", verse_info: "(Philippians 4:13)"),
         Puzzle(verse: "But he knows what I am doing, and when he tests me, I will be pure as gold.", verse_info: "(Job 23:10)"),
         Puzzle(verse: "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life", verse_info: "(John 3:16)"),
@@ -54,9 +54,14 @@ extension Puzzle {
         Puzzle(verse: "And now these three remain: faith, hope and love . But the greatest of these is love.", verse_info: "(1 Corinthians 13:13)"),
         Puzzle(verse: "In his heart a man plans his course, but the LORD determines his steps.", verse_info: "(Proverbs 16:9)")
     ]
+    
+    static let puzzleJAList: [Puzzle] = [
+        Puzzle(verse: "というのは、 神がお造りになったものはすべて良いものであり、 感謝して受けるならば、 何一つ捨てるものはないからです。", verse_info: "(テモテへの手紙 4:4)"),
+        Puzzle(verse: "ウツの地にヨブという人がいた。 無垢な正しい人で、 神を畏れ、 悪を避けて生きていた。", verse_info: "(ヨブ記 1:1)"),
+        Puzzle(verse: "すべての王よ、 今や目覚めよ。 地を治めるものよ、 諭しを受けよ。", verse_info: "(詩編 2:10)"),
+        Puzzle(verse: "主よ、 諸国の民を裁いてください。 主よ、 裁きを行って宣言してください。 お前は正しい、 とがめるところはないと。", verse_info: "(詩編 7:8)"),
+        Puzzle(verse: "主はギデオンに言われた。 「手から水をすすった三百人をもって、 わたしはあなたたちを救い、 ミディアン人をあなたの手に渡そう。 他の民はそれぞれ自分の所に返しなさい。", verse_info: "(士師記 7:7)"),
+        Puzzle(verse: "神は、 実に、 そのひとり子をお与えになったほどに世を愛された。 それは御子を信じる者が、 一人として滅びることなく、 永遠のいのちを持つためである。", verse_info: "(ヨハネの福音書 3:16)"),
+    ]
 }
 
-enum PuzzleKind: String {
-    case kor
-    case eng
-}

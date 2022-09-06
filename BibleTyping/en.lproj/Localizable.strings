@@ -10,6 +10,7 @@
 //Intro
 "BibleTyping" = "Bible typing";
 "Quiz" = "Match the verse";
+"AlertTitle" = "Please select the language you want to use.";
 
 //Tabbar
 "Home" = "Home";

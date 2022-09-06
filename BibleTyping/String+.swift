@@ -14,4 +14,17 @@ extension String {
         
         return addedstring
     }
+    
+    var localized: String {
+        var language = UserDefaults.standard.array(forKey: "language")?.first as? String
+        if language == nil {
+            let str = String(NSLocale.preferredLanguages[0])    // 언어코드-지역코드 (ex. ko-KR, en-US)
+            language = String(str.dropLast(3))                  // ko-KR => ko, en-US => en
+        }
+        
+        let path = Bundle.main.path(forResource: language, ofType: "lproj")
+        let bundle = Bundle(path: path!)
+        
+        return (bundle?.localizedString(forKey: self, value: nil, table: nil))!
+    }
 }

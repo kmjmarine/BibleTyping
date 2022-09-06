@@ -13,28 +13,28 @@ final class TabbarController: UITabBarController {
         
         let IntroController = UINavigationController(rootViewController: IntroViewController())
         IntroController.tabBarItem = UITabBarItem(
-            title: NSLocalizedString("Home", comment: "홈"),
+            title: "Home".localized,
             image: UIImage(systemName: "house"),
             selectedImage:UIImage (systemName: "house.fill")
         )
         
         let TypingController = UINavigationController(rootViewController: TypingListViewController())
         TypingController.tabBarItem = UITabBarItem(
-            title: NSLocalizedString("BibleTyping", comment: "성경통독"),
+            title: "BibleTyping".localized,
             image: UIImage(systemName: "keyboard"),
             selectedImage: UIImage(systemName: "keyboard.fill")
         )
         
         let PuzzleController = UINavigationController(rootViewController: PuzzleViewController())
         PuzzleController.tabBarItem = UITabBarItem(
-            title: NSLocalizedString("Quiz", comment: "구절맞추기"),
+            title: "Quiz".localized,
             image: UIImage(systemName: "puzzlepiece.extension"),
             selectedImage: UIImage(systemName: "puzzlepiece.extension.fill")
         )
         
         let bookmarkViewController = UINavigationController(rootViewController: BookmarkListViewController())
         bookmarkViewController.tabBarItem = UITabBarItem(
-            title: NSLocalizedString("Bookmark", comment: "북마크"),
+            title: "Bookmark".localized,
             image: UIImage(systemName: "star"),
             selectedImage: UIImage(systemName: "star.fill")
         )

@@ -30,8 +30,7 @@ final class BookmarkCollectionViewCell: UICollectionViewCell {
         backgroundColor = .systemBackground
         layer.cornerRadius = 12.0
         
-        bookNameLabel.text = NSLocalizedString(bookmark.bookname, comment: "bookmark.bookname") + " \(bookmark.chapter)\(NSLocalizedString("chapter", comment: "장")) \(bookmark.verse)\(NSLocalizedString("verse", comment: "절"))"
-        
+        bookNameLabel.text = bookmark.bookname.localized + " \(bookmark.chapter)\("chapter".localized) \(bookmark.verse)\("verse".localized)"
         quoteLabel.text = bookmark.quote
         
         [bookNameLabel, quoteLabel]

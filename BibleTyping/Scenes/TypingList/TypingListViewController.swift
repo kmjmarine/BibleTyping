@@ -65,7 +65,7 @@ final class TypingListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = NSLocalizedString("BibleTyping", comment: "성경통독")
+        title = "BibleTyping".localized
         navigationController?.navigationBar.prefersLargeTitles = true
         
         oldBibleCollectionView.tag = 1
@@ -81,11 +81,11 @@ final class TypingListViewController: UIViewController {
         self.navigationItem.hidesBackButton = true
         
         if (bibleSwitch.isOn == true) {
-            bibleKindLabel.text = NSLocalizedString("NewBible", comment: "신약성경")
+            bibleKindLabel.text = "NewBible".localized
             oldBibleCollectionView.isHidden = true
             newBibleCollectionView.isHidden = false
         } else {
-            bibleKindLabel.text = NSLocalizedString("OldBible", comment: "구약성경")
+            bibleKindLabel.text = "OldBible".localized
             newBibleCollectionView.isHidden = true
             oldBibleCollectionView.isHidden = false
         }
@@ -152,12 +152,12 @@ extension TypingListViewController: TypingListProtocol {
     @objc func switchTab(sender: UISwitch) {
         if (sender.isOn == true) {
             sender.setOn(true, animated: true)
-            bibleKindLabel.text = NSLocalizedString("NewBible", comment: "신약성경")
+            bibleKindLabel.text = "NewBible".localized
             oldBibleCollectionView.isHidden = true
             newBibleCollectionView.isHidden = false
         } else {
             sender.setOn(false, animated: true)
-            bibleKindLabel.text = NSLocalizedString("OldBible", comment: "구약성경")
+            bibleKindLabel.text = "OldBible".localized
             newBibleCollectionView.isHidden = true
             oldBibleCollectionView.isHidden = false
         }

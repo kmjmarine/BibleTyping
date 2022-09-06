@@ -184,6 +184,20 @@ final class TypingDetailPresenter: NSObject {
     
     func setBook() -> String {
         let bookCodes: [Bible]
+        let languageCode = setLanguage()
+        let setLanguageCode: String
+        
+        
+        switch languageCode {
+        case "ko":
+            setLanguageCode = "kor-"
+        case ("en"):
+            setLanguageCode = "niv-"
+        case ("ja"):
+            setLanguageCode = "jco-"
+        default :
+            setLanguageCode = "kor-"
+        }
         
         if self.bookkind == BookKind.old.rawValue {
             bookCodes = Bible.oldBible.filter {
@@ -196,7 +210,7 @@ final class TypingDetailPresenter: NSObject {
         }
         
         var bookCode = bookCodes.map{ $0.bookCode }
-        let setBookCode = bookCode[0].addString(someString: "kor-", position: "leading" )
+        let setBookCode = bookCode[0].addString(someString: setLanguageCode, position: "leading" )
         
         return setBookCode
     }
@@ -225,5 +239,15 @@ extension TypingDetailPresenter {
         self.viewWillAppear()
        
         viewController?.showCorrectAmnimationView(false)
+    }
+    
+    func setLanguage() -> String {
+        var language = UserDefaults.standard.array(forKey: "language")?.first as? String //nil
+        if language == nil {
+            let str = String(NSLocale.preferredLanguages[0])    // 언어코드-지역코드 (ex. ko-KR, en-US)
+            language = String(str.dropLast(3))
+        }
+        
+        return language!
     }
 }

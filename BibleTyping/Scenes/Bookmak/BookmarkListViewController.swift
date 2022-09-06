@@ -17,7 +17,7 @@ final class BookmarkListViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18.0, weight: .regular)
         label.textAlignment = .center
-        label.text = NSLocalizedString("NoBookmark", comment: "북마크가 설정된 구절이 없어요.")
+        label.text = "NoBookmark".localized
         
         return label
     }()
@@ -51,7 +51,7 @@ final class BookmarkListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = NSLocalizedString("Bookmark", comment: "북마크")
+        title = "Bookmark".localized
         navigationController?.navigationBar.prefersLargeTitles = true
         
         animationView.isHidden = true

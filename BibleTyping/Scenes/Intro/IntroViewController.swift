@@ -42,7 +42,7 @@ final class IntroViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .TitleBrown
         button.layer.cornerRadius = 9.0
-        button.setTitle(NSLocalizedString("BibleTyping", comment: "성경통독"), for: .normal)
+        button.setTitle("BibleTyping", for: .normal)
         button.addTarget(self, action: #selector(moveToTypingListViewController), for: .touchUpInside)
         
         return button
@@ -54,7 +54,7 @@ final class IntroViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .TitleBrown
         button.layer.cornerRadius = 9.0
-        button.setTitle(NSLocalizedString("Quiz", comment: "구절맞추기"), for: .normal)
+        button.setTitle("Quiz", for: .normal)
         button.addTarget(self, action: #selector(moveToPuzzleViewController), for: .touchUpInside)
         
         return button
@@ -82,6 +82,16 @@ final class IntroViewController: UIViewController {
         return label
     }()
     
+    private lazy var globalButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "globe.badge.chevron.backward"), for: .normal)
+        button.addTarget(self, action: #selector(didTapGlobalButton), for: .touchUpInside)
+        button.tintColor = .TitleBrown
+        button.setPreferredSymbolConfiguration(.init(pointSize: 30, weight: .regular, scale: .default), forImageIn: .normal)
+        
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -91,10 +101,12 @@ final class IntroViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = true
         navigationController?.isNavigationBarHidden = true
+        
+        setLanguage()
     }
     
     func setupViews() {
-        [baseView, titleLabel, animationView, buttonStackView, versionLabel]
+        [baseView, titleLabel, animationView, buttonStackView, versionLabel, globalButton]
             .forEach { view.addSubview($0) }
             
         guard let info = Bundle.main.infoDictionary,
@@ -124,12 +136,20 @@ final class IntroViewController: UIViewController {
         buttonStackView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.width.equalToSuperview().inset(50.0)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(width / 5.0)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(width / 4.5)
         }
         
         versionLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(buttonStackView.snp.bottom).offset(width / 10.0)
+            $0.bottom.equalToSuperview().inset(width / 30.0)
+            $0.height.equalTo(35.0)
+        }
+        
+        globalButton.snp.makeConstraints {
+            $0.bottom.equalTo(versionLabel.snp.bottom)
+            $0.trailing.equalTo(buttonStackView.snp.trailing)
+            $0.width.equalTo(50.0)
+            $0.height.equalTo(50.0)
         }
     }
 }
@@ -145,5 +165,65 @@ extension IntroViewController {
         let puzzleViewController = TabbarController()
         puzzleViewController.selectedIndex = 2
         navigationController?.pushViewController(puzzleViewController, animated: false)
+    }
+    
+    @objc func didTapGlobalButton() {
+        let alertController = UIAlertController(title: "AlertTitle".localized, message: nil, preferredStyle: .actionSheet)
+        
+        var action = UIAlertAction(title: "한국어", style: .default) { [weak self] _ in
+            //한국어로 변경
+            UserDefaults.standard.set(["ko"], forKey: "language")
+            UserDefaults.standard.synchronize()
+            
+            //보통 메인화면으로 이동시켜줌
+            self?.setLanguage()
+        }
+        alertController.addAction(action)
+        action.setValue(UIColor.label, forKey: "titleTextColor")
+        
+        action = UIAlertAction(title: "English", style: .default) { [weak self] _ in
+            //영어로 변경
+            UserDefaults.standard.set(["en"], forKey: "language")
+            UserDefaults.standard.synchronize()
+            
+            //보통 메인화면으로 이동시켜줌
+            self?.setLanguage()
+        }
+        alertController.addAction(action)
+        action.setValue(UIColor.label, forKey: "titleTextColor")
+
+        action = UIAlertAction(title: "日本語", style: .default) { [weak self] _ in
+            //일본어로 변경
+            UserDefaults.standard.set(["ja"], forKey: "language")
+            UserDefaults.standard.synchronize()
+            
+            //보통 메인화면으로 이동시켜줌
+            self?.setLanguage()
+        }
+        alertController.addAction(action)
+        action.setValue(UIColor.label, forKey: "titleTextColor")
+        
+        let cancelAction = UIAlertAction(
+            title: "Cancel".localized,
+            style: .cancel,
+            handler: nil
+        )
+        alertController.addAction(cancelAction)
+        cancelAction.setValue(UIColor.systemYellow, forKey: "titleTextColor")
+        
+        present(alertController, animated: true)
+    }
+}
+
+extension IntroViewController {
+    func setLanguage() {
+        var language = UserDefaults.standard.array(forKey: "language")?.first as? String
+        if language == nil {
+            let str = String(NSLocale.preferredLanguages[0])    // 언어코드-지역코드 (ex. ko-KR, en-US)
+            language = String(str.dropLast(3))                  // ko-KR => ko, en-US => en
+        }
+        
+        self.TypingButton.setTitle("BibleTyping".localized, for: .normal)
+        self.PuzzleButton.setTitle("Quiz".localized, for: .normal)
     }
 }

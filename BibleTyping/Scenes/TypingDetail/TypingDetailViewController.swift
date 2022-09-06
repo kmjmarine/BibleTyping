@@ -19,7 +19,7 @@ final class TypingDetailViewController: UIViewController {
     private var audioPlayer: AVAudioPlayer?
     
     private lazy var presenter = TypingDetailPresenter(viewController: self, bookkind: bookkind, bookname: bookname, chapter: chapter, verse: verse)
-    private let placeholderText = NSLocalizedString("EnterText", comment: "여기에 입력해 주세요.")
+    private let placeholderText = "EnterText".localized
     
     private lazy var bookNameLabel: UILabel = {
         let label = UILabel()
@@ -55,7 +55,7 @@ final class TypingDetailViewController: UIViewController {
     
     private lazy var confirmButton: UIButton = {
         let button = UIButton()
-        button.setTitle(NSLocalizedString("Enter", comment: "저장"), for: .normal)
+        button.setTitle("Enter".localized, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 15.0, weight: .semibold)
         button.setTitleColor(.TitleBrown, for: .normal)
         button.backgroundColor = .lightGray
@@ -68,7 +68,7 @@ final class TypingDetailViewController: UIViewController {
     
     private lazy var cancelButton: UIButton = {
         let button = UIButton()
-        button.setTitle(NSLocalizedString("Cancel", comment: "취소"), for: .normal)
+        button.setTitle("Cancel".localized, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 15.0, weight: .semibold)
         button.setTitleColor(.TitleBrown, for: .normal)
         button.backgroundColor = .lightGray
@@ -203,9 +203,7 @@ extension TypingDetailViewController: TypingDetailProtocol {
     }
     
     func setViews(chapter: Int, verse: Int, quoteText: String) {
-        let chapterLocalization: String = NSLocalizedString("chapter", comment: "장")
-        let verseLocalization: String = NSLocalizedString("verse", comment: "절")
-        bookNameLabel.text = NSLocalizedString(bookname, comment: "bookname") + " \(chapter)\(chapterLocalization) \(verse)\(verseLocalization)"
+        bookNameLabel.text = bookname.localized + " \(chapter)\("chapter".localized) \(verse)\("verse".localized)"
         
         let startIdx: String.Index = quoteText.index(quoteText.startIndex, offsetBy: getMakeQuote(chapter, verse)) //장, 절 삭제
 
@@ -219,16 +217,16 @@ extension TypingDetailViewController: TypingDetailProtocol {
         if isBookmark {
             rigthBarButtonItem.image = UIImage(systemName: "bookmark.fill")
             if isAlert {
-                view.makeToast(NSLocalizedString("BookmarkOn", comment: "북마크가 설정 되었어요."))
+                view.makeToast("BookmarkOn".localized)
             }
         } else {
             rigthBarButtonItem.image = UIImage(systemName: "bookmark")
-            view.makeToast(NSLocalizedString("BookmarkOff", comment: "북마크 설정이 해제 되었어요."))
+            view.makeToast("BookmarkOff".localized)
         }
     }
     
     func didNotCorrect() {
-        view.makeToast(NSLocalizedString("Wrong", comment: "틀린 부분이 있어요. 수정 후 다시 저장해 주세요."))
+        view.makeToast("Wrong".localized)
         let url = Bundle.main.url(forResource: "wrongeffect", withExtension: "wav")
             if let url = url {
                 do {
@@ -298,8 +296,7 @@ extension TypingDetailViewController: TypingDetailProtocol {
     }
     
     func showCloseAlertController() {
-        let alertController = UIAlertController(title: NSLocalizedString("NoData", comment: "데이터 읽기에 실패 했습니다.\n잠시 후에 다시 시도해 주세요."), message: nil, preferredStyle: .alert)
-      
+        let alertController = UIAlertController(title: "NoData".localized, message: nil, preferredStyle: .alert)
         let closeAction = UIAlertAction(title: "닫기", style: .destructive) {[weak self] _ in
             self?.dismiss(animated: true)
         }
