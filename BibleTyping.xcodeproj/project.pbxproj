@@ -116,6 +116,8 @@
 		E5652B792874143D001B0B5F /* TypingDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingDetailTableViewCell.swift; sourceTree = "<group>"; };
 		E56641F028AB7D8A006B718A /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		E57836E928C1E32B00263B14 /* empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
+		E5B9648A28C972C900A24B80 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		E5B9648B28C972C900A24B80 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E5C72B0A2879644A0063E704 /* TypingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingListViewController.swift; sourceTree = "<group>"; };
 		E5C72B0C287964870063E704 /* TypingListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingListPresenter.swift; sourceTree = "<group>"; };
 		E5C72B0E287967800063E704 /* TypingListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingListCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -423,6 +425,7 @@
 				ko,
 				ja,
 				"zh-Hans",
+				de,
 			);
 			mainGroup = E5652B272873CE09001B0B5F;
 			packageReferences = (
@@ -555,6 +558,7 @@
 				E54AC94428C3AB1F0018E9AB /* ko */,
 				E528CD1528C70C2C001B836D /* ja */,
 				E510617728C78ECD001856E2 /* zh-Hans */,
+				E5B9648B28C972C900A24B80 /* de */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -566,6 +570,7 @@
 				E54AC94028C3AAB10018E9AB /* ko */,
 				E528CD1428C70C2C001B836D /* ja */,
 				E510617628C78ECD001856E2 /* zh-Hans */,
+				E5B9648A28C972C900A24B80 /* de */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -710,7 +715,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.6.4;
+				MARKETING_VERSION = 2.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "aeron-kim.BibleTyping";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -740,7 +745,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.6.4;
+				MARKETING_VERSION = 2.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "aeron-kim.BibleTyping";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -190,7 +190,7 @@ extension IntroViewController {
         alertController.addAction(action)
         action.setValue(UIColor.label, forKey: "titleTextColor")
         
-        action = UIAlertAction(title: "汉语", style: .default) { [weak self] _ in
+        action = UIAlertAction(title: "中文", style: .default) { [weak self] _ in
             //중국어로 변경
             UserDefaults.standard.set(["zh"], forKey: "language")
             UserDefaults.standard.synchronize()
@@ -203,6 +203,16 @@ extension IntroViewController {
         action = UIAlertAction(title: "日本語", style: .default) { [weak self] _ in
             //일본어로 변경
             UserDefaults.standard.set(["ja"], forKey: "language")
+            UserDefaults.standard.synchronize()
+            
+            self?.setLanguage()
+        }
+        alertController.addAction(action)
+        action.setValue(UIColor.label, forKey: "titleTextColor")
+        
+        action = UIAlertAction(title: "Deutsch", style: .default) { [weak self] _ in
+            //독일어로 변경
+            UserDefaults.standard.set(["de"], forKey: "language")
             UserDefaults.standard.synchronize()
             
             self?.setLanguage()

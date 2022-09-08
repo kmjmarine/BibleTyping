@@ -8,12 +8,12 @@
 // "키값" = "표시될 언어의 값";
 
 //Intro
-"BibleTyping" = "读经";
-"Quiz" = "匹配词组";
+"BibleTyping" = "圣经通读";
+"Quiz" = "词组填空";
 "AlertTitle" = "选择你的语言.";
 
 //Tabbar
-"Home" = "家";
+"Home" = "首页";
 "Bookmark" = "书签";
 
 //NavigationItems Slide
@@ -22,12 +22,13 @@
 
 //TypingDetail
 "EnterText" = "请在这里输入.";
-"Enter" = "节省";
-"Cancel" = "消除";
+"Enter" = "进入";
+"Cancel" = "取消";
 "chapter" = "章";
 "verse" = "節";
 
 //PuzzleDetail
+"PreExplain" = "阅读下面的段落并在下一个屏幕上填空。";
 "Explain" = "请用正确的词语填空.";
 
 //TypingDetailDone

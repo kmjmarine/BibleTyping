@@ -34,7 +34,8 @@ final class PuzzleDetailViewController: UIViewController {
     private lazy var explainLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18.0, weight: .regular)
-        label.textAlignment = .center
+        label.lineBreakMode = .byCharWrapping
+        label.numberOfLines = 0
         
         return label
     }()
@@ -162,14 +163,13 @@ extension PuzzleDetailViewController: PuzzleDetailProtocol {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(16.0)
             $0.leading.equalToSuperview().inset(16.0)
             $0.trailing.equalToSuperview().inset(16.0)
-            $0.height.equalTo(30.0)
         }
         
         infoBaseView.snp.makeConstraints {
             $0.top.equalTo(explainLabel.snp.bottom).offset(16.0)
             $0.leading.equalToSuperview().inset(16.0)
             $0.trailing.equalToSuperview().inset(16.0)
-            $0.bottom.equalToSuperview().inset(bottomSpacing * 4.8)
+            $0.bottom.equalToSuperview().inset(bottomSpacing * 3.8)
         }
         
         infoLabel.snp.makeConstraints {
@@ -185,16 +185,16 @@ extension PuzzleDetailViewController: PuzzleDetailProtocol {
         }
         
         animationView.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(bottomSpacing * 2.8)
             $0.centerX.equalToSuperview()
-            $0.height.equalTo(120.0)
+            $0.centerY.equalToSuperview()
+            $0.height.equalTo(bottomSpacing * 3.7)
         }
         
         buttonStackView.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(16.0)
             $0.trailing.equalToSuperview().inset(16.0)
             $0.height.equalTo(50.0)
-            $0.bottom.equalToSuperview().inset(bottomSpacing * 2.1)
+            $0.bottom.equalToSuperview().inset(bottomSpacing * 1.7)
         }
     }
     

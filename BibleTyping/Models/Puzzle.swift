@@ -75,5 +75,22 @@ extension Puzzle {
         Puzzle(verse: "各样美善的恩赐、 和各样全备的赏赐、 都是从上头来的． 从众光之父那里降下来的． 在他并没有改变、 也没有转动的影儿。", verse_info: "雅各书 1:17"),
         Puzzle(verse: "世人哪、耶和华已指示你何为善。他向你所要的是甚么呢。只要你行公义、好怜悯、存谦卑的心、与你的　神同行。", verse_info: "弥迦书 6:8")
     ]
+    
+    static let puzzleDEList: [Puzzle] = [
+        Puzzle(verse: "Himmel und Erde werden vergehen; aber meine Worte werden nicht vergehen.", verse_info: "Matthäus 24:35"),
+        Puzzle(verse: "Was zuvor geschrieben ist, das ist uns zur Lehre geschrieben.", verse_info: "Römer 15:4"),
+        Puzzle(verse: "Ich habe euch lieb, spricht der Herr.", verse_info: "Maleachi 1:2"),
+        Puzzle(verse: "uns wieder aufleben, um das Haus unseres Gottes aufzubauen und es aus seinen Trümmern wieder aufzurichten.", verse_info: "Esra 9:9"),
+        Puzzle(verse: "Was ist das für ein Mann, dass ihm Wind und Meer gehorsam sind?", verse_info: "Matthäus 8:27"),
+        Puzzle(verse: "Was zuvor geschrieben ist, das ist uns zur Lehre geschrieben.", verse_info: "Römer 15:4"),
+        Puzzle(verse: "Du, Herr, bist meine Leuchte; der Herr macht meine Finsternis licht.", verse_info: "2.Samuel 22:29"),
+        Puzzle(verse: "unserer Schwachheit auf. Denn wir wissen nicht, was wir beten sollen, wie sich's gebührt; sondern der Geist selbst vertritt uns mit unaussprechlichem Seufzen", verse_info: "Römer 8:26"),
+        Puzzle(verse: "Meine Seele dürstet nach Gott, nach dem lebendigen Gott.", verse_info: "Psalm 42:3"),
+        Puzzle(verse: "Jesus Christus, der sich selbst für unsre Sünden dahingegeben hat, dass er uns errette.", verse_info: "Galater 1:3-4"),
+        Puzzle(verse: "Für wen mühe ich mich denn und gönne mir selber nichts Gutes?", verse_info: "Prediger 4:8"),
+        Puzzle(verse: "Freundliche Reden sind Honigseim, trösten die Seele und erfrischen die Gebeine.", verse_info: "Sprüche 16:24"),
+        Puzzle(verse: "In der Welt habt ihr Angst; aber seid getrost, ich habe die Welt überwunden.", verse_info: "Johannes 16:33"),
+        Puzzle(verse: "Es sei aber fern von mir, mich zu rühmen als allein des Kreuzes unseres Herrn Jesus Christus.", verse_info: "Galater 6:14"),
+    ]
 }
 

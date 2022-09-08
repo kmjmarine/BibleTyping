@@ -28,6 +28,7 @@
 "verse" = "節";
 
 //PuzzleDetail
+"PreExplain" = "以下の節を読んで、次の画面に出てくる空欄の単語を合わせてください。";
 "Explain" = "空欄に当てはまる単語を順番に選択してください。";
 
 //TypingDetailDone

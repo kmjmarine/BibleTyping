@@ -28,6 +28,7 @@
 "verse" = "";
 
 //PuzzleDetail
+"PreExplain" = "Read the passages below and fill in the blanks on the next screen.";
 "Explain" = "Please select the correct word to fill in the blank.";
 
 //TypingDetailDone

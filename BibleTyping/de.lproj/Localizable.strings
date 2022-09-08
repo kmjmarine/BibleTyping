@@ -1,0 +1,122 @@
+/* 
+  Localizable.strings
+  BibleTyping
+
+  Created by kmjmarine on 2022/09/04.
+  
+*/
+// "키값" = "표시될 언어의 값";
+
+//Intro
+"BibleTyping" = "Bibellesen";
+"Quiz" = "passende Phrasen";
+"AlertTitle" = "Bitte wählen Sie die Sprache aus, die Sie verwenden möchten.";
+
+//Tabbar
+"Home" = "Heimat";
+"Bookmark" = "Lesezeichen";
+
+//NavigationItems Slide
+"OldBible" = "AT";
+"NewBible" = "NT";
+
+//TypingDetail
+"EnterText" = "Bitte gebe es hier ein.";
+"Enter" = "sparen";
+"Cancel" = "Stornierung";
+"chapter" = " :";
+"verse" = "";
+
+//PuzzleDetail
+"PreExplain" = "Lesen Sie die folgenden Passagen und füllen Sie die Lücken auf dem nächsten Bildschirm aus.";
+"Explain" = "Bitte füllen Sie die Lücken der Reihe nach mit den richtigen Wörtern aus.";
+
+//TypingDetailDone
+"TypingDone" = "Vollständige Lektüre";
+"Confirm" = "Bestätigen";
+
+//Alert
+"BookmarkOn" = "Ein Lesezeichen wurde gesetzt.";
+"BookmarkOff" = "Die Lesezeicheneinstellung wurde deaktiviert.";
+"NoBookmark" = "Es sind keine Verse mit Lesezeichen versehen.";
+"Wrong" = "Da stimmt etwas nicht. Bitte speichern Sie nach der Bearbeitung erneut.";
+"Wrongword1" = "oh! Es ist ein anderes Wort als das erste Wort.";
+"Wrongword2" = "oh! Es ist ein anderes Wort als das zweite Wort.";
+"Wrongword3" = "oh! Es ist ein anderes Wort als das dritte Wort.";
+"correct" = "Klatsch Klatsch! Das stimmt.";
+
+//Error
+"NoData" = "Daten konnten nicht gelesen werden.\nBitte versuchen Sie es später erneut.";
+
+//Status
+"noReading" = "neinLesen";
+"doneReading" = "fertigLesen";
+
+//Bible
+"창세기" = "Genesis";
+"출애굽기" = "Exodus";
+"레위기" = "Levitikus";
+"민수기" = "Numeri";
+"신명기" = "Deuteronomium";
+"여호수아" = "Josua";
+"사사기" = "Richter";
+"룻기" = "Rut";
+"사무엘상" = "1 Samuel";
+"사무엘하" = "2 Samuel";
+"열왕기상" = "Könige";
+"열왕기하" = "Könige";
+"역대상" = "1 Chronik";
+"역대하" = "2 Chronik";
+"에스라" = "Esra";
+"느헤미야" = "Nehemia";
+"에스더" = "Ester";
+"욥기" = "Hiob";
+"시편" = "Psalm";
+"잠언" = "Sprüche";
+"전도서" = "Prediger";
+"아가" = "Hohelied";
+"이사야" = "Jesaja";
+"예레미야" = "Jeremia";
+"예레미야애가" = "Klagelieder Jeremias";
+"에스겔" = "Hesekiel";
+"다니엘" = "Daniel";
+"호세아" = "Hosea";
+"요엘" = "Joel";
+"아모스" = "Amos";
+"오바댜" = "Obadja";
+"요나" = "Jona";
+"미가" = "Micha";
+"나훔" = "Nahum";
+"하박국" = "Habakuk";
+"스바냐" = "Zefanja";
+"학개" = "Haggai";
+"스가랴" = "Sacharja";
+"말라기" = "Maleachi";
+"마태복음" = "Matthäus";
+"마가복음" = "Markus";
+"누가복음" = "Lukas";
+"요한복음" = "Johannes";
+"사도행전" = "Apostelgeschichte";
+"로마서" = "Römer";
+"고린도전서" = "1 Korinther";
+"고린도후서" = "2 Korinther";
+"갈라디아서" = "Galater";
+"에베소서" = "Epheser";
+"빌립보서" = "Philipper";
+"골로새서" = "Kolosser";
+"데살로니가전서" = "1 Thessalonicher";
+"데실로니가후서" = "2 Thessalonicher";
+"디모데전서" = "1 Timotheus";
+"디모데후서" = "2 Timotheus";
+"디도서" = "Titus";
+"빌레몬서" = "Philemon";
+"히브리서" = "Hebräer";
+"야고보서" = "Jakobus";
+"베드로전서" = "1 Petrus";
+"베드로후서" = "2 Petrus";
+"요한일서" = "1 Johannes";
+"요한이서" = "2 Johannes";
+"요한삼서" = "3 Johannes";
+"유다서" = "Judas";
+"요한계시록" = "Offenbarung";
+

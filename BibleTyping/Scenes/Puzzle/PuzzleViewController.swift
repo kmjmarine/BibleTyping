@@ -24,6 +24,15 @@ final class PuzzleViewController: UIViewController {
         return view
     }()
     
+    private lazy var explainLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 18.0, weight: .regular)
+        label.lineBreakMode = .byCharWrapping
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
     private lazy var quoteLabel: UILabel = {
         let label = UILabel()
         label.text = ""
@@ -85,14 +94,22 @@ final class PuzzleViewController: UIViewController {
 
 extension PuzzleViewController: PuzzleProtocol {
     func setupViews() {
-        [quoteBaseView, quoteLabel, timerLabel, progressView]
+        [explainLabel, quoteBaseView, quoteLabel, timerLabel, progressView]
             .forEach { view.addSubview($0) }
         
-        quoteBaseView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(24.0)
+        let bottomSpacing: CGFloat = (tabBarController?.tabBar.frame.height)!
+        
+        explainLabel.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(16.0)
             $0.leading.equalToSuperview().inset(16.0)
             $0.trailing.equalToSuperview().inset(16.0)
-            $0.height.equalTo(250.0)
+        }
+        
+        quoteBaseView.snp.makeConstraints {
+            $0.top.equalTo(explainLabel.snp.bottom).offset(16.0)
+            $0.leading.equalToSuperview().inset(16.0)
+            $0.trailing.equalToSuperview().inset(16.0)
+            $0.bottom.equalToSuperview().inset(bottomSpacing * 4.3)
         }
         
         quoteLabel.snp.makeConstraints {
@@ -102,19 +119,17 @@ extension PuzzleViewController: PuzzleProtocol {
         }
         
         timerLabel.snp.makeConstraints {
-            $0.top.equalTo(quoteBaseView.snp.bottom).offset(80.0)
+            $0.top.equalTo(quoteBaseView.snp.bottom).offset(24.0)
             $0.leading.equalTo(quoteLabel.snp.leading)
             $0.trailing.equalTo(quoteLabel.snp.trailing)
         }
-        
-        let bottomSpacing: CGFloat = (tabBarController?.tabBar.frame.height)!
-        
+
         progressView.snp.makeConstraints {
             $0.top.equalTo(timerLabel.snp.bottom).offset(16.0)
             $0.leading.equalTo(quoteBaseView.snp.leading)
             $0.trailing.equalTo(quoteBaseView.snp.trailing)
             $0.height.equalTo(10.0)
-            $0.bottom.equalToSuperview().inset(bottomSpacing * 2.0)
+            $0.bottom.equalToSuperview().inset(bottomSpacing * 1.4)
         }
     }
     
@@ -123,6 +138,7 @@ extension PuzzleViewController: PuzzleProtocol {
         self.verse_info = verse_info
         
         quoteLabel.text = verse + " "  + verse_info
+        explainLabel.text = "PreExplain".localized
     }
 }
 
