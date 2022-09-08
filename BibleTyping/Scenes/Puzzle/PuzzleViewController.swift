@@ -27,8 +27,9 @@ final class PuzzleViewController: UIViewController {
     private lazy var explainLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18.0, weight: .regular)
-        label.lineBreakMode = .byCharWrapping
+        label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
+        label.textAlignment = .left
         
         return label
     }()
@@ -37,7 +38,6 @@ final class PuzzleViewController: UIViewController {
         let label = UILabel()
         label.text = ""
         label.font = .systemFont(ofSize: 25.0, weight: .semibold)
-        label.textAlignment = .center
         label.numberOfLines = 0
         
         return label
