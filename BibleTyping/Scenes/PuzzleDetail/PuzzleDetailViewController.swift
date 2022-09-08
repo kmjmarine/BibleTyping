@@ -218,7 +218,7 @@ extension PuzzleDetailViewController: PuzzleDetailProtocol {
         var i = 0
         var randomString: String = "" //완전한 구절 문자열
         var randomVerse: String = "" //답안 낱말 문자열
-        var suffledVerse: [String] = [ ] //답안 낱말 섞음 배열
+        var suffledVerse: [String] = [] //답안 낱말 섞음 배열
         
         while i < arrQuote.count {
             randomString.append(" " + arrQuote[i])

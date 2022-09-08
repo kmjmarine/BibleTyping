@@ -22,6 +22,10 @@ extension String {
             language = String(str.dropLast(3))                  // ko-KR => ko, en-US => en
         }
         
+        if language == "zh" {
+            language = "zh-Hans"
+        }
+        
         let path = Bundle.main.path(forResource: language, ofType: "lproj")
         let bundle = Bundle(path: path!)
         

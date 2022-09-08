@@ -195,6 +195,8 @@ final class TypingDetailPresenter: NSObject {
             setLanguageCode = "niv-"
         case ("ja"):
             setLanguageCode = "jco-"
+        case ("zh"):
+            setLanguageCode = "cus-"
         default :
             setLanguageCode = "kor-"
         }
