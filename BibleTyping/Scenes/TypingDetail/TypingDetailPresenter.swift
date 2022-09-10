@@ -128,6 +128,8 @@ final class TypingDetailPresenter: NSObject {
         if (bookmark.firstIndex(where: { $0.bookname == self.bookname && $0.chapter == self.chapter && $0.verse == self.verse
         }) != nil) {
             viewController?.setBookmarked(true, false)
+        } else {
+            viewController?.setBookmarked(false, false)
         }
     }
     

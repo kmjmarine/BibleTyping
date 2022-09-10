@@ -221,7 +221,9 @@ extension TypingDetailViewController: TypingDetailProtocol {
             }
         } else {
             rigthBarButtonItem.image = UIImage(systemName: "bookmark")
-            view.makeToast("BookmarkOff".localized)
+            if isAlert {
+                view.makeToast("BookmarkOff".localized)
+            }
         }
     }
     
