@@ -26,7 +26,7 @@ final class TypingListPresenter: NSObject {
     
     init(
          viewController: TypingListProtocol,
-         userDefaultsManager: UserDefaultsManagerProtocol = UserDefaultManager()
+         userDefaultsManager: UserDefaultsManagerProtocol = UserDefaultsManager()
     ) {
         self.viewController = viewController
         self.userDefaultsManager = userDefaultsManager

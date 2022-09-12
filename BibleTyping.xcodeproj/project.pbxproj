@@ -45,6 +45,8 @@
 		E5652B7A2874143D001B0B5F /* TypingDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5652B792874143D001B0B5F /* TypingDetailTableViewCell.swift */; };
 		E56641F128AB7D8A006B718A /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56641F028AB7D8A006B718A /* IntroViewController.swift */; };
 		E57836EA28C1E32B00263B14 /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = E57836E928C1E32B00263B14 /* empty.json */; };
+		E588858228CF8E1600AA4121 /* BookmarkListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E588858128CF8E1600AA4121 /* BookmarkListTableViewCell.swift */; };
+		E588858428CF920300AA4121 /* BookmarkListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E588858328CF920300AA4121 /* BookmarkListPresenter.swift */; };
 		E5C72B0B2879644A0063E704 /* TypingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C72B0A2879644A0063E704 /* TypingListViewController.swift */; };
 		E5C72B0D287964870063E704 /* TypingListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C72B0C287964870063E704 /* TypingListPresenter.swift */; };
 		E5C72B0F287967800063E704 /* TypingListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C72B0E287967800063E704 /* TypingListCollectionViewCell.swift */; };
@@ -116,6 +118,8 @@
 		E5652B792874143D001B0B5F /* TypingDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingDetailTableViewCell.swift; sourceTree = "<group>"; };
 		E56641F028AB7D8A006B718A /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		E57836E928C1E32B00263B14 /* empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
+		E588858128CF8E1600AA4121 /* BookmarkListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListTableViewCell.swift; sourceTree = "<group>"; };
+		E588858328CF920300AA4121 /* BookmarkListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListPresenter.swift; sourceTree = "<group>"; };
 		E5B9648A28C972C900A24B80 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		E5B9648B28C972C900A24B80 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E5C72B0A2879644A0063E704 /* TypingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingListViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +176,8 @@
 			children = (
 				E51D704B28BDE8D4000573C3 /* BookmarkListViewController.swift */,
 				E5FB41F928BE4DB6007AC2AA /* BookmarkCollectionViewCell.swift */,
+				E588858128CF8E1600AA4121 /* BookmarkListTableViewCell.swift */,
+				E588858328CF920300AA4121 /* BookmarkListPresenter.swift */,
 			);
 			path = Bookmak;
 			sourceTree = "<group>";
@@ -495,6 +501,7 @@
 				E54F9903287E9CAA00A59A77 /* UserDefaultsManager.swift in Sources */,
 				E511A7F428AA12E700E46114 /* BibleJson.swift in Sources */,
 				E5C72B0F287967800063E704 /* TypingListCollectionViewCell.swift in Sources */,
+				E588858228CF8E1600AA4121 /* BookmarkListTableViewCell.swift in Sources */,
 				E5652B7A2874143D001B0B5F /* TypingDetailTableViewCell.swift in Sources */,
 				E503E26228982D9F00BA6133 /* PuzzleDetailViewController.swift in Sources */,
 				E54F9905287E9F7400A59A77 /* User.swift in Sources */,
@@ -514,6 +521,7 @@
 				E5274904288F7BC20070AEDA /* PuzzleViewController.swift in Sources */,
 				E5652B652873D8FF001B0B5F /* Record.swift in Sources */,
 				E529F1C728935D1D00B37A13 /* UIColor+.swift in Sources */,
+				E588858428CF920300AA4121 /* BookmarkListPresenter.swift in Sources */,
 				E51D704F28BDEBF8000573C3 /* Bookmark.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

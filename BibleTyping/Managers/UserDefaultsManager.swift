@@ -15,7 +15,7 @@ protocol UserDefaultsManagerProtocol {
     func delBookmark(_ newValue: Bookmark)
 }
 
-struct UserDefaultManager: UserDefaultsManagerProtocol {
+struct UserDefaultsManager: UserDefaultsManagerProtocol {
     enum Key: String {
         case record
         case bookmarks

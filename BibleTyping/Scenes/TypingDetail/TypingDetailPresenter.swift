@@ -38,7 +38,7 @@ final class TypingDetailPresenter: NSObject {
     init(
         viewController: TypingDetailProtocol,
         searchManager: SearchManagerProtocol = SearchManager(),
-        userDefaultsManager: UserDefaultsManagerProtocol = UserDefaultManager(),
+        userDefaultsManager: UserDefaultsManagerProtocol = UserDefaultsManager(),
         bookkind: String,
         bookname: String,
         chapter: Int,

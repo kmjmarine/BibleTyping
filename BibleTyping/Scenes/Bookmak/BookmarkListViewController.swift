@@ -10,8 +10,14 @@ import SnapKit
 import Lottie
 
 final class BookmarkListViewController: UIViewController {
-    private var bookmark: [Bookmark] = []
-    private let userDefaultsManager: UserDefaultsManagerProtocol
+    private lazy var presenter = BookmarkListPresenter(viewController: self)
+    
+    private lazy var refreshContol: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(didCalledRefresh), for: .valueChanged)
+        
+        return refreshControl
+    }()
     
     private lazy var explainLabel: UILabel = {
         let label = UILabel()
@@ -31,81 +37,54 @@ final class BookmarkListViewController: UIViewController {
         return animationView
     }()
     
-    private lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.delegate = presenter
+        tableView.dataSource = presenter
         
-        let inset: CGFloat = 16.0
-        layout.scrollDirection = .vertical
-        layout.estimatedItemSize = CGSize(width: view.frame.width - (inset * 2), height: 100.0) //최소사이즈 설정
-        layout.sectionInset = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
-        layout.minimumLineSpacing = inset
+        tableView.register(BookmarkListTableViewCell.self, forCellReuseIdentifier: BookmarkListTableViewCell.identifier)
         
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .secondarySystemBackground
-        collectionView.register(BookmarkCollectionViewCell.self, forCellWithReuseIdentifier: BookmarkCollectionViewCell.identifier)
-        collectionView.dataSource = self
+        tableView.refreshControl = refreshContol
         
-        return collectionView
+        return tableView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Bookmark".localized
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
-        animationView.isHidden = true
-        collectionView.isHidden = true
-        
-        setLayout()
+        presenter.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        bookmark = userDefaultsManager.getBookmark()
-        
-        if bookmark.count <= 0 {
+        presenter.viewWillAppear()
+    }
+}
+
+extension BookmarkListViewController: BookmarkProtocol {
+    func setupNavigationBar() {
+        title = "Bookmark".localized
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    func setupInitailView() {
+        animationView.isHidden = true
+        tableView.isHidden = true
+    }
+    
+    func setupDoneView(bookmarks: [Bookmark]) {
+        if bookmarks.count <= 0 {
             animationView.isHidden = false
-            collectionView.isHidden = true
+            tableView.isHidden = true
         } else {
             animationView.isHidden = true
-            collectionView.isHidden = false
+            tableView.isHidden = false
         }
-        
-        collectionView.reloadData()
     }
-    
-    init(
-         userDefaultsManager: UserDefaultsManagerProtocol = UserDefaultManager()
-    ) {
-        self.userDefaultsManager = userDefaultsManager
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
 
-extension BookmarkListViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        bookmark.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookmarkCollectionViewCell.identifier, for: indexPath) as? BookmarkCollectionViewCell
-        
-        let bookmark = bookmark[indexPath.item]
-        cell?.setup(from: bookmark)
-        
-        return cell ?? UICollectionViewCell()
-    }
-}
-
-private extension BookmarkListViewController {
     func setLayout() {
-        [explainLabel, animationView, collectionView]
+        [explainLabel, animationView, tableView]
             .forEach { view.addSubview($0) }
         
         let width = UIScreen.main.bounds.width
@@ -124,8 +103,22 @@ private extension BookmarkListViewController {
             $0.height.equalTo(animationView.snp.width)
         }
         
-        collectionView.snp.makeConstraints {
+        tableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+    }
+    
+    func endRefreshing() {
+        refreshContol.endRefreshing()
+    }
+    
+    func reloadTableView() {
+        tableView.reloadData()
+    }
+}
+
+private extension BookmarkListViewController {
+    @objc func didCalledRefresh() {
+        presenter.didCalledRefresh()
     }
 }
