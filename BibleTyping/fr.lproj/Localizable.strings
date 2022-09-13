@@ -1,0 +1,123 @@
+/* 
+  Localizable.strings
+  BibleTyping
+
+  Created by kmjmarine on 2022/09/04.
+  
+*/
+// "키값" = "표시될 언어의 값";
+
+//Intro
+"BibleTyping" = "lecture biblique";
+"Quiz" = "verset biblique";
+"AlertTitle" = "Veuillez sélectionner la langue que vous souhaitez utiliser.";
+
+//Tabbar
+"Home" = "première";
+"Bookmark" = "signet";
+
+//NavigationItems Slide
+"OldBible" = "L'Ancien";
+"NewBible" = "Nouveau";
+
+//TypingDetail
+"EnterText" = "Veuillez le saisir ici.";
+"Enter" = "enregistrer";
+"Cancel" = "annulation";
+"chapter" = " :";
+"verse" = "";
+
+//PuzzleDetail
+"PreExplain" = "Lisez les passages ci-dessous et remplissez les blancs sur l'écran suivant.";
+"Explain" = "Veuillez sélectionner les mots corrects pour remplir les blancs dans l'ordre.";
+
+//TypingDetailDone
+"TypingDone" = "Lecture complète";
+"Confirm" = "Confirmer";
+
+//Alert
+"BookmarkOn" = "Un signet a été défini.";
+"BookmarkOff" = "Le paramètre de signet a été désactivé.";
+"NoBookmark" = "Il n'y a pas de versets marqués.";
+"Wrong" = "Il y a quelque chose qui ne va pas. Veuillez enregistrer à nouveau après modification.";
+"Wrongword1" = "oh! C'est un mot différent du premier mot.";
+"Wrongword2" = "oh! C'est un mot différent du deuxième mot.";
+"Wrongword3" = "oh! C'est un mot différent du troisième mot.";
+"correct" = "Clap clap! C'est vrai.";
+"copy" = "Le signet a été copié dans le presse-papiers.";
+
+//Error
+"NoData" = "Échec de la lecture des données.\nVeuillez réessayer ultérieurement.";
+
+//Status
+"noReading" = "Avant";
+"doneReading" = "complète";
+
+//Bible
+"창세기" = "Genèse";
+"출애굽기" = "Exode";
+"레위기" = "Lévitique";
+"민수기" = "Nombres";
+"신명기" = "Deutéronome";
+"여호수아" = "Josué";
+"사사기" = "Juges";
+"룻기" = "Ruth";
+"사무엘상" = "1 Samuel";
+"사무엘하" = "2 Samuel";
+"열왕기상" = "1 Rois";
+"열왕기하" = "2 Rois";
+"역대상" = "1 Chroniques";
+"역대하" = "2 Chroniques";
+"에스라" = "Esdras";
+"느헤미야" = "Néhémie";
+"에스더" = "Esther";
+"욥기" = "Job";
+"시편" = "Psaumes";
+"잠언" = "Proverbes";
+"전도서" = "Ecclésiaste";
+"아가" = "Cantique des Cantiques";
+"이사야" = "Ésaïe";
+"예레미야" = "Jérémie";
+"예레미야애가" = "Lamentations";
+"에스겔" = "Ézéchiel";
+"다니엘" = "Daniel";
+"호세아" = "Osée";
+"요엘" = "Joël";
+"아모스" = "Amos";
+"오바댜" = "Abdias";
+"요나" = "Jonas";
+"미가" = "Michée";
+"나훔" = "Nahum";
+"하박국" = "Habacuc";
+"스바냐" = "Sophonie";
+"학개" = "Aggée";
+"스가랴" = "Zacharie";
+"말라기" = "Malachie";
+"마태복음" = "Matthieu";
+"마가복음" = "Marc";
+"누가복음" = "Luc";
+"요한복음" = "Jean";
+"사도행전" = "Actes";
+"로마서" = "Romains";
+"고린도전서" = "1 Corinthiens";
+"고린도후서" = "2 Corinthiens";
+"갈라디아서" = "Galates";
+"에베소서" = "Éphésiens";
+"빌립보서" = "Philippiens";
+"골로새서" = "Colossiens";
+"데살로니가전서" = "1 Thessaloniciens";
+"데실로니가후서" = "2 Thessaloniciens";
+"디모데전서" = "1 Timothée";
+"디모데후서" = "2 Timothée";
+"디도서" = "Tite";
+"빌레몬서" = "Philémon";
+"히브리서" = "Hébreux";
+"야고보서" = "Jacques";
+"베드로전서" = "1 Pierre";
+"베드로후서" = "2 Pierre";
+"요한일서" = "1 Jean";
+"요한이서" = "2 Jean";
+"요한삼서" = "3 Jean";
+"유다서" = "Jude";
+"요한계시록" = "Apocalypse";
+

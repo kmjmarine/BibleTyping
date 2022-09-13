@@ -92,5 +92,20 @@ extension Puzzle {
         Puzzle(verse: "In der Welt habt ihr Angst; aber seid getrost, ich habe die Welt überwunden.", verse_info: "Johannes 16:33"),
         Puzzle(verse: "Es sei aber fern von mir, mich zu rühmen als allein des Kreuzes unseres Herrn Jesus Christus.", verse_info: "Galater 6:14"),
     ]
+    
+    static let puzzleFRList: [Puzzle] = [
+        Puzzle(verse: "Je t'instruirai et te montrerai la voie que tu dois suivre; Je te conseillerai, j'aurai le regard sur toi.", verse_info: "Psaumes 32:8"),
+        Puzzle(verse: "Cantique de David. L'Eternel est mon berger: je ne manquerai de rien.", verse_info: "Psaumes 23:1"),
+        Puzzle(verse: "Hymne de David. Garde-moi, ô Dieu! car je cherche en toi mon refuge.", verse_info: "Psaumes 16:1"),
+        Puzzle(verse: "Nous savons, du reste, que toutes choses concourent au bien de ceux qui aiment Dieu, de ceux qui sont appelés selon son dessein.", verse_info: "Romains 8:28"),
+        Puzzle(verse: "Jésus lui dit: Je suis le chemin, la vérité, et la vie. Nul ne vient au Père que par moi.", verse_info: "Jean 14:6"),
+        Puzzle(verse: "Or sans la foi il est impossible de lui être agréable; car il faut que celui qui s'approche de Dieu croie que Dieu existe, et qu'il est le rémunérateur de ceux qui le cherchent.", verse_info: "Hébreux 11:6"),
+        Puzzle(verse: "Louez l'Eternel! Mon âme, loue l'Eternel! Je louerai l'Eternel tant que je vivrai, Je célébrerai mon Dieu tant que j'existerai.", verse_info: "Psaumes 146:1-2"),
+        Puzzle(verse: "Cherchez premièrement le royaume et la justice de Dieu; et toutes ces choses vous seront données par-dessus.", verse_info: "Matthieu 6:33"),
+        Puzzle(verse: "Salomon engendra Roboam; Roboam engendra Abia; Abia engendra Asa; Asa engendra Josaphat; Josaphat engendra Joram; Joram engendra Ozias;", verse_info: "Matthieu 7:7-8"),
+        Puzzle(verse: "Venez à moi, vous tous qui êtes fatigués et chargés, et je vous donnerai du repos.", verse_info: "Matthieu 11:28"),
+        Puzzle(verse: "En vérité, en vérité, je vous le dis, celui qui écoute ma parole, et qui croit à celui qui m'a envoyé, a la vie éternelle et ne vient point en jugement, mais il est passé de la mort à la vie.", verse_info: "Jean 5:24"),
+        Puzzle(verse: "Si vous demeurez en moi, et que mes paroles demeurent en vous, demandez ce que vous voudrez, et cela vous sera accordé.", verse_info: "Jean 15:7")
+    ]
 }
 

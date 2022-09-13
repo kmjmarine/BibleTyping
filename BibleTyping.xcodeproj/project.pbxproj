@@ -80,6 +80,8 @@
 		E510617728C78ECD001856E2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E511A7F328AA12E700E46114 /* BibleJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibleJson.swift; sourceTree = "<group>"; };
 		E511A7F528AA173C00E46114 /* jsonbible.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = jsonbible.json; sourceTree = "<group>"; };
+		E513A4E428D06BD400DE1D60 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		E513A4E528D06BD400DE1D60 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E51D704B28BDE8D4000573C3 /* BookmarkListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListViewController.swift; sourceTree = "<group>"; };
 		E51D704E28BDEBF8000573C3 /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		E5274901288F7A400070AEDA /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
@@ -429,6 +431,7 @@
 				ja,
 				"zh-Hans",
 				de,
+				fr,
 			);
 			mainGroup = E5652B272873CE09001B0B5F;
 			packageReferences = (
@@ -563,6 +566,7 @@
 				E528CD1528C70C2C001B836D /* ja */,
 				E510617728C78ECD001856E2 /* zh-Hans */,
 				E5B9648B28C972C900A24B80 /* de */,
+				E513A4E528D06BD400DE1D60 /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -575,6 +579,7 @@
 				E528CD1428C70C2C001B836D /* ja */,
 				E510617628C78ECD001856E2 /* zh-Hans */,
 				E5B9648A28C972C900A24B80 /* de */,
+				E513A4E428D06BD400DE1D60 /* fr */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -719,7 +724,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.7.4;
+				MARKETING_VERSION = 2.7.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "aeron-kim.BibleTyping";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -749,7 +754,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.7.4;
+				MARKETING_VERSION = 2.7.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "aeron-kim.BibleTyping";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

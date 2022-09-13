@@ -220,6 +220,16 @@ extension IntroViewController {
         alertController.addAction(action)
         action.setValue(UIColor.label, forKey: "titleTextColor")
         
+        action = UIAlertAction(title: "Français", style: .default) { [weak self] _ in
+            //프랑스어로 변경
+            UserDefaults.standard.set(["fr"], forKey: "language")
+            UserDefaults.standard.synchronize()
+            
+            self?.setLanguage()
+        }
+        alertController.addAction(action)
+        action.setValue(UIColor.label, forKey: "titleTextColor")
+        
         let cancelAction = UIAlertAction(
             title: "Cancel".localized,
             style: .cancel,

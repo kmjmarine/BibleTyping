@@ -38,6 +38,8 @@ final class PuzzlePresenter: NSObject {
             quoteList = Puzzle.puzzleZHList
         case "de":
             quoteList = Puzzle.puzzleDEList
+        case "fr":
+            quoteList = Puzzle.puzzleFRList
         default:
             quoteList = Puzzle.puzzleKOList
         }
