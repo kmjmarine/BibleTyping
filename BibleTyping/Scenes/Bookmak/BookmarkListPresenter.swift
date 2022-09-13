@@ -15,6 +15,7 @@ protocol BookmarkProtocol: AnyObject {
     func setupDoneView(bookmarks: [Bookmark])
     func endRefreshing()
     func reloadTableView()
+    func alertCopy()
 }
 
 final class BookmarkListPresenter: NSObject {
@@ -59,7 +60,7 @@ extension BookmarkListPresenter: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let action = UIContextualAction(style: .normal, title: nil) { [weak self] (action, view, completion) in
+        let deleteAction = UIContextualAction(style: .normal, title: nil) { [weak self] (action, view, completion) in
             let bookmarks = self!.bookmark[indexPath.row]
             self!.userDefaultsManager.delBookmark(bookmarks)
             self!.bookmark.remove(at: indexPath.row)
@@ -69,9 +70,21 @@ extension BookmarkListPresenter: UITableViewDelegate, UITableViewDataSource {
             completion(true)
         }
         
-        action.backgroundColor = .red
-        action.image = UIImage(systemName: "trash")
-        let configuration = UISwipeActionsConfiguration(actions: [action])
+        let copyAction = UIContextualAction(style: .normal, title: nil) { [weak self] (action, view, completion) in
+            let bookmarks = self!.bookmark[indexPath.row]
+            UIPasteboard.general.string = "\(bookmarks.bookname.localized ) \(bookmarks.chapter)\("chapter".localized) \(bookmarks.verse)\("verse".localized) \n\(bookmarks.quote) "
+           
+            self?.viewController?.alertCopy()
+            
+            completion(true)
+        }
+        
+        deleteAction.backgroundColor = .red
+        deleteAction.image = UIImage(systemName: "trash")
+        copyAction.backgroundColor = .TitleBrown
+        copyAction.image = UIImage(systemName: "doc.on.doc")
+        
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction, copyAction])
         configuration.performsFirstActionWithFullSwipe = false
         return configuration
     }

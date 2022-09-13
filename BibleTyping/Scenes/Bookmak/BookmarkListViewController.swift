@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Lottie
+import Toast
 
 final class BookmarkListViewController: UIViewController {
     private lazy var presenter = BookmarkListPresenter(viewController: self)
@@ -81,6 +82,10 @@ extension BookmarkListViewController: BookmarkProtocol {
             animationView.isHidden = true
             tableView.isHidden = false
         }
+    }
+    
+    func alertCopy() {
+        view.makeToast("copy".localized, duration: 1.5)
     }
 
     func setLayout() {

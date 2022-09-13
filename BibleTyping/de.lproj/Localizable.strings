@@ -44,6 +44,7 @@
 "Wrongword2" = "oh! Es ist ein anderes Wort als das zweite Wort.";
 "Wrongword3" = "oh! Es ist ein anderes Wort als das dritte Wort.";
 "correct" = "Klatsch Klatsch! Das stimmt.";
+"copy" = "Das Lesezeichen wurde in die Zwischenablage kopiert.";
 
 //Error
 "NoData" = "Daten konnten nicht gelesen werden.\nBitte versuchen Sie es später erneut.";

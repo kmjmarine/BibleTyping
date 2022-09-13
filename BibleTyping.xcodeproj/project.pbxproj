@@ -54,7 +54,6 @@
 		E5CB5969289913F600D333B5 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB5968289913F600D333B5 /* UILabel+.swift */; };
 		E5D6DCA22888CF2400A06A5C /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D6DCA12888CF2400A06A5C /* String+.swift */; };
 		E5EB751A287AB90B00E62A95 /* Bible.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EB7519287AB90B00E62A95 /* Bible.swift */; };
-		E5FB41FA28BE4DB6007AC2AA /* BookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FB41F928BE4DB6007AC2AA /* BookmarkCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,7 +128,6 @@
 		E5CB5968289913F600D333B5 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		E5D6DCA12888CF2400A06A5C /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		E5EB7519287AB90B00E62A95 /* Bible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bible.swift; sourceTree = "<group>"; };
-		E5FB41F928BE4DB6007AC2AA /* BookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,7 +173,6 @@
 			isa = PBXGroup;
 			children = (
 				E51D704B28BDE8D4000573C3 /* BookmarkListViewController.swift */,
-				E5FB41F928BE4DB6007AC2AA /* BookmarkCollectionViewCell.swift */,
 				E588858128CF8E1600AA4121 /* BookmarkListTableViewCell.swift */,
 				E588858328CF920300AA4121 /* BookmarkListPresenter.swift */,
 			);
@@ -497,7 +494,6 @@
 				E5C72B0B2879644A0063E704 /* TypingListViewController.swift in Sources */,
 				E5652B342873CE09001B0B5F /* AppDelegate.swift in Sources */,
 				E528583228BA6D3D0083208D /* TypingDetailDoneViewController.swift in Sources */,
-				E5FB41FA28BE4DB6007AC2AA /* BookmarkCollectionViewCell.swift in Sources */,
 				E54F9903287E9CAA00A59A77 /* UserDefaultsManager.swift in Sources */,
 				E511A7F428AA12E700E46114 /* BibleJson.swift in Sources */,
 				E5C72B0F287967800063E704 /* TypingListCollectionViewCell.swift in Sources */,

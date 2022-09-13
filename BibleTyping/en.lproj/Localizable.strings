@@ -44,6 +44,7 @@
 "Wrongword2" = "oh! It's a different word from the second word.";
 "Wrongword3" = "oh! It's a different word from the third word.";
 "correct" = "clap clap! That's right.";
+"copy" = "The bookmark has been copied to the clipboard.";
 
 //Error
 "NoData" = "Failed to read data. Please try again later.";
