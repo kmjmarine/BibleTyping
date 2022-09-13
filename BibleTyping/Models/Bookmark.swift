@@ -12,4 +12,5 @@ struct Bookmark: Codable {
     let chapter: Int
     let verse: Int
     let quote: String
+    let date: String?
 }

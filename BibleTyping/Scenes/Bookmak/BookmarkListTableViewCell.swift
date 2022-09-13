@@ -18,6 +18,26 @@ final class BookmarkListTableViewCell: UITableViewCell {
         return label
     }()
     
+    private lazy var dateLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14.0, weight: .medium)
+        label.textColor = .systemGray
+        
+        return label
+    }()
+    
+    private lazy var labelStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fill
+        stackView.spacing = 10.0
+        
+        [bookNameLabel, dateLabel]
+            .forEach { stackView.addArrangedSubview($0) }
+        
+        return stackView
+    }()
+    
     private lazy var quoteLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16.0, weight: .medium)
@@ -30,23 +50,24 @@ final class BookmarkListTableViewCell: UITableViewCell {
         selectionStyle = .none //tab시 배경색 안바
         
         bookNameLabel.text = bookmark.bookname.localized + " \(bookmark.chapter)\("chapter".localized) \(bookmark.verse)\("verse".localized)"
+        dateLabel.text = bookmark.date
         quoteLabel.text = bookmark.quote
         
-        [bookNameLabel, quoteLabel]
+        [labelStackView, quoteLabel]
             .forEach { addSubview($0) }
         
         let insetSpacing: CGFloat = 16.0
         
-        bookNameLabel.snp.makeConstraints {
+        labelStackView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(insetSpacing)
             $0.leading.equalToSuperview().inset(insetSpacing)
             $0.trailing.equalToSuperview().inset(insetSpacing)
-            $0.top.equalToSuperview().inset(insetSpacing)
         }
         
         quoteLabel.snp.makeConstraints {
-            $0.top.equalTo(bookNameLabel.snp.bottom).offset(insetSpacing)
-            $0.leading.equalTo(bookNameLabel.snp.leading)
-            $0.trailing.equalTo(bookNameLabel.snp.trailing)
+            $0.top.equalTo(labelStackView.snp.bottom).offset(insetSpacing)
+            $0.leading.equalTo(labelStackView.snp.leading)
+            $0.trailing.equalTo(labelStackView.snp.trailing)
             $0.bottom.equalToSuperview().inset(insetSpacing)
         }
     }

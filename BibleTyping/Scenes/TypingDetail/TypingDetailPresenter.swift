@@ -161,6 +161,9 @@ final class TypingDetailPresenter: NSObject {
     
     func didTabBookmakButton(quote: String, isBookmark: Bool) {
         bookmark = userDefaultsManager.getBookmark()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        let current_date_string = formatter.string(from: Date())
         
         if isBookmark {
             //이미 북마크 되어 있는지 확인
@@ -169,7 +172,8 @@ final class TypingDetailPresenter: NSObject {
                     bookname: self.bookname,
                     chapter: self.chapter,
                     verse: self.verse,
-                    quote: quote)
+                    quote: quote,
+                    date: current_date_string)
                     )
                     viewController?.setBookmarked(true, true)
                 }
@@ -178,7 +182,8 @@ final class TypingDetailPresenter: NSObject {
                     bookname: self.bookname,
                     chapter: self.chapter,
                     verse: self.verse,
-                    quote: quote)
+                    quote: quote,
+                    date: nil)
                     )
                     viewController?.setBookmarked(false, true)
             }
@@ -188,7 +193,6 @@ final class TypingDetailPresenter: NSObject {
         let bookCodes: [Bible]
         let languageCode = setLanguage()
         let setLanguageCode: String
-        
         
         switch languageCode {
         case "ko":
