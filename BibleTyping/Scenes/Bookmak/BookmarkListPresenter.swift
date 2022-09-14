@@ -72,7 +72,10 @@ extension BookmarkListPresenter: UITableViewDelegate, UITableViewDataSource {
         
         let copyAction = UIContextualAction(style: .normal, title: nil) { [weak self] (action, view, completion) in
             let bookmarks = self!.bookmark[indexPath.row]
-            UIPasteboard.general.string = "\(bookmarks.bookname.localized ) \(bookmarks.chapter)\("chapter".localized) \(bookmarks.verse)\("verse".localized) \n\(bookmarks.quote) "
+            var PasteBoardString: String {
+                return "\(bookmarks.bookname.localized ) \(bookmarks.chapter)\("chapter".localized) \(bookmarks.verse)\("verse".localized) \n\(bookmarks.quote) "
+            }
+            UIPasteboard.general.string = PasteBoardString
            
             self?.viewController?.alertCopy()
             

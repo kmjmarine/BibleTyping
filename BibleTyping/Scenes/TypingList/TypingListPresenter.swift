@@ -124,14 +124,6 @@ extension TypingListPresenter: UICollectionViewDataSource {
         
         listBible = collectionView.tag == 1 ? oldBible[indexPath.item] : newBible[indexPath.item]
         kindBible = collectionView.tag == 1 ? BookKind.old.rawValue : BookKind.new.rawValue
-        //통독완료 시 탭 안됨 처리
-//        if collectionView.tag == 1 && !oldDoneWriteIndexes.contains(indexPath.item)
-//        {
-//            viewController?.pushToTypingViewController(book: listBible?.bookName ?? "", kind: kindBible)
-//        }
-//        else if collectionView.tag == 2 && !newDoneWriteIndexes.contains(indexPath.item) {
-//                viewController?.pushToTypingViewController(book: listBible?.bookName ?? "", kind: kindBible)
-//        }
         
         if collectionView.tag == 1 {
             viewController?.pushToTypingViewController(book: listBible?.bookName ?? "", kind: kindBible)

@@ -102,7 +102,7 @@ final class IntroViewController: UIViewController {
         tabBarController?.tabBar.isHidden = true
         navigationController?.isNavigationBarHidden = true
         
-        setLanguage()
+        setMenuButtonTitle()
     }
     
     func setupViews() {
@@ -175,7 +175,7 @@ extension IntroViewController {
             UserDefaults.standard.set(["ko"], forKey: "language")
             UserDefaults.standard.synchronize()
             
-            self?.setLanguage()
+            self?.setMenuButtonTitle()
         }
         alertController.addAction(action)
         action.setValue(UIColor.label, forKey: "titleTextColor")
@@ -185,7 +185,7 @@ extension IntroViewController {
             UserDefaults.standard.set(["en"], forKey: "language")
             UserDefaults.standard.synchronize()
             
-            self?.setLanguage()
+            self?.setMenuButtonTitle()
         }
         alertController.addAction(action)
         action.setValue(UIColor.label, forKey: "titleTextColor")
@@ -195,7 +195,7 @@ extension IntroViewController {
             UserDefaults.standard.set(["zh"], forKey: "language")
             UserDefaults.standard.synchronize()
             
-            self?.setLanguage()
+            self?.setMenuButtonTitle()
         }
         alertController.addAction(action)
         action.setValue(UIColor.label, forKey: "titleTextColor")
@@ -205,7 +205,7 @@ extension IntroViewController {
             UserDefaults.standard.set(["ja"], forKey: "language")
             UserDefaults.standard.synchronize()
             
-            self?.setLanguage()
+            self?.setMenuButtonTitle()
         }
         alertController.addAction(action)
         action.setValue(UIColor.label, forKey: "titleTextColor")
@@ -215,7 +215,7 @@ extension IntroViewController {
             UserDefaults.standard.set(["de"], forKey: "language")
             UserDefaults.standard.synchronize()
             
-            self?.setLanguage()
+            self?.setMenuButtonTitle()
         }
         alertController.addAction(action)
         action.setValue(UIColor.label, forKey: "titleTextColor")
@@ -225,7 +225,7 @@ extension IntroViewController {
             UserDefaults.standard.set(["fr"], forKey: "language")
             UserDefaults.standard.synchronize()
             
-            self?.setLanguage()
+            self?.setMenuButtonTitle()
         }
         alertController.addAction(action)
         action.setValue(UIColor.label, forKey: "titleTextColor")
@@ -243,13 +243,7 @@ extension IntroViewController {
 }
 
 extension IntroViewController {
-    func setLanguage() {
-        var language = UserDefaults.standard.array(forKey: "language")?.first as? String
-        if language == nil {
-            let str = String(NSLocale.preferredLanguages[0])    // 언어코드-지역코드 (ex. ko-KR, en-US)
-            language = String(str.dropLast(3))                  // ko-KR => ko, en-US => en
-        }
-        
+    func setMenuButtonTitle() {
         self.TypingButton.setTitle("BibleTyping".localized, for: .normal)
         self.PuzzleButton.setTitle("Quiz".localized, for: .normal)
     }

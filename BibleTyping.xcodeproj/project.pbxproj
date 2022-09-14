@@ -171,6 +171,16 @@
 			path = PuzzleDetail;
 			sourceTree = "<group>";
 		};
+		E5119D7028D0D57C008A1CBA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E5D6DCA12888CF2400A06A5C /* String+.swift */,
+				E529F1C628935D1D00B37A13 /* UIColor+.swift */,
+				E5CB5968289913F600D333B5 /* UILabel+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		E51D704D28BDE8E2000573C3 /* Bookmak */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,13 +189,6 @@
 				E588858328CF920300AA4121 /* BookmarkListPresenter.swift */,
 			);
 			path = Bookmak;
-			sourceTree = "<group>";
-		};
-		E51D705028BDEFE6000573C3 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extension;
 			sourceTree = "<group>";
 		};
 		E51D705228BDF026000573C3 /* ETCFiles */ = {
@@ -234,6 +237,7 @@
 		E5652B322873CE09001B0B5F /* BibleTyping */ = {
 			isa = PBXGroup;
 			children = (
+				E5119D7028D0D57C008A1CBA /* Extension */,
 				E5652B682873DAFE001B0B5F /* Managers */,
 				E5652B632873D8E1001B0B5F /* Models */,
 				E5C72B08287963230063E704 /* Scenes */,
@@ -243,9 +247,6 @@
 				E5652B3C2873CE0A001B0B5F /* Assets.xcassets */,
 				E5652B3E2873CE0A001B0B5F /* LaunchScreen.storyboard */,
 				E5652B412873CE0A001B0B5F /* Info.plist */,
-				E5D6DCA12888CF2400A06A5C /* String+.swift */,
-				E529F1C628935D1D00B37A13 /* UIColor+.swift */,
-				E5CB5968289913F600D333B5 /* UILabel+.swift */,
 				E54AC94328C3AB190018E9AB /* Localizable.strings */,
 			);
 			path = BibleTyping;
@@ -314,7 +315,6 @@
 			children = (
 				E51D704D28BDE8E2000573C3 /* Bookmak */,
 				E51D705228BDF026000573C3 /* ETCFiles */,
-				E51D705028BDEFE6000573C3 /* Extension */,
 				E56641F228AB7D97006B718A /* Intro */,
 				E5274905288F7BCD0070AEDA /* Puzzle */,
 				E503E26028982D4E00BA6133 /* PuzzleDetail */,

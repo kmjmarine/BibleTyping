@@ -49,7 +49,12 @@ final class BookmarkListTableViewCell: UITableViewCell {
     func setup(from bookmark: Bookmark) {
         selectionStyle = .none //tab시 배경색 안바
         
-        bookNameLabel.text = bookmark.bookname.localized + " \(bookmark.chapter)\("chapter".localized) \(bookmark.verse)\("verse".localized)"
+        //computed property
+        var bookLabelText: String {
+            return bookmark.bookname.localized + " \(bookmark.chapter)\("chapter".localized) \(bookmark.verse)\("verse".localized)"
+        }
+        
+        bookNameLabel.text = bookLabelText
         dateLabel.text = bookmark.date
         quoteLabel.text = bookmark.quote
         

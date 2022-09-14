@@ -203,9 +203,16 @@ extension TypingDetailViewController: TypingDetailProtocol {
     }
     
     func setViews(chapter: Int, verse: Int, quoteText: String) {
-        bookNameLabel.text = bookname.localized + " \(chapter)\("chapter".localized) \(verse)\("verse".localized)"
+        var bookLabelText: String {
+            return bookname.localized + " \(chapter)\("chapter".localized) \(verse)\("verse".localized)"
+        }
+        bookNameLabel.text = bookLabelText
         
-        let startIdx: String.Index = quoteText.index(quoteText.startIndex, offsetBy: getMakeQuote(chapter, verse)) //장, 절 삭제
+        var chpaterVerseLength: Int {
+            return String(chapter).count + String(verse).count + 2 //"1:10 (장+절) + 공백+콜론 2 더함"
+        }
+        
+        let startIdx: String.Index = quoteText.index(quoteText.startIndex, offsetBy: chpaterVerseLength) //장, 절 삭제
 
         var finalQuoteText = String(quoteText[startIdx...])
         finalQuoteText = finalQuoteText.replacingOccurrences(of: "(神)", with: "") //한자 삭제
@@ -340,14 +347,6 @@ private extension TypingDetailViewController {
         if let quote = sourceQuoteLabel.text {
             presenter.didTabBookmakButton(quote: quote, isBookmark: isBookmark)
         }
-    }
-    
-    //장:절 삭제 (1:10)
-    func getMakeQuote(_ chapter: Int, _ verse: Int) -> Int {
-        let chapterLength: Int = String(chapter).count
-        let verseLength: Int = String(verse).count
-        
-        return chapterLength + verseLength + 2 //"1:10 (장+절) + 공백+콜론 2 더함"
     }
 }
 

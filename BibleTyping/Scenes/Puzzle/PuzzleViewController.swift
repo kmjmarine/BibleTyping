@@ -137,7 +137,11 @@ extension PuzzleViewController: PuzzleProtocol {
         self.verse = verse
         self.verse_info = verse_info
         
-        quoteLabel.text = verse + " "  + verse_info
+        var quoteLabelText: String {
+            return verse + " "  + verse_info
+        }
+        
+        quoteLabel.text = quoteLabelText
         explainLabel.text = "PreExplain".localized
     }
 }
