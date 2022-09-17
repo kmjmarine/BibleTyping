@@ -10,6 +10,8 @@ import SnapKit
 import Lottie
 
 final class IntroViewController: UIViewController {
+    private let userDefaultsManager: UserDefaultsManagerProtocol
+    
     private lazy var baseView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemYellow
@@ -92,6 +94,18 @@ final class IntroViewController: UIViewController {
         return button
     }()
     
+    init(
+        userDefaultsManager: UserDefaultsManagerProtocol = UserDefaultsManager()
+    ) {
+        self.userDefaultsManager = userDefaultsManager
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -169,73 +183,21 @@ extension IntroViewController {
     
     @objc func didTapGlobalButton() {
         let alertController = UIAlertController(title: "AlertTitle".localized, message: nil, preferredStyle: .actionSheet)
-        let languageCode = setLanguage()
+        let languageCode = userDefaultsManager.getLanguage()
         var textColor: UIColor
         
         //한국어로 변경
-        var action = UIAlertAction(title: "한국어", style: .default) { [weak self] _ in
-            UserDefaults.standard.set(["ko"], forKey: "language")
-            UserDefaults.standard.synchronize()
-            
-            self?.setMenuButtonTitle()
+        for i in 0...Language.languageList.count - 1 {
+            let action = UIAlertAction(title: Language.languageList[i].languageName, style: .default) { [weak self] _ in
+                UserDefaults.standard.set([Language.languageList[i].languageCode], forKey: "language")
+                UserDefaults.standard.synchronize()
+                
+                self?.setMenuButtonTitle()
+            }
+            alertController.addAction(action)
+            textColor = languageCode == Language.languageList[i].languageCode ? UIColor.red : UIColor.label
+            action.setValue(textColor, forKey: "titleTextColor")
         }
-        alertController.addAction(action)
-        textColor = languageCode == "ko" ? UIColor.red : UIColor.label
-        action.setValue(textColor, forKey: "titleTextColor")
-        
-        //영어로 변경
-        action = UIAlertAction(title: "English", style: .default) { [weak self] _ in
-            UserDefaults.standard.set(["en"], forKey: "language")
-            UserDefaults.standard.synchronize()
-            
-            self?.setMenuButtonTitle()
-        }
-        alertController.addAction(action)
-        textColor = languageCode == "en" ? UIColor.red : UIColor.label
-        action.setValue(textColor, forKey: "titleTextColor")
-        
-        //중국어로 변경
-        action = UIAlertAction(title: "中文", style: .default) { [weak self] _ in
-            UserDefaults.standard.set(["zh"], forKey: "language")
-            UserDefaults.standard.synchronize()
-            
-            self?.setMenuButtonTitle()
-        }
-        alertController.addAction(action)
-        textColor = languageCode == "zh" ? UIColor.red : UIColor.label
-        action.setValue(textColor, forKey: "titleTextColor")
-
-        //일본어로 변경
-        action = UIAlertAction(title: "日本語", style: .default) { [weak self] _ in
-            UserDefaults.standard.set(["ja"], forKey: "language")
-            UserDefaults.standard.synchronize()
-            
-            self?.setMenuButtonTitle()
-        }
-        textColor = languageCode == "ja" ? UIColor.red : UIColor.label
-        action.setValue(textColor, forKey: "titleTextColor")
-        
-        //독일어로 변경
-        action = UIAlertAction(title: "Deutsch", style: .default) { [weak self] _ in
-            UserDefaults.standard.set(["de"], forKey: "language")
-            UserDefaults.standard.synchronize()
-            
-            self?.setMenuButtonTitle()
-        }
-        alertController.addAction(action)
-        textColor = languageCode == "de" ? UIColor.red : UIColor.label
-        action.setValue(textColor, forKey: "titleTextColor")
-        
-        //프랑스어로 변경
-        action = UIAlertAction(title: "Français", style: .default) { [weak self] _ in
-            UserDefaults.standard.set(["fr"], forKey: "language")
-            UserDefaults.standard.synchronize()
-            
-            self?.setMenuButtonTitle()
-        }
-        alertController.addAction(action)
-        textColor = languageCode == "fr" ? UIColor.red : UIColor.label
-        action.setValue(textColor, forKey: "titleTextColor")
 
         //취소
         let cancelAction = UIAlertAction(
@@ -254,15 +216,5 @@ extension IntroViewController {
     func setMenuButtonTitle() {
         self.TypingButton.setTitle("BibleTyping".localized, for: .normal)
         self.PuzzleButton.setTitle("Quiz".localized, for: .normal)
-    }
-    
-    func setLanguage() -> String {
-        var language = UserDefaults.standard.array(forKey: "language")?.first as? String //nil
-        if language == nil {
-            let str = String(NSLocale.preferredLanguages[0])    // 언어코드-지역코드 (ex. ko-KR, en-US)
-            language = String(str.dropLast(3))
-        }
-        
-        return language!
     }
 }

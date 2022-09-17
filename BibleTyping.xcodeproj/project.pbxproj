@@ -13,6 +13,7 @@
 		E511A7F628AA173C00E46114 /* jsonbible.json in Resources */ = {isa = PBXBuildFile; fileRef = E511A7F528AA173C00E46114 /* jsonbible.json */; };
 		E51D704C28BDE8D4000573C3 /* BookmarkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D704B28BDE8D4000573C3 /* BookmarkListViewController.swift */; };
 		E51D704F28BDEBF8000573C3 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51D704E28BDEBF8000573C3 /* Bookmark.swift */; };
+		E51F420228D59EAB00B4A82A /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51F420128D59EAB00B4A82A /* Language.swift */; };
 		E5274902288F7A400070AEDA /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5274901288F7A400070AEDA /* TabbarController.swift */; };
 		E5274904288F7BC20070AEDA /* PuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5274903288F7BC20070AEDA /* PuzzleViewController.swift */; };
 		E5274907288FB6D70070AEDA /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5274906288FB6D70070AEDA /* Puzzle.swift */; };
@@ -85,6 +86,7 @@
 		E513A4E528D06BD400DE1D60 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E51D704B28BDE8D4000573C3 /* BookmarkListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListViewController.swift; sourceTree = "<group>"; };
 		E51D704E28BDEBF8000573C3 /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
+		E51F420128D59EAB00B4A82A /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		E5274901288F7A400070AEDA /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
 		E5274903288F7BC20070AEDA /* PuzzleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleViewController.swift; sourceTree = "<group>"; };
 		E5274906288FB6D70070AEDA /* Puzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				E5EB7519287AB90B00E62A95 /* Bible.swift */,
 				E54F9904287E9F7400A59A77 /* User.swift */,
 				E5274906288FB6D70070AEDA /* Puzzle.swift */,
+				E51F420128D59EAB00B4A82A /* Language.swift */,
 				E511A7F328AA12E700E46114 /* BibleJson.swift */,
 				E51D704E28BDEBF8000573C3 /* Bookmark.swift */,
 			);
@@ -518,6 +521,7 @@
 				E5EB751A287AB90B00E62A95 /* Bible.swift in Sources */,
 				E5652B702873E6A5001B0B5F /* TypingDetailViewController.swift in Sources */,
 				E5CB59652898D04C00D333B5 /* PuzzleDetailPresenter.swift in Sources */,
+				E51F420228D59EAB00B4A82A /* Language.swift in Sources */,
 				E5D6DCA22888CF2400A06A5C /* String+.swift in Sources */,
 				E5274902288F7A400070AEDA /* TabbarController.swift in Sources */,
 				E5274904288F7BC20070AEDA /* PuzzleViewController.swift in Sources */,

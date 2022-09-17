@@ -14,9 +14,14 @@ protocol PuzzleProtocol: AnyObject {
 
 final class PuzzlePresenter: NSObject {
     private weak var viewController: PuzzleProtocol?
+    private let userDefaultsManager: UserDefaultsManagerProtocol
     
-    init(viewController: PuzzleProtocol) {
+    init(
+        viewController: PuzzleProtocol,
+        userDefaultsManager: UserDefaultsManagerProtocol = UserDefaultsManager()
+    ) {
         self.viewController = viewController
+        self.userDefaultsManager = userDefaultsManager
     }
     
     func viewDidLoad() {
@@ -24,7 +29,7 @@ final class PuzzlePresenter: NSObject {
     }
     
     func viewWillAppear() {
-        let languageCode = setLanguage()
+        let languageCode = userDefaultsManager.getLanguage()
         var quoteList: [Puzzle]
         
         switch languageCode {
@@ -52,14 +57,3 @@ final class PuzzlePresenter: NSObject {
     }
 }
 
-extension PuzzlePresenter {
-    func setLanguage() -> String {
-        var language = UserDefaults.standard.array(forKey: "language")?.first as? String //nil
-        if language == nil {
-            let str = String(NSLocale.preferredLanguages[0])    // 언어코드-지역코드 (ex. ko-KR, en-US)
-            language = String(str.dropLast(3)) //ko, en으로 할당
-        }
-        
-        return language!
-    }
-}
