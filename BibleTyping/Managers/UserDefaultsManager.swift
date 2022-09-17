@@ -13,12 +13,14 @@ protocol UserDefaultsManagerProtocol {
     func getBookmark() -> [Bookmark]
     func setBookmark(_ newValue: Bookmark)
     func delBookmark(_ newValue: Bookmark)
+    func getLanguage() -> String
 }
 
 struct UserDefaultsManager: UserDefaultsManagerProtocol {
     enum Key: String {
         case record
         case bookmarks
+        case language
         
         //Computed Property (get-only)
         var value: String {
@@ -72,5 +74,16 @@ struct UserDefaultsManager: UserDefaultsManagerProtocol {
                 forKey: Key.bookmarks.value
             )
         }
+    }
+    
+    //Method for Language
+    func getLanguage() -> String {
+        var language = UserDefaults.standard.array(forKey: "language")?.first as? String //nil
+        if language == nil {
+            let str = String(NSLocale.preferredLanguages[0])    // 언어코드-지역코드 (ex. ko-KR, en-US)
+            language = String(str.dropLast(3))
+        }
+        
+        return language!
     }
 }

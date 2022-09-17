@@ -19,6 +19,9 @@ final class TypingDetailViewController: UIViewController {
     private var audioPlayer: AVAudioPlayer?
     
     private lazy var presenter = TypingDetailPresenter(viewController: self, bookkind: bookkind, bookname: bookname, chapter: chapter, verse: verse)
+    
+    private let userDefaultsManager: UserDefaultsManagerProtocol
+    
     private let placeholderText = "EnterText".localized
     
     private lazy var bookNameLabel: UILabel = {
@@ -99,18 +102,28 @@ final class TypingDetailViewController: UIViewController {
         return animationView
     }()
     
-    private lazy var rigthBarButtonItem = UIBarButtonItem(
-        image: UIImage(systemName: "bookmark"),
-        style: .plain,
-        target: self,
-        action: #selector(didTabBookmakButton)
-    )
+    private lazy var bookmarkButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "bookmark"), for: .normal)
+        button.addTarget(self, action: #selector(didTabBookmakButton), for: .touchUpInside)
+        
+        return button
+    }()
     
-    init(book: String, kind: String, chapter: Int, verse: Int) {
+    private lazy var TTSButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "speaker.wave.3"), for: .normal)
+        button.addTarget(self, action: #selector(didTabTTSButton), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    init(book: String, kind: String, chapter: Int, verse: Int,userDefaultsManager: UserDefaultsManagerProtocol = UserDefaultsManager()) {
         self.bookname = book
         self.bookkind = kind
         self.chapter = 1
         self.verse = 1
+        self.userDefaultsManager = userDefaultsManager
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -122,6 +135,8 @@ final class TypingDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        TTSManager.shared.synthesizer.delegate = self
+        
         presenter.viewDidLoad()
     }
     
@@ -129,6 +144,8 @@ final class TypingDetailViewController: UIViewController {
         super.viewWillAppear(false)
         
         animationView.isHidden = true //정답 이미지 기본 숨기기
+        TTSButton.setImage(UIImage(systemName: "speaker.wave.3"), for: .normal) //스피커 기본 꺼짐
+        
         presenter.viewWillAppear()
     }
     
@@ -199,7 +216,15 @@ extension TypingDetailViewController: TypingDetailProtocol {
     }
     
     func setupNavigationBar() {
-        navigationItem.rightBarButtonItem = rigthBarButtonItem
+        let rightBarButtonItem1 = bookmarkButton
+        rightBarButtonItem1.bounds = CGRect(x: 0, y: 0, width: 30, height: 30)
+        let rightItem1 = UIBarButtonItem(customView: rightBarButtonItem1)
+        
+        let rightBarButtonItem2 = TTSButton
+        rightBarButtonItem2.bounds = CGRect(x: 0, y: 0, width: 30, height: 30)
+        let rightItem2 = UIBarButtonItem(customView: rightBarButtonItem2)
+        
+        navigationItem.setRightBarButtonItems([rightItem1, rightItem2], animated: true)
     }
     
     func setViews(chapter: Int, verse: Int, quoteText: String) {
@@ -222,12 +247,12 @@ extension TypingDetailViewController: TypingDetailProtocol {
     
     func setBookmarked(_ isBookmark: Bool, _ isAlert: Bool) {
         if isBookmark {
-            rigthBarButtonItem.image = UIImage(systemName: "bookmark.fill")
+            bookmarkButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
             if isAlert {
                 view.makeToast("BookmarkOn".localized)
             }
         } else {
-            rigthBarButtonItem.image = UIImage(systemName: "bookmark")
+            bookmarkButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
             if isAlert {
                 view.makeToast("BookmarkOff".localized)
             }
@@ -336,17 +361,36 @@ private extension TypingDetailViewController {
     @objc func didTabBookmakButton() {
         var isBookmark: Bool
         
-        if rigthBarButtonItem.image == UIImage(systemName: "bookmark") {
-            rigthBarButtonItem.image = UIImage(systemName: "bookmark.fill")
+        if bookmarkButton.currentImage == UIImage(systemName: "bookmark") {
+            bookmarkButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
             isBookmark = true
         } else {
-            rigthBarButtonItem.image = UIImage(systemName: "bookmark")
+            bookmarkButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
             isBookmark = false
         }
         
         if let quote = sourceQuoteLabel.text {
             presenter.didTabBookmakButton(quote: quote, isBookmark: isBookmark)
         }
+    }
+    
+    @objc func didTabTTSButton() {
+        if TTSButton.currentImage == UIImage(systemName: "speaker.wave.3") {
+            if let sourceQuoteString = sourceQuoteLabel.text {
+                TTSButton.setImage(UIImage(systemName: "speaker.wave.3.fill"), for: .normal)
+                TTSManager.shared.play(sourceQuoteString, userDefaultsManager.getLanguage())
+            }
+        } else {
+            TTSButton.setImage(UIImage(systemName: "speaker.wave.3"), for: .normal)
+            TTSManager.shared.stop()
+        }
+    }
+}
+
+extension TypingDetailViewController: AVSpeechSynthesizerDelegate {
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        TTSButton.setImage(UIImage(systemName: "speaker.wave.3"), for: .normal)
+        TTSManager.shared.stop()
     }
 }
 

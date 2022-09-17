@@ -13,4 +13,5 @@ struct Bookmark: Codable {
     let verse: Int
     let quote: String
     let date: String?
+    let language: String?
 }

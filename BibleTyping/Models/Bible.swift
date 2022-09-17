@@ -17,6 +17,7 @@ struct Bible: Decodable {
 }
 
 extension Bible {
+    //Type Property instance에 종속되지 않음(intance화 안함). Bible.oldBible로 사용
     static let oldBible: [Bible] = [
         Bible(index: 1, bookCode:"ge", bookName: "창세기", chapter: 50, verse: 1533),
         Bible(index: 2, bookCode:"exo", bookName: "출애굽기", chapter: 40, verse: 1213),

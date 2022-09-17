@@ -11,5 +11,6 @@ struct User: Codable {
     //var name: String
     let id: String
     
+    //Type Property User.shared
     static var shared = User(id: UUID().uuidString)
 }

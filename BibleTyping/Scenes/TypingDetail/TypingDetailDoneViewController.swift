@@ -24,6 +24,7 @@ final class TypingDetailDoneViewController: UIViewController {
        let label = UILabel()
         label.font = .systemFont(ofSize: 30.0, weight: .bold)
         label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
         
         return label
     }()

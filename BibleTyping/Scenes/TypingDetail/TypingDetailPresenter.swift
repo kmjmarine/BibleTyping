@@ -173,7 +173,8 @@ final class TypingDetailPresenter: NSObject {
                     chapter: self.chapter,
                     verse: self.verse,
                     quote: quote,
-                    date: current_date_string)
+                    date: current_date_string,
+                    language: userDefaultsManager.getLanguage())
                     )
                     viewController?.setBookmarked(true, true)
                 }
@@ -183,7 +184,8 @@ final class TypingDetailPresenter: NSObject {
                     chapter: self.chapter,
                     verse: self.verse,
                     quote: quote,
-                    date: nil)
+                    date: nil,
+                    language: nil)
                     )
                     viewController?.setBookmarked(false, true)
             }
@@ -191,7 +193,7 @@ final class TypingDetailPresenter: NSObject {
     
     func setBook() -> String {
         let bookCodes: [Bible]
-        let languageCode = setLanguage()
+        let languageCode = userDefaultsManager.getLanguage()
         let setLanguageCode: String
         
         switch languageCode {
@@ -251,15 +253,5 @@ extension TypingDetailPresenter {
         self.viewWillAppear()
        
         viewController?.showCorrectAmnimationView(false)
-    }
-    
-    func setLanguage() -> String {
-        var language = UserDefaults.standard.array(forKey: "language")?.first as? String //nil
-        if language == nil {
-            let str = String(NSLocale.preferredLanguages[0])    // 언어코드-지역코드 (ex. ko-KR, en-US)
-            language = String(str.dropLast(3))
-        }
-        
-        return language!
     }
 }

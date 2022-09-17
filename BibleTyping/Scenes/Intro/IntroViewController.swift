@@ -169,74 +169,82 @@ extension IntroViewController {
     
     @objc func didTapGlobalButton() {
         let alertController = UIAlertController(title: "AlertTitle".localized, message: nil, preferredStyle: .actionSheet)
+        let languageCode = setLanguage()
+        var textColor: UIColor
         
+        //한국어로 변경
         var action = UIAlertAction(title: "한국어", style: .default) { [weak self] _ in
-            //한국어로 변경
             UserDefaults.standard.set(["ko"], forKey: "language")
             UserDefaults.standard.synchronize()
             
             self?.setMenuButtonTitle()
         }
         alertController.addAction(action)
-        action.setValue(UIColor.label, forKey: "titleTextColor")
+        textColor = languageCode == "ko" ? UIColor.red : UIColor.label
+        action.setValue(textColor, forKey: "titleTextColor")
         
+        //영어로 변경
         action = UIAlertAction(title: "English", style: .default) { [weak self] _ in
-            //영어로 변경
             UserDefaults.standard.set(["en"], forKey: "language")
             UserDefaults.standard.synchronize()
             
             self?.setMenuButtonTitle()
         }
         alertController.addAction(action)
-        action.setValue(UIColor.label, forKey: "titleTextColor")
+        textColor = languageCode == "en" ? UIColor.red : UIColor.label
+        action.setValue(textColor, forKey: "titleTextColor")
         
+        //중국어로 변경
         action = UIAlertAction(title: "中文", style: .default) { [weak self] _ in
-            //중국어로 변경
             UserDefaults.standard.set(["zh"], forKey: "language")
             UserDefaults.standard.synchronize()
             
             self?.setMenuButtonTitle()
         }
         alertController.addAction(action)
-        action.setValue(UIColor.label, forKey: "titleTextColor")
+        textColor = languageCode == "zh" ? UIColor.red : UIColor.label
+        action.setValue(textColor, forKey: "titleTextColor")
 
+        //일본어로 변경
         action = UIAlertAction(title: "日本語", style: .default) { [weak self] _ in
-            //일본어로 변경
             UserDefaults.standard.set(["ja"], forKey: "language")
             UserDefaults.standard.synchronize()
             
             self?.setMenuButtonTitle()
         }
-        alertController.addAction(action)
-        action.setValue(UIColor.label, forKey: "titleTextColor")
+        textColor = languageCode == "ja" ? UIColor.red : UIColor.label
+        action.setValue(textColor, forKey: "titleTextColor")
         
+        //독일어로 변경
         action = UIAlertAction(title: "Deutsch", style: .default) { [weak self] _ in
-            //독일어로 변경
             UserDefaults.standard.set(["de"], forKey: "language")
             UserDefaults.standard.synchronize()
             
             self?.setMenuButtonTitle()
         }
         alertController.addAction(action)
-        action.setValue(UIColor.label, forKey: "titleTextColor")
+        textColor = languageCode == "de" ? UIColor.red : UIColor.label
+        action.setValue(textColor, forKey: "titleTextColor")
         
+        //프랑스어로 변경
         action = UIAlertAction(title: "Français", style: .default) { [weak self] _ in
-            //프랑스어로 변경
             UserDefaults.standard.set(["fr"], forKey: "language")
             UserDefaults.standard.synchronize()
             
             self?.setMenuButtonTitle()
         }
         alertController.addAction(action)
-        action.setValue(UIColor.label, forKey: "titleTextColor")
-        
+        textColor = languageCode == "fr" ? UIColor.red : UIColor.label
+        action.setValue(textColor, forKey: "titleTextColor")
+
+        //취소
         let cancelAction = UIAlertAction(
             title: "Cancel".localized,
             style: .cancel,
             handler: nil
         )
         alertController.addAction(cancelAction)
-        cancelAction.setValue(UIColor.systemYellow, forKey: "titleTextColor")
+        cancelAction.setValue(UIColor.blue, forKey: "titleTextColor")
         
         present(alertController, animated: true)
     }
@@ -246,5 +254,15 @@ extension IntroViewController {
     func setMenuButtonTitle() {
         self.TypingButton.setTitle("BibleTyping".localized, for: .normal)
         self.PuzzleButton.setTitle("Quiz".localized, for: .normal)
+    }
+    
+    func setLanguage() -> String {
+        var language = UserDefaults.standard.array(forKey: "language")?.first as? String //nil
+        if language == nil {
+            let str = String(NSLocale.preferredLanguages[0])    // 언어코드-지역코드 (ex. ko-KR, en-US)
+            language = String(str.dropLast(3))
+        }
+        
+        return language!
     }
 }

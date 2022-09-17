@@ -15,27 +15,18 @@ final class TypingListCollectionViewCell: UICollectionViewCell {
     private lazy var bookLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14.0, weight: .bold)
+        label.adjustsFontSizeToFitWidth = true
+        label.textAlignment = .center
         
         return label
     }()
     
-    private lazy var chapterLabel: UILabel = {
+    private lazy var chapterVerseLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12.0, weight: .semibold)
+        label.textColor = .systemGray
         
         return label
-    }()
-    
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.distribution = .fillProportionally
-        stackView.spacing = 1.0
-        stackView.alignment = .center
-        
-        [bookLabel, chapterLabel]
-            .forEach { stackView.addArrangedSubview($0) }
-        
-        return stackView
     }()
     
     private lazy var statusLabel: UILabel = {
@@ -51,12 +42,29 @@ final class TypingListCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 8.0
+        stackView.alignment = .center
+        
+        [bookLabel, chapterVerseLabel, statusLabel]
+            .forEach { stackView.addArrangedSubview($0) }
+        
+        return stackView
+    }()
+    
     func setup(bible: Bible) {
         setupView()
         setupLayout()
         
+        var chapterVerse: String {
+            return "(" + String(bible.chapter) + "chapter".localized + " " + String(bible.verse) + "verse".localized + ")"
+        }
+        
         bookLabel.text = bible.bookName.localized
-        chapterLabel.text = "(\(String(bible.chapter)))"
+        chapterVerseLabel.text = chapterVerse
     }
     
     func setupStatusLabel(_ chapter: Int, _ verse: Int, _ doneWrite: Bool) {
@@ -86,18 +94,20 @@ extension TypingListCollectionViewCell {
     }
     
     func setupLayout() {
-        [stackView, statusLabel]
+        [stackView]
             .forEach { addSubview($0) }
         
+        bookLabel.snp.makeConstraints {
+            $0.width.equalTo(90.0)
+        }
+        
         stackView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(16.0)
+            $0.top.equalToSuperview().inset(8.0)
             $0.centerX.equalToSuperview()
         }
         
         statusLabel.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(bookLabel.snp.bottom).offset(16.0)
-            $0.width.equalToSuperview().inset(8.0)
+            $0.width.equalToSuperview()
             $0.height.equalTo(28.0)
         }
     }

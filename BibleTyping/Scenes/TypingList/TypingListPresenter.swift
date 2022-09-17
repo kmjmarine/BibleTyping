@@ -52,7 +52,7 @@ extension TypingListPresenter: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let inset: CGFloat = 16.0
+        let inset: CGFloat = 8.0
         return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
     }
 }

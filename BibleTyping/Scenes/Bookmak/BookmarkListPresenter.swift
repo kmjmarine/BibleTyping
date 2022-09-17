@@ -59,17 +59,24 @@ extension BookmarkListPresenter: UITableViewDelegate, UITableViewDataSource {
         bookmark.count
     }
     
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .normal, title: nil) { [weak self] (action, view, completion) in
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let speakAction = UIContextualAction(style: .normal, title: nil) { [weak self] (action, view, completion) in
             let bookmarks = self!.bookmark[indexPath.row]
-            self!.userDefaultsManager.delBookmark(bookmarks)
-            self!.bookmark.remove(at: indexPath.row)
-            self!.viewController?.setupDoneView(bookmarks: self!.bookmark)
+           
+            TTSManager.shared.play(bookmarks.quote, bookmarks.language ?? "ko")
             
-            tableView.deleteRows(at: [indexPath], with: .automatic)
             completion(true)
         }
+            
+        speakAction.backgroundColor = .systemTeal
+        speakAction.image = UIImage(systemName: "speaker.wave.3")
         
+        let configuration = UISwipeActionsConfiguration(actions: [speakAction])
+        configuration.performsFirstActionWithFullSwipe = false
+        return configuration
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let copyAction = UIContextualAction(style: .normal, title: nil) { [weak self] (action, view, completion) in
             let bookmarks = self!.bookmark[indexPath.row]
             var PasteBoardString: String {
@@ -82,10 +89,20 @@ extension BookmarkListPresenter: UITableViewDelegate, UITableViewDataSource {
             completion(true)
         }
         
-        deleteAction.backgroundColor = .red
-        deleteAction.image = UIImage(systemName: "trash")
+        let deleteAction = UIContextualAction(style: .normal, title: nil) { [weak self] (action, view, completion) in
+            let bookmarks = self!.bookmark[indexPath.row]
+            self!.userDefaultsManager.delBookmark(bookmarks)
+            self!.bookmark.remove(at: indexPath.row)
+            self!.viewController?.setupDoneView(bookmarks: self!.bookmark)
+            
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            completion(true)
+        }
+        
         copyAction.backgroundColor = .TitleBrown
         copyAction.image = UIImage(systemName: "doc.on.doc")
+        deleteAction.backgroundColor = .red
+        deleteAction.image = UIImage(systemName: "trash")
         
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction, copyAction])
         configuration.performsFirstActionWithFullSwipe = false
