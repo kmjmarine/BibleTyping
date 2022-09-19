@@ -150,7 +150,11 @@ final class IntroViewController: UIViewController {
         buttonStackView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.width.equalToSuperview().inset(50.0)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(width / 4.5)
+            if UIDevice.current.userInterfaceIdiom == .pad { //디바이스 타입이 iPad일때
+                $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(width / 7.0)
+            } else {
+                $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(width / 4.5)
+            }
         }
         
         versionLabel.snp.makeConstraints {
@@ -208,7 +212,17 @@ extension IntroViewController {
         alertController.addAction(cancelAction)
         cancelAction.setValue(UIColor.blue, forKey: "titleTextColor")
         
-        present(alertController, animated: true)
+        if UIDevice.current.userInterfaceIdiom == .pad { //디바이스 타입이 iPad일때
+          if let popoverController = alertController.popoverPresentationController {
+              // ActionSheet가 표현되는 위치를 저장해줍니다.
+              popoverController.sourceView = self.view
+              popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.maxY, width: 0, height: 0)
+              popoverController.permittedArrowDirections = []
+              self.present(alertController, animated: true, completion: nil)
+          }
+        } else {
+          self.present(alertController, animated: true, completion: nil)
+        }
     }
 }
 
