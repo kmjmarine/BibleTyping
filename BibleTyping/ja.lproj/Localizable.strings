@@ -53,6 +53,11 @@
 "noReading" = "読む前";
 "doneReading" = "読み腕";
 
+//Bookmark
+"TimeSort" = "時系列の並べ替え";
+"NameSort" = "聖書の名前順に並べ替え";
+"BookmarkAlertTitle" = "ソート条件を選択してください。";
+
 //Bible
 "창세기" = "創世記";
 "출애굽기" = "出エジプト記";

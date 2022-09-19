@@ -53,6 +53,11 @@
 "noReading" = "before";
 "doneReading" = "complete";
 
+//Bookmark
+"TimeSort" = "Sort by time";
+"NameSort" = "Sort by Bible name";
+"BookmarkAlertTitle" = "Please select a sort condition.";
+
 //Bible
 "창세기" = "Genesis";
 "출애굽기" = "Exodus";

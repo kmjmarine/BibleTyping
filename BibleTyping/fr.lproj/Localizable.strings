@@ -53,6 +53,11 @@
 "noReading" = "Avant";
 "doneReading" = "complète";
 
+//Bookmark
+"TimeSort" = "Trier par heure";
+"NameSort" = "Trier par nom biblique";
+"BookmarkAlertTitle" = "Veuillez sélectionner une condition de tri.";
+
 //Bible
 "창세기" = "Genèse";
 "출애굽기" = "Exode";

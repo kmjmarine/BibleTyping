@@ -53,6 +53,11 @@
 "noReading" = "通读";
 "doneReading" = "完整阅读";
 
+//Bookmark
+"TimeSort" = "按时间排序";
+"NameSort" = "按圣经名称排序";
+"BookmarkAlertTitle" = "请选择排序条件。";
+
 //Bible
 "창세기" = "创世纪";
 "출애굽기" = "出埃及记";

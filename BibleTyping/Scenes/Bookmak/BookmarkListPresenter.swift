@@ -43,6 +43,19 @@ final class BookmarkListPresenter: NSObject {
     func didCalledRefresh() {
         requestBookmarkList()
     }
+    
+    func getBookmarkCount() -> Int {
+        return bookmark.count
+    }
+    
+    func sortBookmark(mode: String) {
+        if mode == "time" {
+            bookmark.sort { $0.date! > $1.date! }
+        } else {
+            bookmark.sort { $0.bookname < $1.bookname }
+        }
+        viewController?.reloadTableView()
+    }
 }
 
 extension BookmarkListPresenter: UITableViewDelegate, UITableViewDataSource {

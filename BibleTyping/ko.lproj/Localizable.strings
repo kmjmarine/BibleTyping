@@ -53,6 +53,11 @@
 "noReading" = "통독전";
 "doneReading" = "통독완";
 
+//Bookmark
+"TimeSort" = "시간순";
+"NameSort" = "성경순";
+"BookmarkAlertTitle" = "정렬 조건을 선택해 주세요.";
+
 //Bible
 "창세기" = "창세기";
 "출애굽기" = "출애굽기";
