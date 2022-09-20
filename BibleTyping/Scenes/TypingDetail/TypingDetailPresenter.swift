@@ -116,7 +116,6 @@ final class TypingDetailPresenter: NSObject {
         
         SearchManager()
             .request(from: bookCode, chapter: finalChapter, verse: finalVerse) { quote in
-              
                 self.viewController?.setViews(chapter: finalChapter, verse: finalVerse, quoteText: quote)
             }
 

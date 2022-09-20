@@ -19,9 +19,7 @@ final class TypingDetailViewController: UIViewController {
     private var audioPlayer: AVAudioPlayer?
     
     private lazy var presenter = TypingDetailPresenter(viewController: self, bookkind: bookkind, bookname: bookname, chapter: chapter, verse: verse)
-    
     private let userDefaultsManager: UserDefaultsManagerProtocol
-    
     private let placeholderText = "EnterText".localized
     
     private lazy var bookNameLabel: UILabel = {
@@ -262,9 +260,9 @@ extension TypingDetailViewController: TypingDetailProtocol {
     func didNotCorrect() {
         view.makeToast("Wrong".localized)
         let url = Bundle.main.url(forResource: "wrongeffect", withExtension: "wav")
-            if let url = url {
+            if let unWrappedurl = url {
                 do {
-                    audioPlayer = try AVAudioPlayer(contentsOf: url)
+                    audioPlayer = try AVAudioPlayer(contentsOf: unWrappedurl)
                     audioPlayer?.prepareToPlay()
                     audioPlayer?.play()
                 } catch {
@@ -279,11 +277,7 @@ extension TypingDetailViewController: TypingDetailProtocol {
     }
     
     func showCorrectAmnimationView(_ show: Bool) {
-        if show {
-            animationView.isHidden = false
-        } else {
-            animationView.isHidden = true
-        }
+        animationView.isHidden = show ? false : true
     }
     
     func checkEqual(sourceText: String?, writeText: String?) -> Bool {

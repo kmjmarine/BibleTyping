@@ -222,7 +222,7 @@ extension PuzzleDetailViewController: PuzzleDetailProtocol {
         while i < arrQuote.count {
             randomString.append(" " + arrQuote[i])
             
-            for j in 0...randomIndex.count - 1 {
+            for j in 0..<randomIndex.count {
                 if i == randomIndex[j] {
                     //print(arrQuote[i]) 답안 낱말 디버그용
                     
@@ -344,9 +344,9 @@ extension PuzzleDetailViewController {
     
     private func wrongEffect() {
         let url = Bundle.main.url(forResource: "wrongeffect", withExtension: "wav")
-        if let url = url {
+        if let unWrappedurl = url {
             do {
-                audioPlayer = try AVAudioPlayer(contentsOf: url)
+                audioPlayer = try AVAudioPlayer(contentsOf: unWrappedurl)
                 audioPlayer?.prepareToPlay()
                 audioPlayer?.play()
             } catch {

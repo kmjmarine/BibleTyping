@@ -33,7 +33,7 @@ final class PuzzleDetailPresenter: NSObject {
         var randomIndex: [Int] = [ ]
         
         while randomIndex.count < 3 {
-            let number = Int.random(in: 0...arrQuote.count - 1)
+            let number = Int.random(in: 0..<arrQuote.count)
                     if !randomIndex.contains(number) {
                         randomIndex.append(number)
                     }

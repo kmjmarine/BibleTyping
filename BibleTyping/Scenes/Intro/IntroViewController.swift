@@ -10,6 +10,7 @@ import SnapKit
 import Lottie
 
 final class IntroViewController: UIViewController {
+    private lazy var presenter = IntroPresenter(viewController: self)
     private let userDefaultsManager: UserDefaultsManagerProtocol
     
     private lazy var baseView: UIView = {
@@ -109,16 +110,18 @@ final class IntroViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupViews()
+        presenter.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = true
         navigationController?.isNavigationBarHidden = true
         
-        setMenuButtonTitle()
+        presenter.viewWillAppear()
     }
-    
+}
+
+extension IntroViewController: IntroProtocol {
     func setupViews() {
         [baseView, titleLabel, animationView, buttonStackView, versionLabel, globalButton]
             .forEach { view.addSubview($0) }
@@ -190,8 +193,8 @@ extension IntroViewController {
         let languageCode = userDefaultsManager.getLanguage()
         var textColor: UIColor
         
-        //한국어로 변경
-        for i in 0...Language.languageList.count - 1 {
+        //다국어 alertSheet (선택한 언어코드 UserDefaults에 세팅)
+        for i in 0..<Language.languageList.count {
             let action = UIAlertAction(title: Language.languageList[i].languageName, style: .default) { [weak self] _ in
                 UserDefaults.standard.set([Language.languageList[i].languageCode], forKey: "language")
                 UserDefaults.standard.synchronize()
@@ -224,9 +227,7 @@ extension IntroViewController {
           self.present(alertController, animated: true, completion: nil)
         }
     }
-}
-
-extension IntroViewController {
+    
     func setMenuButtonTitle() {
         self.TypingButton.setTitle("BibleTyping".localized, for: .normal)
         self.PuzzleButton.setTitle("Quiz".localized, for: .normal)
