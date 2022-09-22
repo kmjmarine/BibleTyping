@@ -141,6 +141,32 @@ extension BookmarkListViewController: BookmarkProtocol {
     func reloadTableView() {
         tableView.reloadData()
     }
+    
+    func showAlert(indexPath: IndexPath) {
+        let alertController = UIAlertController(title: "북마크 삭제", message: "삭제를 하면 북마크 리스트에서 삭제되고 언제든 다시 북마크 할 수 있습니다.", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: { _ in
+            
+        })
+        cancelAction.setValue(UIColor.blue, forKey: "titleTextColor")
+        alertController.addAction(cancelAction)
+        
+        let deleteAction = UIAlertAction(title: "삭제", style: .destructive, handler: { _ in
+            let bookmarks = self.presenter.bookmark[indexPath.row]
+            self.presenter.userDefaultsManager.delBookmark(bookmarks)
+            self.presenter.bookmark.remove(at: indexPath.row)
+            self.setupDoneView(bookmarks: self.presenter.bookmark)
+            
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+    
+        })
+        alertController.addAction(deleteAction)
+        
+        alertController.popoverPresentationController?.sourceView = view
+        alertController.popoverPresentationController?.sourceRect = view.bounds
+        
+        present(alertController, animated: true, completion: nil)
+    }
 }
 
 private extension BookmarkListViewController {
@@ -149,45 +175,47 @@ private extension BookmarkListViewController {
     }
     
     @objc func didTabSort() {
-        if presenter.getBookmarkCount() <= 0 {
+        guard presenter.getBookmarkCount() > 0 else {
             view.makeToast("NoBookmark".localized, duration: 1.5)
-        } else {
-            let alertController = UIAlertController(title: "BookmarkAlertTitle".localized, message: nil, preferredStyle: .actionSheet)
             
-            //시간순
-            let timeAction = UIAlertAction(title: "TimeSort".localized, style: .default) { [weak self] _ in
-                self!.presenter.sortBookmark(mode: "time")
-            }
-            alertController.addAction(timeAction)
-            timeAction.setValue(UIColor.blue, forKey: "titleTextColor")
-            
-            //성경순
-            let nameAction = UIAlertAction(title: "NameSort".localized, style: .default) { [weak self] _ in
-                self!.presenter.sortBookmark(mode: "name")
-            }
-            alertController.addAction(nameAction)
-            nameAction.setValue(UIColor.blue, forKey: "titleTextColor")
-            
-            //취소
-            let cancelAction = UIAlertAction(
-                title: "Cancel".localized,
-                style: .cancel,
-                handler: nil
-            )
-            alertController.addAction(cancelAction)
-            cancelAction.setValue(UIColor.blue, forKey: "titleTextColor")
-            
-            if UIDevice.current.userInterfaceIdiom == .pad { //디바이스 타입이 iPad일때
-              if let popoverController = alertController.popoverPresentationController {
-                  // ActionSheet가 표현되는 위치를 저장해줍니다.
-                  popoverController.sourceView = self.view
-                  popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.maxY, width: 0, height: 0)
-                  popoverController.permittedArrowDirections = []
-                  self.present(alertController, animated: true, completion: nil)
-              }
-            } else {
+            return
+        }
+        
+        let alertController = UIAlertController(title: "BookmarkAlertTitle".localized, message: nil, preferredStyle: .actionSheet)
+        
+        //시간순
+        let timeAction = UIAlertAction(title: "TimeSort".localized, style: .default) { [weak self] _ in
+            self!.presenter.sortBookmark(mode: "time")
+        }
+        alertController.addAction(timeAction)
+        timeAction.setValue(UIColor.blue, forKey: "titleTextColor")
+        
+        //성경순
+        let nameAction = UIAlertAction(title: "NameSort".localized, style: .default) { [weak self] _ in
+            self!.presenter.sortBookmark(mode: "name")
+        }
+        alertController.addAction(nameAction)
+        nameAction.setValue(UIColor.blue, forKey: "titleTextColor")
+        
+        //취소
+        let cancelAction = UIAlertAction(
+            title: "Cancel".localized,
+            style: .cancel,
+            handler: nil
+        )
+        alertController.addAction(cancelAction)
+        cancelAction.setValue(UIColor.blue, forKey: "titleTextColor")
+        
+        if UIDevice.current.userInterfaceIdiom == .pad { //디바이스 타입이 iPad일때
+          if let popoverController = alertController.popoverPresentationController {
+              // ActionSheet가 표현되는 위치를 저장해줍니다.
+              popoverController.sourceView = self.view
+              popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.maxY, width: 0, height: 0)
+              popoverController.permittedArrowDirections = []
               self.present(alertController, animated: true, completion: nil)
-            }
+          }
+        } else {
+          self.present(alertController, animated: true, completion: nil)
         }
     }
 }

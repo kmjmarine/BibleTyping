@@ -16,11 +16,12 @@ protocol BookmarkProtocol: AnyObject {
     func endRefreshing()
     func reloadTableView()
     func alertCopy()
+    func showAlert(indexPath: IndexPath)
 }
 
 final class BookmarkListPresenter: NSObject {
     private weak var viewController: BookmarkProtocol?
-    private let userDefaultsManager:  UserDefaultsManagerProtocol
+    let userDefaultsManager: UserDefaultsManagerProtocol
     var bookmark: [Bookmark] = []
     
     init(viewController: BookmarkProtocol, userDefaultsManager: UserDefaultsManagerProtocol = UserDefaultsManager()) {
@@ -103,12 +104,7 @@ extension BookmarkListPresenter: UITableViewDelegate, UITableViewDataSource {
         }
         
         let deleteAction = UIContextualAction(style: .normal, title: nil) { [weak self] (action, view, completion) in
-            let bookmarks = self!.bookmark[indexPath.row]
-            self!.userDefaultsManager.delBookmark(bookmarks)
-            self!.bookmark.remove(at: indexPath.row)
-            self!.viewController?.setupDoneView(bookmarks: self!.bookmark)
-            
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            self?.viewController?.showAlert(indexPath: indexPath)
             completion(true)
         }
         
