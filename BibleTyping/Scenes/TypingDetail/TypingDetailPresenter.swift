@@ -98,29 +98,29 @@ final class TypingDetailPresenter: NSObject {
         //마지막 장절 완료 시 TypingDetailDoneViewContoller로 push
         if lastChapter >= completeChapter && (lastVerse - 1) >= completeVerse {
             viewController?.moveToTypingListViewController()
-        }
-
-        var finalChapter: Int = 1
-        var finalVerse: Int = 1
-        
-        //1장 마지막절 완료 시 2장 1절로 셋팅 처리
-        if lastChapter == doneChapter && (lastVerse - 1) >= doneVerse {
-            finalChapter += 1
-            finalVerse = 1
         } else {
-            finalChapter = lastChapter
-            finalVerse = lastVerse
-        }
-        
-        let bookCode = setBook()
-        
-        SearchManager()
-            .request(from: bookCode, chapter: finalChapter, verse: finalVerse) { quote in
-                self.viewController?.setViews(chapter: finalChapter, verse: finalVerse, quoteText: quote)
+            var finalChapter: Int = 1
+            var finalVerse: Int = 1
+            
+            //1장 마지막절 완료 시 2장 1절로 셋팅 처리
+            if lastChapter == doneChapter && (lastVerse - 1) >= doneVerse {
+                finalChapter += 1
+                finalVerse = 1
+            } else {
+                finalChapter = lastChapter
+                finalVerse = lastVerse
             }
+            
+            let bookCode = setBook()
+            
+            SearchManager()
+                .request(from: bookCode, chapter: finalChapter, verse: finalVerse) { quote in
+                    self.viewController?.setViews(chapter: finalChapter, verse: finalVerse, quoteText: quote)
+                }
 
-        self.chapter = finalChapter
-        self.verse = finalVerse
+            self.chapter = finalChapter
+            self.verse = finalVerse
+        }
         
         //북마크 여부 처리
         bookmark = userDefaultsManager.getBookmark()

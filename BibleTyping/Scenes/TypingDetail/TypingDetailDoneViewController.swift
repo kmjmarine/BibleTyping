@@ -55,6 +55,8 @@ final class TypingDetailDoneViewController: UIViewController {
         self.bookname = bookname
         
         super.init(nibName: nil, bundle: nil)
+        
+        view.backgroundColor = .systemBackground
     }
     
     required init?(coder: NSCoder) {

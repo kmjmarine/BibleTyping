@@ -124,6 +124,8 @@ final class TypingDetailViewController: UIViewController {
         self.userDefaultsManager = userDefaultsManager
         
         super.init(nibName: nil, bundle: nil)
+        
+        view.backgroundColor = .systemBackground
     }
     
     required init?(coder: NSCoder) {

@@ -163,7 +163,7 @@ private extension PuzzleViewController {
             timerLabel.text = String(5)
             
             let puzzleDetailViewViewController = PuzzleDetailViewController(verse: self.verse, verse_info: self.verse_info)
-            navigationController?.pushViewController(puzzleDetailViewViewController, animated: false)
+            navigationController?.pushViewController(puzzleDetailViewViewController, animated: true)
         }
         
         timeLeft -=  1
