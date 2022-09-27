@@ -149,17 +149,23 @@ extension PuzzleViewController: PuzzleProtocol {
 private extension PuzzleViewController {
     @objc func pushToPuzzleWriteViewController() {
         timerLabel.text = String(timeLeft)
-        timeLeft -=  1
-        
+                
         progressView.setProgress(progressTime, animated: true)
         progressTime += 0.25
         
-        if timeLeft <= -1 {
+        if timeLeft <= 0 {
             timer?.invalidate()
             timer = nil
+            
+            //타이머 영역 초기화
+            progressTime = 0.0
+            progressView.setProgress(progressTime, animated: true)
+            timerLabel.text = String(5)
             
             let puzzleDetailViewViewController = PuzzleDetailViewController(verse: self.verse, verse_info: self.verse_info)
             navigationController?.pushViewController(puzzleDetailViewViewController, animated: false)
         }
+        
+        timeLeft -=  1
     }
 }

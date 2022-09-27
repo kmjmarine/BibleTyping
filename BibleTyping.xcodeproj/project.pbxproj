@@ -243,6 +243,7 @@
 		E5652B322873CE09001B0B5F /* BibleTyping */ = {
 			isa = PBXGroup;
 			children = (
+				E51D705228BDF026000573C3 /* ETCFiles */,
 				E5119D7028D0D57C008A1CBA /* Extension */,
 				E5652B682873DAFE001B0B5F /* Managers */,
 				E5652B632873D8E1001B0B5F /* Models */,
@@ -323,7 +324,6 @@
 			isa = PBXGroup;
 			children = (
 				E51D704D28BDE8E2000573C3 /* Bookmak */,
-				E51D705228BDF026000573C3 /* ETCFiles */,
 				E56641F228AB7D97006B718A /* Intro */,
 				E5274905288F7BCD0070AEDA /* Puzzle */,
 				E503E26028982D4E00BA6133 /* PuzzleDetail */,
@@ -736,7 +736,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.8.2;
+				MARKETING_VERSION = 2.8.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "aeron-kim.BibleTyping";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -766,7 +766,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.8.2;
+				MARKETING_VERSION = 2.8.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "aeron-kim.BibleTyping";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
